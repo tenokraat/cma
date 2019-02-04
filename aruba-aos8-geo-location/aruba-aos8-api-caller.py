@@ -1,4 +1,7 @@
-import json,requests,time,sys
+import json,requests,time,sys,urllib3
+
+#Ignore SSL warnings as per https://urllib3.readthedocs.io/en/latest/advanced-usage.html
+urllib3.disable_warnings()
 
 class api_session:
   def __init__(self, api_url, username, password, port=4343, SSL=True, check_ssl=True, verbose=False, retrys=3, retry_wait=0.5):
