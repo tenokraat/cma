@@ -9,15 +9,11 @@ session.login()
 
 cd = session.get("configuration/object/node_hierarchy")
 
-output = cd['name']
-
-print ('Node Hierarchy Name: '+output)
-
 #md_name = cd['childnodes'][1]['childnodes'][1]['childnodes'][1]['devices']
 
 for each in cd['childnodes'][1]['childnodes'][1]['childnodes'][1]['devices']:
-    print (each['name']) 
-    print(each['mac'])
+    print ('Hostname: '+each['name']+' MAC: '+each['mac'])
+ #   print(each['mac'])
 
 #print (md_name)
 
