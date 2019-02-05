@@ -1,0 +1,6 @@
+sap-id,street,zip,place,state
+3451,Gartenweg 6,5606,Dintikon,AG
+3455,Zürichstrasse 70,8306,Bruettisellen,ZH
+3461,Birseckstrasse 95,4144,Arlesheim,BL
+3658,Güterstrasse 115,4053,Basel,BS
+4269,Witikonerstrasse 15,8032,Zuerich,ZH
