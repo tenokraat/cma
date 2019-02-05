@@ -7,8 +7,8 @@ session = api_session("cs-aruba-mm.hpearubademo.com", "admin", "Adminhpq-123")
 
 session.login()
 
-cd = session.get("configuration/object/node_hierarchy", "")
+vlan_interface = session.get("configuration/object/int_vlan", "/md/hpe-ch/zuo01-mc/cs-aruba-7210-mc1")
 
-print (cd)
+print (vlan_interface)
 
 session.logout()

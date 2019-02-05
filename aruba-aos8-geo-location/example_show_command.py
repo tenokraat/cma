@@ -7,8 +7,9 @@ session = api_session("cs-aruba-mm.hpearubademo.com", "admin", "Adminhpq-123")
 
 session.login()
 
-cd = session.get("configuration/object/node_hierarchy", "")
+show_switches = session.get("configuration/showcommand?command=show+switches", "")
 
-print (cd)
+print (show_switches)
 
 session.logout()
+
