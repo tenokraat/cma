@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 import json,requests,csv,os
-from aruba_api_caller import *
+from .aruba_api_caller import *
 
 #open csv file with site information
 #filename = 'shop-list.txt'
