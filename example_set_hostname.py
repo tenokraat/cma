@@ -23,15 +23,3 @@ curr_hostname = hostname_json['_data']['hostname']['hostname']
 print(curr_hostname)
   
 session.logout()
-
-#open csv file with site information
-#filename = 'shop-list.txt'
-
-cwd = os.getcwd()
-print ('Current Working Directory is: ' + cwd)
-
-with open('shop-list.txt') as csv_file:
-    csv_reader = csv.reader(csv_file, delimiter=',')
-    line_count = 0
-    for row in csv_reader:
-        print (row)

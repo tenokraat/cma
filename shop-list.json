@@ -1,0 +1,5 @@
+{"sap-id": "sap-id", "street": "street", "zip": "zip", "place": "place", "state": "state", "network-address": "network-address"}
+{"sap-id": "3455", "street": "Zuerichstrasse 70", "zip": "8306", "place": "Bruettisellen", "state": "ZH", "network-address": "10.110.224.64"}
+{"sap-id": "3461", "street": "Birseckstrasse 95", "zip": "4144", "place": "Arlesheim", "state": "BL", "network-address": "10.110.224.32"}
+{"sap-id": "3658", "street": "Gueterstrasse 115", "zip": "4053", "place": "Basel", "state": "BS", "network-address": "10.110.226.80"}
+{"sap-id": "4269", "street": "Witikonerstrasse 15", "zip": "8032", "place": "Zuerich", "state": "ZH", "network-address": "10.110.224.80"}

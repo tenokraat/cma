@@ -1,6 +1,6 @@
-sap-id,street,zip,place,state
-3451,Gartenweg 6,5606,Dintikon,AG
-3455,Zürichstrasse 70,8306,Bruettisellen,ZH
-3461,Birseckstrasse 95,4144,Arlesheim,BL
-3658,Güterstrasse 115,4053,Basel,BS
-4269,Witikonerstrasse 15,8032,Zuerich,ZH
+sap-id,street,zip,place,state,network-address
+3455,Zuerichstrasse 70,8306,Bruettisellen,ZH,10.110.224.64
+3461,Birseckstrasse 95,4144,Arlesheim,BL,10.110.224.32
+3658,Gueterstrasse 115,4053,Basel,BS,10.110.226.80
+4269,Witikonerstrasse 15,8032,Zuerich,ZH,10.110.224.80
+3451,Gartenweg 6,5606,Dintikon,AG,10.110.224.96
