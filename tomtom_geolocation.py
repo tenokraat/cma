@@ -10,7 +10,6 @@ import json,requests,csv,os
 api_key = 'KR3oOGSM59aMJBOSKAxTlxoJvYBjrENU'
 address = 'dietlikonstrasse 35 duebendorf'
 
-
 geocode_api_url = f'https://api.tomtom.com/search/2/geocode/{address}.json'
 
 #query syntax /search/{versionNumber}/geocode/{query}.{ext}
