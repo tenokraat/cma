@@ -11,8 +11,8 @@ address = 'Bassersdorferstrasse 113 8302'
 
 geocode_api_url = f'https://api.tomtom.com/search/2/geocode/{address}.json'
 
-#query syntax /search/{versionNumber}/geocode/{query}.{ext}
-#https://api.tomtom.com/search/2/geocode/coop pronto Bassersdorferstrasse 113 8302.json?countrySet=CH&lat=37.337&lon=-121.89&topLeft=37.553%2C-122.453&btmRight=37.4%2C-122.55&key=*****
+#TomTom API query syntax /search/{versionNumber}/geocode/{query}.{ext}
+#https://developer.tomtom.com/content/search-api-explorer
 
 params = {
     'countrySet': 'CH',
