@@ -4,11 +4,10 @@ import json,requests,csv,os
 
  #Using Python requests and TomTom Search/Geocode API.
 
- #API Key oliver.wehrli@gmail.com: KR3oOGSM59aMJBOSKAxTlxoJvYBjrENU
-
+ #API Key oliver.wehrli@gmail.com
 
 api_key = 'KR3oOGSM59aMJBOSKAxTlxoJvYBjrENU'
-address = 'dietlikonstrasse 35 duebendorf'
+address = 'Bassersdorferstrasse 113 8302'
 
 geocode_api_url = f'https://api.tomtom.com/search/2/geocode/{address}.json'
 
@@ -17,8 +16,8 @@ geocode_api_url = f'https://api.tomtom.com/search/2/geocode/{address}.json'
 
 params = {
     'countrySet': 'CH',
-    #'lat': '46.204391',
-    #'lon': '6.143158',
+    'lat': '46.204391',
+    'lon': '6.143158',
     'key': api_key
 }
 
@@ -29,16 +28,16 @@ print (req.url)
 res = req.json()
 print (res)
 
-summary = res['summary'][0]
+summary = res['summary']
 print (summary)
 
 # Use the first result
 result = res['results'][0]
 print (result)
 
-geodata {}
-geodata['lat'] = result['geometry']['location']['lat']
-geodata['lng'] = result['geometry']['location']['lng']
-geodata['address'] = result['formatted_address']
+geodata = dict()
+geodata['lat'] = result['position']['lat']
+geodata['lon'] = result['position']['lon']
+geodata['address'] = result['address']['freeformAddress']
 
-print('{address}. (lat, lng) = ({lat}, {lng})'.format(**geodata))
+print('{address}. (lat, lng) = ({lat}, {lon})'.format(**geodata))
