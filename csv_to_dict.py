@@ -4,8 +4,7 @@ import json,requests,csv,os
 from aruba_api_caller import *
 
 #variable definition
-csv_filename = 'shop-list.txt'
-json_filename = 'shop-list.json'
+csv_filename = 'cma-shop-list.txt'
 
 #Open CSV in Read-only mode
 csv_file = open(csv_filename, 'r')
@@ -14,7 +13,7 @@ reader = csv.reader(csv_file)
 #Create empty dictionary
 shops = {}
 
-#Headers: sap-id,street,zip,place,state,network-address
+#Headers in CSV: sap-id,street,zip,place,state,network-address
 
 #Read all lines in CSV and put them in the dictionary
 for row in reader:

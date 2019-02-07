@@ -1,0 +1,319 @@
+﻿sap-id;street;zip;place;state;network-address
+3197;Thunstrasse 22;3110;Münsingen;BE;#N/A
+3410;Hauptstrasse 19;6015;Reussbühl;LU;10.110.226.112
+3411;Zugerstrasse 64;6340;Baar;ZG;10.110.226.128
+3412;Klarastrasse 12;9320;Arbon;TG;10.110.226.144
+3414;Tramstrasse 22;9444;Diepoldsau;SG;10.110.226.160
+3415;Kantonsstrasse 300;3900;Brig;VS;10.110.226.176
+3417;Dorfstrasse 20;4612;Wangen b. Olten;SO;10.110.226.192
+3418;Fichtenstrasse 20;8570;Weinfelden;TG;10.110.226.208
+3419;Rorschacherstrasse 133;9450;Lüchingen;SG;10.110.226.224
+3420;Grenzstrasse 21;9430;St. Margrethen;SG;10.110.226.240
+3421;Am Wasser 146;8049;Zürich;ZH;10.110.241.80
+3422;Sissacherstrasse 24;4460;Gelterkinden;BL;10.110.225.128
+3425;Bassersdorferstrasse 113;8302;Kloten;ZH;10.110.227.0
+3428;Untere Dürrmühlestrasse 19;4704;Niederbipp;BE;10.110.227.16
+3430;Weinfelderstrasse 115;8580;Amriswil;TG;10.110.227.32
+3431;Sarganserstrasse 40;7310;Bad Ragaz;SG;10.110.227.48
+3432;Reinacherstrasse 202-204;4053;Basel;BS;10.110.227.64
+3434;St. Gallerstrasse 28;9470;Buchs;SG;10.110.227.80
+3435;Rheinstrasse 9;9463;Oberriet;SG;10.110.227.96
+3436;Sonnenstrasse 16;8280;Kreuzlingen;TG;10.110.227.112
+3438;Wilerstrasse 48;9630;Wattwil;SG;10.110.227.128
+3439;Rudolf-Dieselstrasse 13;8404;Winterthur;ZH;10.110.227.144
+3440;Seestrasse 67;8800;Thalwil;ZH;10.110.227.160
+3441;Delfterstrasse 18;5004;Aarau;AG;10.110.227.176
+3442;Leimernweg 53;3270;Aarberg;BE;10.110.227.192
+3443;Niederhaslistrasse 9;8157;Dielsdorf;ZH;10.110.225.112
+3444;Oberwilerstrasse 40;4106;Therwil;BL;10.110.227.208
+3445;Kirchbergstrasse 102;3400;Burgdorf;BE;10.110.227.224
+3446;Zürcherstrasse 32;8500;Frauenfeld;TG;10.110.227.240
+3447;Essanestrasse 15;9492;Eschen;FL;10.110.228.0
+3448;Aarauerstrasse 68;5734;Reinach;AG;10.110.228.16
+3449;Bahnhofstrasse 73;8590;Romanshorn;TG;10.110.228.32
+3451;Gartenweg 6;5606;Dintikon;AG;10.110.224.96
+3452;Thurgauerstrasse 35;9400;Rorschach;SG;10.110.228.48
+3453;St. Jakobstrasse 133;4132;Muttenz;BL;10.110.228.64
+3454;Gotthardstrasse 2 a;6467;Schattdorf;UR;10.110.228.80
+3455;Zürichstrasse 70;8306;Brüttisellen;ZH;10.110.224.64
+3457;Sihlbruggstrasse 152;6340;Baar;ZG;10.110.228.96
+3458;Wattstrasse 3;9240;Uzwil;SG;10.110.241.96
+3459;Favrestrasse 6;9016;St. Gallen;SG;10.110.228.112
+3460;Oltnerstrasse 127;4663;Aarburg;AG;10.110.228.128
+3461;Birseckstrasse 95;4144;Arlesheim;BL;10.110.224.32
+3462;Adlikerstrasse 285;8105;Regensdorf;ZH;10.110.228.144
+3465;Lindenstrasse 1;8604;Volketswil;ZH;10.110.228.160
+3466;Brüglingerstrasse 83;4053;Basel;BS;10.110.228.176
+3467;Hauptstrasse 62;4853;Murgenthal;AG;10.110.224.144
+3468;Wengimattstrasse 1;4710;Klus-Balsthal;SO;10.110.228.192
+3469;Hinwilerstrasse 11;8623;Wetzikon;ZH;10.110.225.144
+3470;Grossfeldstrasse 65;8887;Mels;SG;10.110.228.208
+3471;Baslerstrasse 5;4102;Binningen;BL;10.110.228.224
+3472;Zürcherstrasse 49;4310;Rheinfelden;AG;10.110.228.240
+3473;Hauptstrasse 45;5113;Holderbank;AG;10.110.229.0
+3474;Gurzelenstrasse 2;4512;Bellach;SO;10.110.229.16
+3475;Maihofstrasse 101;6006;Luzern;LU;10.110.229.32
+3476;im Wängli 6;8910;Affoltern am Albis;ZH;10.110.229.48
+3477;Toggenburgerstrasse 103;9500;Wil;SG;10.110.229.64
+3478;Menznauerstrasse 29;6110;Wolhusen;LU;10.110.241.112
+3479;Ettiswilerstrasse 41 a;6130;Willisau;LU;10.110.229.80
+3480;Rue Cardinale Mermillod 11;1227;Carouge;GE;10.110.229.96
+3481;Route de St-Nicolas-de-Flüe 1;1700;Fribourg;FR;10.110.229.112
+3482;Rue de la Fiaz 38 - 40;2300;La Chaux de Fonds;NE;10.110.229.128
+3483;Route de Delémont 13;2830;Courrendlin;JU;10.110.229.144
+3484;Rue du Stand 56;2800;Delémont;JU;10.110.229.160
+3485;Rue de Soleure 60;2740;Moutier;BE;10.110.229.176
+3486;Route du Levant 96;1920;Martigny;VS;10.110.229.192
+3487;Route du Bois;1753;Matran;FR;10.110.229.208
+3488;Route des Illettes 1;1870;Monthey;VS;10.110.229.224
+3489;Champs-Montants 8;2074;Marin;NE;10.110.229.240
+3490;Route de Sion 115;3960;Sierre;VS;10.110.230.0
+3491;Solothurnstrasse 132;2504;Biel;BE;10.110.225.32
+3492;Pra Riond 1;1635;La Tour deTrême FR;FR;10.110.225.96
+3493;Rue de la Gare 37;1964;Conthey;VS;10.110.230.16
+3494;Chemain de Saugy 1;1023;Crissier;VD;10.110.230.32
+3495;Centre Commercial, Littoral C.;1165;Allaman;VD;10.110.230.48
+3496;Rue de Lyon 100;1203;Genève;GE;10.110.230.64
+3497;Route de Reculan 1;1024;Ecublens;VD;10.110.230.80
+3498;Z.A. Pré Jacquet 1;1868;Collombey;VS;10.110.230.96
+3499;Centre Commercial Riviera;1847;Rennaz;VD;10.110.230.112
+3500;Route de St.-Croix;1400;Yverdon-les-Bains;VD;10.110.241.128
+3501;Via Cantonale 17;6916;Grancia;TI;10.110.230.128
+3502;Via Cantonale;6593;Cadenazzo;TI;10.110.230.144
+3504;Via San Gottardo 73;6500;Bellinzona;TI;10.110.230.160
+3505;Höheweg 26;3800;Interlaken;BE;10.110.230.176
+3506;Bahnhofplatz 11;8953;Dietikon;ZH;10.110.230.192
+3507;Bahnhofplatz 1;4410;Liestal;BL;10.110.230.208
+3508;Panoramastrasse 1;3600;Thun;BE;10.110.230.224
+3510;Autobahnrasträtte A1;8310;Kemptthal;ZH;10.110.230.240
+3511;Autobahnrasstätte A1 Gunzgen Süd;4616;Kappel;SO;10.110.231.0
+3512;Promenade 63;7270;Davos Platz;GR;10.110.231.16
+3513;Güterstrasse 257;4053;Basel;BS;10.110.231.32
+3514;Rorschacherstrasse 216/218;9000;St.Gallen;SG;10.110.231.48
+3515;Äussere Baselstrasse 263;4125;Riehen;BS;10.110.231.64
+3516;Promenade 143;7260;Davos Dorf;GR;10.110.231.80
+3517;Birmensdorferstrasse 55;8004;Zürich;ZH;10.110.241.144
+3518;Brunnenstrasse 12;8604;Volketswil;ZH;10.110.231.96
+3519;Hausimollstrasse 3;4622;Egerkingen;SO;10.110.231.112
+3520;Haupstrasse 29;8246;Langwiesen;ZH;10.110.231.128
+3521;Rue des Alpes 80;1820;Montreux;VD;10.110.231.144
+3522;Robert-Walser-Platz 1;2502;Biel;BE;10.110.231.160
+3523;Relais de la côte aire jura;1183;Bursins;VD;10.110.231.176
+3524;Relais de la Côte (aire Lac);1183;Bursins;VD;10.110.226.64
+3525;La Bichette;1267;Vich;VD;10.110.231.192
+3526;Place de la Gare 9;2800;Delémont;JU;10.110.231.208
+3527;Eymattstrasse 15;3027;Bern;BE;10.110.231.224
+3528;Grabenstrasse 6;8184;Bachenbülach;ZH;10.110.231.240
+3531;St. Gallerstrasse 238;9200;Gossau;SG;10.110.232.0
+3533;Streitgasse 20;4051;Basel;BS;10.110.232.16
+3546;Gotthardstrasse 23;6414;Oberarth;SZ;10.110.232.32
+3547;Bahnhofstrasse 156;6423;Seewen;SZ;10.110.232.48
+3549;Längfeldweg 43;2504;Biel;BE;10.110.232.64
+3551;Au Milavy;1580;Avenches;VD;10.110.232.80
+3552;Place de la Gare 5;1800;Vevey;VD;10.110.232.96
+3562;Nagereija 15;3984;Fiesch;VS;10.110.232.112
+3563;Hauptstrasse 15;5070;Frick;AG;10.110.232.128
+3565;Badenerstrasse 120;8004;Zürich;ZH;10.110.241.160
+3566;Rue des Casernes 17;1950;Sion;VS;10.110.232.144
+3575;Schwarzwaldallee 200;4058;Basel;BS;10.110.232.160
+3576;Avenue d' Ouchy 68;1006;Lausanne-Ouchy;VD;10.110.232.176
+3578;Steinbislin 3;6423;Seewen;SZ;10.110.232.192
+3581;Industriestrasse 23;5303;Würenlingen;AG;10.110.241.176
+3582;Morgentalstrasse 22;8355;Aadorf;TG;10.110.232.208
+3587;Bahnhofstrasse 80;5507;Mellingen;AG;10.110.232.224
+3596;Zürcherstrasse 142;4052;Basel;BS;0
+3602;Route du Moulin 2;1580;Avenches;VD;#N/A
+3604;Baslerstrasse 128;5200;Umiken-Brugg;AG;0
+3608;Rüdenweg 5;3067;Boll;BE;0
+3611;Hardstrasse 49;4133;Pratteln;BL;0
+3621;Landstrasse 62;5412;Gebenstorf;AG;10.110.233.0
+3623;Bernstrasse 35;3506;Grosshöchstetten;BE;10.110.225.48
+3626;Grosszaun 1;8754;Netstal;GL;10.110.233.16
+3628;Obermattstrasse 1;8805;Richterswil;ZH;10.110.233.32
+3634;Langsägestrasse 4;6010;Kriens;LU;10.110.233.48
+3650;Avenue de la Gare 10;1400;Yverdon-les-Bains;VD;10.110.241.192
+3651;Landstrasse 79;5430;Wettingen;AG;10.110.233.64
+3655;Place de Chauderon 3;1003;Lausanne;VD;10.110.233.80
+3658;Güterstrasse 115;4053;Basel;BS;10.110.226.80
+3694;Route de la Chenevière 1;1763;Granges-Paccot;FR;10.110.233.96
+3701;Rorschacherstrasse 92;9424;Rheineck;SG;10.110.233.112
+3703;Rue du Bruye 65;2732;Reconvilier;BE;10.110.233.128
+3712;Hofwiesenstrasse 5;8057;Zürich;ZH;10.110.241.208
+3713;Tardisbrücke;7302;Landquart;GR;10.110.233.144
+3716;Hochbergerstrasse 60;4057;Basel;BS;10.110.224.160
+3717;Bützbergstrasse 103;4900;Langenthal;BE;10.110.225.64
+3721;Bahnhofsplatz 3;7001;Chur;GR;10.110.225.160
+3722;LU Raststätte A2 Neuenkirch OST;6023;Rothenburg;LU;10.110.233.160
+3723;Espace de L'Europe 3;2000;Neuchâtel;NE;10.110.233.176
+3725;Hegenheimermattweg 119;4123;Allschwil;BL;10.110.233.192
+3726;Avenue de Morges 185;1004;Lausanne;VD;10.110.233.208
+3727;Bielstrasse 30;3250;Lyss;BE;10.110.233.224
+3728;Luzernerstrasse 33;5630;Muri;AG;10.110.233.240
+3729;Frutigenstrasse 71;3604;Thun;BE;10.110.234.0
+3730;Pantunweg 2;7430;Thusis;GR;10.110.234.16
+3731;Industriestrasse 2;8424;Embrach;ZH;10.110.234.32
+3732;Raimattstrasse 125;5610;Wohlen;AG;10.110.241.224
+3733;Mattenstrasse 1;5722;Gränichen;AG;10.110.234.48
+3734;Mellingerstrasse 160;5400;Baden;AG;10.110.234.64
+3735;Rue de Lausanne 43;1110;Morges;VD;10.110.234.80
+3736;Bernstrasse 196;3627;Heimberg;BE;10.110.234.96
+3737;Via Uletsch 2;7031;Laax/GR;GR;10.110.234.112
+3738;Route de Bussy 22;1530;Payerne;VD;10.110.234.128
+3739;Rue de Battentin 1;1630;Bulle;FR;10.110.234.144
+3740;Auer Strasse 30;9435;Heerbrugg;SG;10.110.225.224
+3748;Luzernerstrasse 54;4665;Oftringen / AG;AG;10.110.234.160
+3750;Route de Tavel 8;1700;Fribourg;FR;10.110.234.176
+3757;Rüti 1;9469;Haag;SG;10.110.234.192
+3758;Alte Landstrasse 49;4657;Dulliken;SO;10.110.234.208
+3762;Zugerstrasse 40;6403;Küssnacht am Rigi;SZ;10.110.234.224
+3767;Lerchenweg 20;4303;Kaiseraugst;AG;10.110.234.240
+3768;Hohlstrasse 560;8048;Zürich;ZH;10.110.241.240
+3769;Löwenstrasse 9;8001;Zürich;ZH;10.110.242.0
+3770;Luzernstrasse 24b;4950;Huttwil;BE;10.110.235.0
+3771;St. Gallerstrasse 52;9400;Rorschach;SG;10.110.235.16
+3772;Sägestrasse 36 A;3550;Langnau i.E.;BE;10.110.235.32
+3774;Morgenstrasse 89;3018;Bern;BE;10.110.235.48
+3783;Gagoz 77;9496;Balzers;FL;10.110.235.64
+3784;Alpsteinstrasse 26;9100;Herisau AR;AR;10.110.235.80
+3785;Shopping Meile, Bernstrasse 50;3422;Alchenflüh;BE;10.110.235.96
+3789;Blegistrasse 2;6343;Rotkreuz;ZG;10.110.225.208
+3790;Bahnhofstrasse 16;3250;Lyss;BE;10.110.235.112
+3793;Bahnhofstrasse 46;6440;Brunnen;SZ;10.110.235.128
+3797;Weststrasse 6;5506;Mägenwil;AG;10.110.224.208
+3801;Hinterbergstrasse 6;6330;Cham;ZG;10.110.235.144
+3802;Fürstenlandstrasse 17;9000;St. Gallen;SG;10.110.225.0
+3810;Hauptstrasse 36;4415;Lausen;BL;10.110.235.160
+3817;Bernstrasse 30;3175;Flamatt;FR;10.110.235.176
+3841;Chemin de Champ-Budin 1A;1258;Perly/GE;GE;10.110.235.192
+3843;Rue de Girardet 45;2400;Le Locle;NE;10.110.235.208
+3849;Schaffhauserstrasse 499;8052;Zürich;ZH;10.110.242.16
+3850;Wülflingenstrasse 390;8408;Winterthur ZH;ZH;10.110.225.192
+3854;Autobahnraststätte Bellinzona Süd;6513;Monte Carasso TI;TI;10.110.242.32
+3855;Autobahnraststätte Bellinzona;6500;Bellinzona;TI;10.110.242.48
+3946;Krankenhausstrasse 1;3600;Thun;BE;10.110.235.224
+3947;Wehreyering 1;3930;Visp;VS;10.110.235.240
+3948;Standstrasse 42;3014;Bern;BE;10.110.236.0
+3949;Alte Urswilstrasse 1;6280;Hochdorf;LU;10.110.236.16
+3950;Emmentalstrasse 124;3414;Oberburg;BE;10.110.236.32
+3953;Romanshornerstrasse 126;8280;Kreuzlingen;TG;10.110.236.48
+3954;Wilerstrasse 82;9200;Gossau;SG;10.110.236.64
+3955;Place de la Gare 5;2900;Porrentruy;JU;10.110.236.80
+3957;Bernstrasse 11;3238;Gals;BE;10.110.236.96
+3999;Laufenstrasse 6;4222;Zwingen;BL;10.110.242.64
+4005;Bernstrasse 40;3360;Herzogenbuchsee;BE;10.110.236.112
+4006;Alte Belpstrasse 4;3113;Rubigen;BE;10.110.236.128
+4009;Badenerstrasse 2;5620;Bremgarten;AG;10.110.236.144
+4025;Rothenburgstrasse 24;6020;Emmenbrücke LU;LU;10.110.236.160
+4027;Hardstrasse 49;4133;Pratteln;BL;10.110.224.48
+4031;Gösgerstrasse 28;5012;Schönenwerd;SO;10.110.236.176
+4038;Solothurnstrasse 109;2540;Grenchen;SO;10.110.226.48
+4041;Brüggstrasse 71;2503;Biel;BE;10.110.236.192
+4052;Route de Morges 20;1162;Saint-Prex;VD;10.110.225.80
+4062;Route du Grand St Bernard 1;1933;Sembrancher;VS;10.110.236.208
+4097;Talstrasse 28E;7270;Davos Platz;GR;10.110.224.240
+4100;Bahnhofplatz 2;6460;Altdorf / UR;UR;10.110.236.224
+4104;Ringstrasse 15;6010;Kriens;LU;10.110.236.240
+4107;Bahnhofplatz 4;2500;Biel;BE;10.110.237.0
+4108;Route de la Gruyère 15;1723;Marly;FR;10.110.237.16
+4131;Bahnhofplatz 1;3930;Visp;VS;10.110.237.32
+4184;Gewerbestrasse 1;5502;Hunzenschwil;AG;10.110.237.48
+4185;Frauenfelderstrasse 6;9542;Münchwilen TG;TG;10.110.224.192
+4186;Im Bolacker 8 in Obergerlafingen;4563;Gerlafingen;SO;10.110.237.64
+4187;Im Bahnhof 1;8590;Romanshorn;TG;10.110.237.80
+4190;Bahnhofplatz 1;5610;Wohlen;AG;10.110.242.80
+4226;Zürcherstrasse 110/112;8903;Birmensdorf;ZH;10.110.237.96
+4238;Route de la Gemmi 20;3960;Sierre;VS;10.110.237.112
+4241;Güterstrasse 10;4133;Pratteln;BL;10.110.237.128
+4269;Witikonerstrasse 15;8032;Zürich;ZH;10.110.224.80
+4272;Altishoferstrasse 33;6252;Dagmersellen;LU;10.110.237.144
+4292;Airport Center;8060;Zürich-Flughafen;ZH;10.110.242.96
+4298;Wilerstrasse 202;9500;Wil SG;SG;10.110.237.160
+4519;Simmentalstrasse 50;3700;Spiez;BE;10.110.237.176
+4520;"""Novartis Campus""  Fabrikstrasse 10";4002;Basel;BS;10.110.237.192
+4522;Langenthalstrasse 90;4912;Aarwangen;BE;10.110.237.208
+4529;Bahnhofstrasse 6/8;8810;Horgen;ZH;10.110.237.224
+4530;Landstrasse 19;9490;Vaduz;FL;10.110.237.240
+4554;Hindervormüli 15;6170;Schüpfheim;LU;10.110.224.224
+4556;Fabrikstrasse 3;4552;Derendingen;SO;10.110.238.0
+4561;Dübendorfstrasse 447;8051;Zürich-Stettbach;ZH;10.110.238.16
+4562;Kornhausstrasse 18;9000;St. Gallen;SG;10.110.225.240
+4577;Hardstrasse 221;8005;Zürich;ZH;10.110.238.32
+4578;Grünaustrasse 1;9300;Wittenbach;SG;10.110.238.48
+4600;Kasernenstrasse 25;7000;Chur/GR;GR;10.110.238.64
+4633;Wilerstrasse 228;9230;Flawil;SG;10.110.238.80
+4635;Autobahnraststätte Glarnerland A3;8867;Niederurnen;GL;10.110.238.96
+4636;Bielstrasse 21;3053;Münchenbuchsee;BE;10.110.238.112
+4638;Zürichstrasse 114;8134;Adliswil ZH;ZH;10.110.238.128
+4639;Chemin de Lavegny 2;1350;Orbe;VD;10.110.238.144
+4692;Industriestrasse 43;5036;Oberentfelden;AG;10.110.238.160
+4714;Route de la Rosière 10;1782;Belfaux;FR;10.110.224.128
+4792;Route de Champ-Colin 7;1260;Nyon;VD;10.110.238.176
+4821;Schaffhauserstrasse 240;8222;Beringen;SH;10.110.238.192
+4823;Bernstrasse 201;3052;Zollikofen;BE;10.110.242.112
+4824;Place de la Gare 4;1260;Nyon;VD;10.110.238.208
+4844;Thurgauerstrasse 36/38;8050;Zürich;ZH;10.110.242.128
+4849;Dorfstrasse 2;7220;Schiers/GR;GR;10.110.238.224
+4854;Badenerstrasse 575a;8048;Zürich;ZH;10.110.242.144
+4857;Via Locarno 104;6616;Losone IT;TI;10.110.238.240
+4859;Neue Aarburgerstrasse 2;4852;Rothrist;AG;10.110.239.0
+4863;Via Sonvico 5;6952;Canobbio/TI;TI;10.110.239.16
+4864;Egnacherstrasse 1;9320;Arbon;TG;10.110.239.32
+4869;Worbstrasse 229;3073;Gümligen BE;BE;10.110.239.48
+4874;Allée du Port;2013;Colombier NE;NE;10.110.239.64
+4877;Frauenfelderstrasse 93;9548;Matzingen TG;TG;10.110.239.80
+4892;Landquartstrasse 84;9320;Arbon;TG;10.110.239.96
+4894;Badenerstrasse 44;8004;Zürich;ZH;10.110.242.160
+4933;Luzernerstrasse 80;6037;Root;LU;10.110.242.240
+4934;Autobahnraststätte Heidiland;7304;Maienfeld GR;GR;10.110.239.112
+4939;Rue du Clos 16;1800;Vevey;VD;10.110.239.128
+4962;Rue de la Madeleine 2;1964;Conthey;VS;0
+4963;Wässeristrasse 38;8340;Hinwil;ZH;10.110.239.144
+4965;Erlenweg 1;8305;Dietlikon;ZH;10.110.239.160
+4994;Landstrasse 151;5430;Wettingen;AG;10.110.239.176
+5002;Hauptstrasse 14;5737;Menziken;AG;10.110.224.176
+5007;Landstrasse 166;5415;Nussbaumen;AG;10.110.239.192
+5095;Allmendstrasse 49;2562;Port;BE;10.110.239.208
+5106;Zürichstrasse 75;8840;Einsiedeln;SZ;10.110.224.112
+5159;Sandstrasse 8;3322;Urtenen-Schönbühl;BE;10.110.239.224
+5160;Rugenparkstrasse 19;3800;Interlaken;BE;10.110.243.0
+5161;Schaffhausertrasse 29;8152;Opfikon-Glattbrugg;ZH;10.110.239.240
+5162;Limmattalstrasse 25;8954;Geroldswil;ZH;10.110.240.0
+5163;Spundisstrasse 11;7000;Chur / GR;GR;10.110.240.16
+5164;Zürcherstrasse 74;8852;Altendorf;SZ;10.110.240.32
+5167;Hofwiesenstrasse 369;8050;Zürich Oerlikon;ZH;10.110.240.48
+5176;Chemin de la Maraîche 35;1926;Fully;VS;10.110.225.16
+5177;Via Monte Ceneri 20;6512;Giubiasco;TI;10.110.225.176
+5179;Via Rinaldo Simen 58;6648;Minusio;TI;10.110.240.64
+5232;Bahnhofstrasse 29;8200;Schaffhausen;SH;10.110.240.80
+5241;Rue de la Cité 3;1204;Genève;GE;10.110.240.96
+5242;Place Cornavin 14;1201;Genève;GE;10.110.240.112
+5245;Hohlstrasse 461;8048;Zürich;ZH;10.110.240.128
+5246;Tessinerplatz 3;8002;Zürich;ZH;10.110.242.176
+5304;Place de la Gare 1;1860;Aigle;VD;10.110.240.144
+5318;Via Cantonale 12;6983;Magliaso;TI;10.110.242.192
+5319;Allmendstrasse 38;3600;Thun;BE;10.110.226.16
+5323;Bischofszellerstrasse 303;9212;Arnegg;SG;10.110.240.160
+5345;Hauptstrasse 38;3713;Reichenbach im Kandertal;BE;10.110.243.112
+5346;Rheinstrasse 113D;4402;Frenkendorf;BL;10.110.240.176
+5347;Route de Courgenay 18;2900;Porrentruy;JU;10.110.226.32
+5356;Bottmingerstrasse 65;4142;Münchenstein;BL;10.110.243.32
+5367;Löwenberg 48;3280;Murten;FR;10.110.243.144
+5368;Route de la Drague 46A;1950;Sion;VS;10.110.243.48
+5380;Schwalbenweg 43c;3627;Heimberg;BE;10.110.240.192
+5396;Bollstrasse 30;3076;Worb;BE;10.110.243.16
+5412;Chlirietstr. 1;8604;Volketswil;ZH;10.110.242.208
+5460;Place de la Gare 2;1110;Morges;VD;10.110.240.208
+5461;Bahnhof;7320;Sargans;SG;10.110.240.224
+5462;Place de la Gare 10;3960;Sierre;VS;10.110.240.240
+5463;Place de la Gare;1950;Sion;VS;10.110.241.0
+5478;Silbernstrasse 8a;8953;Dietikon;ZH;#N/A
+5505;Ringstrasse 31;7000;Chur;GR;10.110.243.64
+5538;Kantonsstrasse 99;3952;Susten;VS;10.110.226.0
+5559;Seetalstrasse 44;6020;Emmenbrücke;LU;10.110.241.16
+5561;Grenzstrasse 1B;6214;Schenkon;LU;10.110.241.32
+5566;Rappagugg 2;7205;Zizers;GR;10.110.242.224
+5601;Place de la Gare 3;1020;Renens;VD;#N/A
+5615;En Rambuz 21;1037;Etagnières;VD;10.110.243.80
+5620;Badenerstrasse 812;8048;Zürich-Altstetten;ZH;10.110.241.64
+5656;Avenue de Fully 53;1920;Martigny;VS;10.110.243.96
+5694;Place de la Gare 11;1003;Lausanne;VD;10.110.243.128
