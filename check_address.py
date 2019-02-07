@@ -7,6 +7,7 @@ from aruba_api_caller import *
 
 #variable definition
 csv_filename = 'shop-list.txt'
+json_filename = 'shop-list.json'
 cwd = os.getcwd()
 
 #Display current working directory
@@ -20,13 +21,3 @@ nwaddr = iface.network.network_address
 print (nwaddr)
 
 #ipaddress.ip_address('10.110.224.103') in ipaddress.ip_network('10.110.224.96/28')
-
-#print CSV
-with open(csv_filename) as csv_file:
-    csv_reader = csv.reader(csv_file, delimiter=',')
-    line_count = 1
-    for row in csv_reader:
-        if row[5] == nwaddr:
-            print (row[0])
-        
-    #print ('Value not found.')
