@@ -7,7 +7,7 @@ import json,requests,csv,os
  #API Key oliver.wehrli@gmail.com
 
 api_key = 'KR3oOGSM59aMJBOSKAxTlxoJvYBjrENU'
-address = 'Bassersdorferstrasse 113 8302'
+address = 'dorfstrasse 28 allenwinden'
 
 geocode_api_url = f'https://api.tomtom.com/search/2/geocode/{address}.json'
 
