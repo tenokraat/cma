@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
-import json,requests, re
+import json,requests,re
+from check_address import *
 from aruba_api_caller import *
 
 #User Input
