@@ -26,7 +26,7 @@ class ssh:
             print("Connection not opened.")
 
 
-connection = ssh("192.168.64.136", "admin", "Adminhpq-123")
+connection = ssh("192.168.230.50", "admin", "Aruba1234")
 
 connection.sendCommand("show clock")
 
