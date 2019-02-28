@@ -8,7 +8,7 @@ resp = ''
 
 ssh = paramiko.SSHClient()
 ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-ssh.connect('192.168.1.66', username='cisco', password='cisco')
+ssh.connect('192.168.230.23', username='admin', password='Aruba1234')
 ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 chan = ssh.invoke_shell()
 
