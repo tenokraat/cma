@@ -3,7 +3,7 @@
 import json,requests
 from aruba_api_caller import *
 
-session = api_session("cs-aruba-mm.hpearubademo.com", "admin", "Adminhpq-123")
+session = api_session("192.168.230.23", "admin", "Aruba1234")
 
 session.login()
 

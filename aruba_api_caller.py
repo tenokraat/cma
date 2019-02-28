@@ -1,8 +1,5 @@
 import json,requests,time,sys
 
-from requests.packages.urllib3.exceptions import InsecureRequestWarning
-requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
-
 class api_session:
   def __init__(self, api_url, username, password, port=4343, SSL=True, check_ssl=False, verbose=False, retrys=3, retry_wait=0.5):
     if SSL:
