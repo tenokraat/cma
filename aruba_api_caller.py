@@ -1,7 +1,7 @@
 import json,requests,time,sys
 
 class api_session:
-  def __init__(self, api_url, username, password, port=4343, SSL=True, check_ssl=True, verbose=False, retrys=3, retry_wait=0.5):
+  def __init__(self, api_url, username, password, port=4343, SSL=True, check_ssl=False, verbose=False, retrys=3, retry_wait=0.5):
     if SSL:
       protocol = "https"
     else:
@@ -12,7 +12,7 @@ class api_session:
     self.api_url = "{}://{}:{}/v1/".format(protocol,api_url,port)
     self.username = username
     self.password = password
-    self.check_ssl = None
+    self.check_ssl = check_ssl
     self.verbose = verbose
     self.retrys = retrys
     self.retry_wait = retry_wait
