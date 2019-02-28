@@ -16,7 +16,7 @@ def execute_ssh_command(host, port, username, password, keyfilepath, keyfiletype
     try:
         if keyfilepath is not None:
             # Get private key used to authenticate user.
-            if keyfiletype == 'DSA':
+            if keyfiletype == 'RSA':
                 # The private key is a DSA type key.
                 key = paramiko.DSSKey.from_private_key_file(keyfilepath)
             else:
@@ -62,6 +62,5 @@ username = 'admin'
 password = 'Aruba1234'
 keyfile_path = 'private_key_file'
  
-(stdoutstring, stderrstring) = execute_ssh_command(host, port, username, password, None, None, "show clock")
-for stdoutrow in stdoutstring:
-    print (stdoutrow)
+stdoutstring = execute_ssh_command(host, port, username, password, None, None, 'show clock')
+print ('\n'.join(stdoutstring))
