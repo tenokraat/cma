@@ -10,7 +10,7 @@ from aruba_api_caller import *
 #admin_password = input(f'Enter {admin_user} password: ')
 
 #Session Credentials
-session = api_session('192.168.230.23', 'admin', 'Aruba1234')
+session = api_session('192.168.230.23', 'admin', 'Aruba1234', check_ssl=False)
 
 session.login()
 
