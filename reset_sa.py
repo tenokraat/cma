@@ -64,4 +64,4 @@ keyfile_path = 'private_key_file'
  
 (stdoutstring, stderrstring) = execute_ssh_command(host, port, username, password, None, None, "ls -al")
 for stdoutrow in stdoutstring:
-    print stdoutrow
+    print (stdoutrow)
