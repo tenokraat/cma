@@ -1,32 +1,67 @@
-from paramiko import client
-
-class ssh:
-    client = None
+import time
+import paramiko
  
-    def __init__(self, address, username, password):
-        print("Connecting to server.")
-        self.client = client.SSHClient()
-        self.client.set_missing_host_key_policy(client.AutoAddPolicy())
-        self.client.connect(address, username=username, password=password, look_for_keys=False)
+def execute_ssh_command(host, port, username, password, keyfilepath, keyfiletype, command):
+    """
+    execute_ssh_command(host, port, username, password, keyfilepath, keyfiletype, command) -> tuple
  
-    def sendCommand(self, command):
-        if(self.client):
-            stdin, stdout, stderr = self.client.exec_command(command)
-            while not stdout.channel.exit_status_ready():
-                # Print data when available
-                if stdout.channel.recv_ready():
-                    alldata = stdout.channel.recv(1024)
-                    prevdata = b"1"
-                    while prevdata:
-                        prevdata = stdout.channel.recv(1024)
-                        alldata += prevdata
+    Executes the supplied command by opening a SSH connection to the supplied host
+    on the supplied port authenticating as the user with supplied username and supplied password or with
+    the private key in a file with the supplied path.
+    If a private key is used for authentication, the type of the keyfile needs to be specified as DSA or RSA.
+    :rtype: tuple consisting of the output to standard out and the output to standard err as produced by the command
+    """
+    ssh = None
+    key = None
+    try:
+        if keyfilepath is not None:
+            # Get private key used to authenticate user.
+            if keyfiletype == 'DSA':
+                # The private key is a DSA type key.
+                key = paramiko.DSSKey.from_private_key_file(keyfilepath)
+            else:
+                # The private key is a RSA type key.
+                key = paramiko.RSAKey.from_private_key(keyfilepath)
  
-                    print(str(alldata, "utf8"))
+        # Create the SSH client.
+        ssh = paramiko.SSHClient()
+ 
+        # Setting the missing host key policy to AutoAddPolicy will silently add any missing host keys.
+        # Using WarningPolicy, a warning message will be logged if the host key is not previously known
+        # but all host keys will still be accepted.
+        # Finally, RejectPolicy will reject all hosts which key is not previously known.
+        ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+ 
+        # Connect to the host.
+        if key is not None:
+            # Authenticate with a username and a private key located in a file.
+            ssh.connect(host, port, username, None, key)
         else:
-            print("Connection not opened.")
-
-
-connection = ssh("192.168.230.50", "admin", "Aruba1234")
-
-connection.sendCommand("show clock")
-
+            # Authenticate with a username and a password.
+            ssh.connect(host, port, username, password)
+ 
+        # Send the command (non-blocking)
+        stdin, stdout, stderr = ssh.exec_command(command)
+ 
+        # Wait for the command to terminate
+        while not stdout.channel.exit_status_ready() and not stdout.channel.recv_ready():
+            time.sleep(1)
+ 
+        stdoutstring = stdout.readlines()
+        stderrstring = stderr.readlines()
+        return stdoutstring, stderrstring
+    finally:
+        if ssh is not None:
+            # Close client connection.
+            ssh.close()
+ 
+ 
+host = '192.168.230.23'
+port = 22
+username = 'admin'
+password = 'Aruba1234'
+keyfile_path = 'private_key_file'
+ 
+(stdoutstring, stderrstring) = execute_ssh_command(host, port, username, password, None, None, "ls -al")
+for stdoutrow in stdoutstring:
+    print stdoutrow
