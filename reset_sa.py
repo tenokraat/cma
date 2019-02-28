@@ -62,5 +62,6 @@ username = 'admin'
 password = 'Aruba1234'
 keyfile_path = 'private_key_file'
  
-stdoutstring = execute_ssh_command(host, port, username, password, None, None, 'show clock')
-print ('\n'.join(stdoutstring))
+(stdoutstring, stderrstring) = execute_ssh_command(host, port, username, password, None, None, 'show clock')
+for stdoutrow in stdoutstring:
+    print (stdoutrow)
