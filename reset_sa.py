@@ -61,6 +61,7 @@ port = 22
 username = 'admin'
 password = 'Aruba1234'
 keyfile_path = 'private_key_file'
+command = 'show clock'
  
 (stdoutstring, stderrstring) = execute_ssh_command(host, port, username, password, None, None, "ls -al")
 for stdoutrow in stdoutstring:
