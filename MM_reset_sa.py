@@ -6,7 +6,7 @@ import sys
 buff = ''
 resp = ''
 
-f = open ('srvma230-024-reset-log.txt', 'a+')
+f = open ('/home/aruba/environments/cma/reset-logs/srvma230-024-reset-log.txt', 'a+')
 
 ssh = paramiko.SSHClient()
 ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
