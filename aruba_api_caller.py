@@ -12,7 +12,7 @@ class api_session:
     self.api_url = "{}://{}:{}/v1/".format(protocol,api_url,port)
     self.username = username
     self.password = password
-    self.check_ssl = check_ssl
+    self.check_ssl = None
     self.verbose = verbose
     self.retrys = retrys
     self.retry_wait = retry_wait
