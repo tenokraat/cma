@@ -6,6 +6,8 @@ import sys
 buff = ''
 resp = ''
 
+f = open ('/home/aruba/environments/cma/reset-logs/srvma230-027-reset-log.txt', 'a+')
+
 ssh = paramiko.SSHClient()
 ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 ssh.connect('192.168.230.227', username='admin', password='Aruba1234')
@@ -25,7 +27,7 @@ chan.send('\n')
 time.sleep(1)
 resp = chan.recv(9999)
 output = resp.decode('ascii').split(',')
-print (''.join(output))
+f.write (''.join(output))
 
 # Display output of second command
 chan.send('clear crypto isakmp sa')
@@ -33,7 +35,7 @@ chan.send('\n')
 time.sleep(1)
 resp = chan.recv(9999)
 output = resp.decode('ascii').split(',')
-print (''.join(output))
+f.write (''.join(output))
 
 # Display output of third command
 chan.send('clear crypto ipsec sa')
@@ -41,6 +43,8 @@ chan.send('\n')
 time.sleep(1)
 resp = chan.recv(9999)
 output = resp.decode('ascii').split(',')
-print (''.join(output))
+f.write (''.join(output))
+
+f.close()
 
 ssh.close()  

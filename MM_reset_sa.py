@@ -30,7 +30,7 @@ output = resp.decode('ascii').split(',')
 f.write (''.join(output))
 
 # Display output of second command
-chan.send('show version')
+chan.send('clear crypto isakmp sa')
 chan.send('\n')
 time.sleep(1)
 resp = chan.recv(9999)
@@ -38,7 +38,7 @@ output = resp.decode('ascii').split(',')
 f.write (''.join(output))
 
 # Display output of third command
-chan.send('show hostname')
+chan.send('clear crypto ipsec sa')
 chan.send('\n')
 time.sleep(1)
 resp = chan.recv(9999)
