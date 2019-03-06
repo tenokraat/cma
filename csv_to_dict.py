@@ -22,5 +22,3 @@ def readCSV(nw_addr):
         shops[row[0]] = {'sap-id':row[1], 'street':row[2], 'zip':row[3], 'place':row[4], 'state':row[5]}
 
     print('The new controller name is: ' + shops[nw_addr]['sap-id']+'-'+shops[nw_addr]['place']+'-'+shops[nw_addr]['state'])
-
-readCSV('10.110.224.64')
