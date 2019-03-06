@@ -3,24 +3,24 @@
 import json,requests,csv,os
 from aruba_api_caller import *
 
-#variable definition
-csv_filename = 'cma-shop-list.txt'
 
-#Open CSV in Read-only mode
-csv_file = open(csv_filename, 'r')
-reader = csv.reader(csv_file)
+def readCSV(nw_addr):
+    #variable definition
+    csv_filename = 'cma-shop-list.txt'
 
-#Create empty dictionary
-shops = {}
+    #Open CSV in Read-only mode
+    csv_file = open(csv_filename, 'r')
+    reader = csv.reader(csv_file)
 
-#Headers in CSV: sap-id,street,zip,place,state,network-address
+    #Create empty dictionary
+    shops = {}
 
-#Read all lines in CSV and put them in the dictionary
-for row in reader:
-    shops[row[0]] = {'street':row[1], 'zip':row[2], 'place':row[3], 'state':row[4], 'network-address':row[5]}
+    #Headers in CSV: network-address,sap-id,street,zip,place,state
 
-sap_id = input ('Enter SAP-ID: ')
+    #Read all lines in CSV and put them in the dictionary
+    for row in reader:
+        shops[row[0]] = {'sap-id':row[1], 'street':row[2], 'zip':row[3], 'place':row[4], 'state':row[5]}
 
-choice = input ('What information would you like to find? ')
+    print('The new controller name is: ' + shops[nw_addr]['sap-id']+'-'+shops[nw_addr]['place']+'-'+shops[nw_addr]['state'])
 
-print(shops[sap_id][choice])
+readCSV('10.110.224.64')
