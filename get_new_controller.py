@@ -29,14 +29,6 @@ def extract_values(obj, key):
     results = extract(obj, arr, key)
     return results
 
-def getKeysByValue(dictOfElements, valueToFind):
-    listOfKeys = list()
-    listOfItems = dictOfElements.items()
-    for item  in listOfItems:
-        if item[3] == valueToFind:
-            listOfKeys.append(item[4])
-    return  listOfKeys
-
 def check_new_device():
 
     #Check node hierarchy for devices that have not been renamed, yet.
@@ -62,6 +54,8 @@ def get_uplink_ip(mac_addr):
 
     res = dict()
     res = extract_values(req, 'ipaddr')
+
+    print (res)
 
     for element in res:
         match_result = re.match('^192.168.', element)
