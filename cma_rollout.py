@@ -78,23 +78,21 @@ def check_new_device():
 
         if isDefault == True:
             mac_addr = each['mac']
-            print ('Hostname: '+ each['name']+' MAC: '+ each['mac'] + '\n')
+            #print ('Hostname: '+ each['name']+' MAC: '+ each['mac'] + '\n')
             ctrl_list.append(mac_addr)
         else:
             pass
+
     return ctrl_list
-            
-        
 
 def get_uplink_ip(mac_addr):
 
-    req = session.get('configuration/object/int_vlan', f'/md/hpe-ch/zuo01-vmc/{mac_addr}')
-    print (type(req))
 
-    key_result = getKeysByValues(req, '192.168.64.136')
-    print (key_result)
 
-    #p = re.compile('^192.168.')
+    for int_vlan in req:
+        int_vlan
+
+
 
 def check_shop_ip(uplink_ip):
     #variable definition
@@ -118,9 +116,10 @@ session = api_session('192.168.65.95', 'admin', 'Adminhpq-123', check_ssl=False)
 session.login()
 
 new_ctrl = check_new_device()
-print (new_ctrl)
+print(session.cli_command('show crypto isakmp sa'))
 
-#get_uplink_ip('00:50:56:ab:a3:ee')
+
+#for md in new_ctrl
 
 
 
