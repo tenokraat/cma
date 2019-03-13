@@ -9,6 +9,33 @@ from aruba_api_caller import *
 #admin_user = input('Enter username: ')
 #admin_password = input(f'Enter {admin_user} password: ')
 
+#Get a list of keys from dictionary which has value that matches with any value in given list of values
+
+def firmware_upgrade(mac_addr, aos_version):
+
+    json_data = """ 
+    {
+        "img-version": "{aos_version}",
+        "mac-addr": "{mac_addr}",
+        "imagehost": "192.168.230.23",
+        "username": "admin ",
+        "image-path": ".",
+        "passwd": "Aruba1234"
+    }
+    """
+
+    json_obj = json.loads(json_data)
+
+    session.post('configuration/object/upgrade_lcs_copy_scp_reboot', json_obj, f'/md/cma/shops/{mac_addr}')
+
+def getKeysByValues(dictOfElements, listOfValues):
+    listOfKeys = list()
+    listOfItems = dictOfElements.items()
+    for item  in listOfItems:
+        if item[1] in listOfValues:
+            listOfKeys.append(item[0])
+    return  listOfKeys 
+
 def extract_values(obj, key):
     """Pull all values of specified key from nested JSON."""
     arr = []
@@ -32,37 +59,42 @@ def extract_values(obj, key):
 def check_new_device():
 
     #Check node hierarchy for devices that have not been renamed, yet.
-    for each in cd['childnodes'][1]['childnodes'][1]['childnodes'][2]['devices']:
+    node_hierarchy = session.get('configuration/object/node_hierarchy')
+
+    #Define nested JSON data 
+    ctrl_json = node_hierarchy['childnodes'][1]['childnodes'][1]['childnodes'][2]['devices']
+
+    ctrl_list = list()
+    
+    for each in ctrl_json:
         currHostname = each['name']
-            
+
         if 'CTRL_' in currHostname:
             isDefault = True
             print('New device detected.')
+
         else:
             isDefault = False 
 
         if isDefault == True:
             mac_addr = each['mac']
-            print ('Hostname: '+each['name']+' MAC: '+each['mac'])
-
+            print ('Hostname: '+ each['name']+' MAC: '+ each['mac'] + '\n')
+            ctrl_list.append(mac_addr)
         else:
             pass
+    return ctrl_list
+            
+        
 
 def get_uplink_ip(mac_addr):
 
-    req = session.get('configuration/object/int_vlan', f'/md/hpe-ch/zuo01-mc/{mac_addr}')
+    req = session.get('configuration/object/int_vlan', f'/md/hpe-ch/zuo01-vmc/{mac_addr}')
+    print (type(req))
 
-    res = dict()
-    res = extract_values(req, 'ipaddr')
+    key_result = getKeysByValues(req, '192.168.64.136')
+    print (key_result)
 
-    print (res)
-
-    for element in res:
-        match_result = re.match('^192.168.', element)
-
-        if match_result:
-            print (match_result.group(1))
-
+    #p = re.compile('^192.168.')
 
 def check_shop_ip(uplink_ip):
     #variable definition
@@ -85,8 +117,11 @@ session = api_session('192.168.65.95', 'admin', 'Adminhpq-123', check_ssl=False)
 
 session.login()
 
-cd = session.get('configuration/object/node_hierarchy')
+new_ctrl = check_new_device()
+print (new_ctrl)
 
-get_uplink_ip('00:1a:1e:00:5d:e0')
+#get_uplink_ip('00:50:56:ab:a3:ee')
+
+
 
 session.logout()
