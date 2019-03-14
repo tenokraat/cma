@@ -3,7 +3,7 @@ import urllib3
 urllib3.disable_warnings()
 
 class api_session:
-  def __init__(self, api_url, username, password, port=4343, SSL=True, check_ssl=True, verbose=False, retrys=3, retry_wait=0.5):
+  def __init__(self, api_url, username, password, port=4343, SSL=True, check_ssl='srvma230-024-self.crt', verbose=False, retrys=3, retry_wait=0.5):
     if SSL:
       protocol = "https"
     else:
