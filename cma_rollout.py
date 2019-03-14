@@ -3,6 +3,7 @@
 import json,requests,re,csv,os
 import ipaddress
 from aruba_api_caller import *
+from urllib3.exceptions import InsecureRequestWarning
 
 #Login Credentials
 
