@@ -87,11 +87,7 @@ def check_new_device():
 
 def get_uplink_ip(mac_addr):
 
-
-
-    for int_vlan in req:
-        int_vlan
-
+    print(session.cli_command('show crypto isakmp sa'))
 
 
 def check_shop_ip(uplink_ip):
@@ -110,13 +106,30 @@ def check_shop_ip(uplink_ip):
 
     #if ipaddress.ip_address(uplink_ip) in nwaddr:
 
+def set_hostname(new_hostname, mac_addr):
+
+    hostname_json = session.get('configuration/object/hostname', f'/md/cma/shops/{mac_addr}')
+    curr_hostname = hostname_json['_data']['hostname']['hostname']
+
+    print('Controller' + curr_hostname + ' will now be renamed to ' + new_hostname)
+
+    session.post('configuration/object/hostname', new_hostname, f'/md/cma/shops/{mac_addr}')
+
+    session.write_memory(f'/md/cma/shops/{mac_addr}') 
+
+    hostname_json = session.get('configuration/object/hostname', f'/md/cma/shops/{mac_addr}')
+    curr_hostname = hostname_json['_data']['hostname']['hostname']
+
+    print ('Controller successfully renamed to ' + curr_hostname)
 
 session = api_session('192.168.65.95', 'admin', 'Adminhpq-123', check_ssl=False)
 
 session.login()
 
 new_ctrl = check_new_device()
-print(session.cli_command('show crypto isakmp sa'))
+
+for md in new_ctrl:
+    get_uplink_ip(md)
 
 
 #for md in new_ctrl
