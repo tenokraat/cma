@@ -6,9 +6,9 @@ from aruba_api_caller import *
 
 #Login Credentials
 
-vmm_hostname = '192.168.65.95'
+vmm_hostname = '192.168.230.23'
 admin_user = 'admin'
-admin_password = 'Adminhpq-123'
+admin_password = 'Aruba1234'
 
 #vmm_hostname = input ('VMM Hostname or IP: ')
 #admin_user = input('Enter username: ')
