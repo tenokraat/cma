@@ -3,13 +3,12 @@
 import json,requests,re,csv,os
 import ipaddress
 from aruba_api_caller import *
-from urllib3.exceptions import InsecureRequestWarning
 
 #Login Credentials
 
-vmm_hostname = '192.168.230.23'
+vmm_hostname = '192.168.65.95'
 admin_user = 'admin'
-admin_password = 'Aruba1234'
+admin_password = 'Adminhpq-123'
 
 #vmm_hostname = input ('VMM Hostname or IP: ')
 #admin_user = input('Enter username: ')
