@@ -2,7 +2,6 @@
 
 import json,requests,re,csv,os
 import ipaddress
-import arubaapi
 from aruba_api_caller import *
 
 #User Input
@@ -88,7 +87,21 @@ def check_new_device():
 
 def get_uplink_ip(mac_addr):
 
-    print(session.cli_command('show crypto isakmp sa'))
+    #cli_json = session.cli_command(f'show crypto-local ipsec-map tag default-local-master-ipsecmap-{mac_addr}-link1')
+    cli_json = session.cli_command('show crypto-local ipsec-map tag default-psk-redundant-master-ipsecmap')
+
+    for line in cli_json['_data']:
+
+        m = re.match('^Destination network:', line)
+
+        if  m is not None:
+            sub_string = re.sub("Destination network: ", "", line)
+            print (re.sub("Destination network: ", "", line))
+
+            uplink_ip = ipaddress._split_optional_netmask(sub_string)
+            print (uplink_ip[0])
+
+            break
 
 
 def check_shop_ip(uplink_ip):
@@ -125,16 +138,22 @@ def set_hostname(new_hostname, mac_addr):
 
 session = api_session('192.168.65.95', 'admin', 'Adminhpq-123', check_ssl=False)
 
+#cma test section
 session.login()
 
 new_ctrl = check_new_device()
 
-for md in new_ctrl:
-    get_uplink_ip(md)
-
-
-#for md in new_ctrl
-
+#for md in new_ctrl:
+get_uplink_ip('20:4c:03:0a:72:70')
 
 
 session.logout()
+
+#arubaapi test section 
+'''connection = arubaapi.ArubaAPI('cs-aruba-mm.hpearubademo.com', 'admin', 'Adminhpq-123')
+cli_data = connection.cli('show crypto isakmp sa')
+print (cli_data)
+connection.close()
+
+pprint(cli_data, 120)
+'''
