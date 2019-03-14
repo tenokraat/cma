@@ -4,7 +4,12 @@ import json,requests,re,csv,os
 import ipaddress
 from aruba_api_caller import *
 
-#User Input
+#Login Credentials
+
+vmm_hostname = '192.168.230.23'
+admin_user = 'admin'
+admin_password = 'Aruba1234'
+
 #vmm_hostname = input ('VMM Hostname or IP: ')
 #admin_user = input('Enter username: ')
 #admin_password = input(f'Enter {admin_user} password: ')
@@ -36,7 +41,7 @@ def check_new_device():
     #Define nested JSON data 
     ctrl_json = node_hierarchy['childnodes'][1]['childnodes'][1]['childnodes'][2]['devices']
 
-    ctrl_list = list()
+    ctrl_list = list() #create list to append multiple new controllers
     
     for each in ctrl_json:
         currHostname = each['name']
@@ -75,7 +80,6 @@ def get_uplink_ip(mac_addr):
 
             break
 
-
 def check_shop_ip(uplink_ip):
     #variable definition
     csv_filename = 'shop-list.txt'
@@ -108,24 +112,16 @@ def set_hostname(new_hostname, mac_addr):
 
     print ('Controller successfully renamed to ' + curr_hostname)
 
-session = api_session('192.168.65.95', 'admin', 'Adminhpq-123', check_ssl=False)
+session = api_session(vmm_hostname, admin_user, admin_password, check_ssl=False)
 
 #cma test section
 session.login()
 
 new_ctrl = check_new_device()
+print (new_ctrl)
 
 #for md in new_ctrl:
-get_uplink_ip('20:4c:03:0a:72:70')
+    get_uplink_ip(md)
 
 
 session.logout()
-
-#arubaapi test section 
-'''connection = arubaapi.ArubaAPI('cs-aruba-mm.hpearubademo.com', 'admin', 'Adminhpq-123')
-cli_data = connection.cli('show crypto isakmp sa')
-print (cli_data)
-connection.close()
-
-pprint(cli_data, 120)
-'''
