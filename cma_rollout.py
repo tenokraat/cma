@@ -121,7 +121,7 @@ new_ctrl = check_new_device()
 print (new_ctrl)
 
 #for md in new_ctrl:
-    get_uplink_ip(md)
+#   get_uplink_ip(md)
 
 
 session.logout()
