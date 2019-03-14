@@ -2,6 +2,7 @@
 
 import json,requests,re,csv,os
 import ipaddress
+import arubaapi
 from aruba_api_caller import *
 
 #User Input
