@@ -28,34 +28,6 @@ def firmware_upgrade(mac_addr, aos_version):
 
     session.post('configuration/object/upgrade_lcs_copy_scp_reboot', json_obj, f'/md/cma/shops/{mac_addr}')
 
-def getKeysByValues(dictOfElements, listOfValues):
-    listOfKeys = list()
-    listOfItems = dictOfElements.items()
-    for item  in listOfItems:
-        if item[1] in listOfValues:
-            listOfKeys.append(item[0])
-    return  listOfKeys 
-
-def extract_values(obj, key):
-    """Pull all values of specified key from nested JSON."""
-    arr = []
-
-    def extract(obj, arr, key):
-        """Recursively search for values of key in JSON tree."""
-        if isinstance(obj, dict):
-            for k, v in obj.items():
-                if isinstance(v, (dict, list)):
-                    extract(v, arr, key)
-                elif k == key:
-                    arr.append(v)
-        elif isinstance(obj, list):
-            for item in obj:
-                extract(item, arr, key)
-        return arr
-
-    results = extract(obj, arr, key)
-    return results
-
 def check_new_device():
 
     #Check node hierarchy for devices that have not been renamed, yet.
