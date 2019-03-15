@@ -4,6 +4,8 @@ import json,requests,re,csv,os
 import ipaddress
 from aruba_api_caller import *
 
+os.environ['no_proxy'] = '*'
+
 #Login Credentials
 
 vmm_hostname = '192.168.65.95'
