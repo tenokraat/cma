@@ -116,7 +116,7 @@ def set_hostname(new_hostname, mac_addr):
 
 
 
-session = api_session(vmm_hostname, admin_user, admin_password)
+session = api_session(vmm_hostname, admin_user, admin_password, check_ssl=False)
 
 #Login to MM
 session.login()
