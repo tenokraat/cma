@@ -46,17 +46,17 @@ def check_new_device():
     
     for each in ctrl_json:
         currHostname = each['name']
-
         isDefault = False
 
         if 'CTRL_' in currHostname:
             isDefault = True
+
+        if isDefault == True:
             print('New device detected: ' + currHostname) 
             mac_addr = each['mac']
             ctrl_list.append(mac_addr)
 
         else:
-            isDefault = False
             pass
 
     if isDefault == False:
