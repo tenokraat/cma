@@ -8,9 +8,9 @@ os.environ['no_proxy'] = '*'
 
 #Login Credentials
 
-vmm_hostname = '192.168.65.95'
+vmm_hostname = '192.168.230.23'
 admin_user = 'admin'
-admin_password = 'Adminhpq-123'
+admin_password = 'Aruba1234'
 
 #vmm_hostname = input ('VMM Hostname or IP: ')
 #admin_user = input('Enter username: ')
@@ -125,9 +125,14 @@ print ('List of new controllers:')
 print (new_ctrl)
 print ('Fetching controller ruplink IP now.')
 
+uplink_ip_list = list()
+
 for md in new_ctrl:
     uplink_ip = get_uplink_ip(md)
-    print (uplink_ip)
+    uplink_ip_list.append(uplink_ip)
+
+print ('List of uplink IPs:')
+print (uplink_ip_list)
 
 
 session.logout()
