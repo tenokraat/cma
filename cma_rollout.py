@@ -36,7 +36,7 @@ def firmware_upgrade(mac_addr, aos_version):
 
 def check_new_device():
 
-    #Check node hierarchy for devices that have not been renamed, yet.
+    #Check MM node hierarchy for devices that have not been renamed, yet.
     node_hierarchy = session.get('configuration/object/node_hierarchy')
 
     #Define data from nested JSON that is retrieved (needs modification depending on hierarchy structure)
@@ -46,13 +46,14 @@ def check_new_device():
 
     isDefault = False
     
+    #Check each entry in JSON if it starts with 'CTRL_' and append to list if True
     for md in ctrl_json:
         currHostname = md['name']
 
         if 'CTRL_' in currHostname:
             isDefault = True
             print('New device detected: ' + currHostname) 
-            
+
             mac_addr = md['mac']
             ctrl_list.append(mac_addr)
 
@@ -61,18 +62,23 @@ def check_new_device():
 
     if isDefault == False:
         print('No new devices found.')
-        
+
+    #Return list of new controllers    
     return ctrl_list
 
 def get_uplink_ip(mac_addr):
 
+    #Fetch IPSEC map of specified controller through 'show command' API
     cli_json = session.cli_command(f'show crypto-local ipsec-map tag default-local-master-ipsecmap-{mac_addr}-link1')
 
+    #Iterate through JSON text to find the line with starts with 'Destination network' using regex
     for line in cli_json['_data']:
 
         m = re.match('^Destination network:', line)
 
         if  m is not None:
+
+            #Remove text from string, except IP/Netmask combination, eg. 10.110.224.23/255.255.255.255
             sub_string = re.sub("Destination network: ", "", line)
             print (re.sub("Destination network: ", "", line))
 
@@ -82,23 +88,45 @@ def get_uplink_ip(mac_addr):
 
             break
     
+    #Return uplink VLAN IP 
     return uplink_ip
 
-def check_shop_ip(uplink_ip):
-    #variable definition
-    csv_filename = 'shop-list.txt'
-    json_filename = 'shop-list.json'
-    cwd = os.getcwd()
+def get_shop_details(uplink_ip):
 
+    #variable definition
+    csv_filename = 'cma-shop-list.txt'
+    cwd = os.getcwd()
+    
     #Display current working directory
     print ('Current Working Directory is: ' + cwd)
 
-    #check if IP belongs to subnet
+    #fetch network address of uplink_ip
     iface = ipaddress.ip_interface(f'{uplink_ip}/28')
     nwaddr = iface.network.network_address
     print (nwaddr)
 
-    #if ipaddress.ip_address(uplink_ip) in nwaddr:
+    #Open CSV in read-only mode
+    csv_file = open(csv_filename, 'r')
+    reader = csv.reader(csv_file)
+
+    #Create empty dictionary
+    shop_details = {}
+
+    #Headers in CSV: network-address,sap-id,street,zip,place,state
+    #Read all lines in CSV and put them in the dictionary
+    for row in reader:
+        shop_details[row[0]] = {'sap-id':row[1], 'street':row[2], 'zip':row[3], 'place':row[4], 'state':row[5]}
+    
+    '''
+    shop_sap_id = shops[nwaddr]['sap-id']
+    shop_street = shops[nwaddr]['street']
+    shop_zip = shops[nwaddr]['zip']
+    shop_place = shops[nwaddr]['place']
+    shop_state = shops[nwaddr]['state']
+    '''
+    print (shop_details)
+
+    return shop_details
 
 def set_hostname(new_hostname, mac_addr):
 
@@ -140,6 +168,9 @@ for md in new_ctrl:
 
 print ('List of uplink IPs:')
 print (uplink_ip_list)
+
+for md in uplink_ip_list:
+    get_shop_details(md)
 
 #Terminate MM session
 session.logout()
