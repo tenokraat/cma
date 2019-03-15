@@ -91,7 +91,16 @@ def get_uplink_ip(mac_addr):
     #Return uplink VLAN IP 
     return uplink_ip
 
-def get_shop_details(uplink_ip):
+def get_uplink_nwaddr(uplink_ip):
+
+    #fetch network address of uplink_ip
+    iface = ipaddress.ip_interface(f'{uplink_ip}/28')
+    nwaddr = iface.network.network_address
+    print (nwaddr)
+
+    return nwaddr
+
+def get_shop_details():
 
     #variable definition
     csv_filename = 'cma-shop-list.txt'
@@ -99,11 +108,6 @@ def get_shop_details(uplink_ip):
     
     #Display current working directory
     print ('Current Working Directory is: ' + cwd)
-
-    #fetch network address of uplink_ip
-    iface = ipaddress.ip_interface(f'{uplink_ip}/28')
-    nwaddr = iface.network.network_address
-    print (nwaddr)
 
     #Open CSV in read-only mode
     csv_file = open(csv_filename, 'r')
@@ -116,15 +120,6 @@ def get_shop_details(uplink_ip):
     #Read all lines in CSV and put them in the dictionary
     for row in reader:
         shop_details[row[0]] = {'sap-id':row[1], 'street':row[2], 'zip':row[3], 'place':row[4], 'state':row[5]}
-    
-    '''
-    shop_sap_id = shops[nwaddr]['sap-id']
-    shop_street = shops[nwaddr]['street']
-    shop_zip = shops[nwaddr]['zip']
-    shop_place = shops[nwaddr]['place']
-    shop_state = shops[nwaddr]['state']
-    '''
-    print (shop_details)
 
     return shop_details
 
@@ -144,9 +139,11 @@ def set_hostname(new_hostname, mac_addr):
 
     print ('Controller successfully renamed to ' + curr_hostname)
 
-
-
+#Instantiate session variable
 session = api_session(vmm_hostname, admin_user, admin_password, check_ssl=False)
+
+#Import Shop CSV into dictionary
+shop_dict = get_shop_details()
 
 #Login to MM
 session.login()
@@ -158,7 +155,6 @@ print ('List of new controllers:')
 print (new_ctrl)
 print ('Fetching controller ruplink IP now.')
 
-
 #Fetch uplink IP from IPSEC SA information
 uplink_ip_list = list()
 
@@ -169,8 +165,12 @@ for md in new_ctrl:
 print ('List of uplink IPs:')
 print (uplink_ip_list)
 
+
+#Iterate through IP list and define new hostname
 for md in uplink_ip_list:
-    get_shop_details(md)
+    get_uplink_nwaddr(md)
+    print('The new controller name is: ' + shop_dict[nwwddr]['sap-id']+'-'+shop_dict[nwaddr]['place']+'-' + shop_dict[nwaddr]['state'])
+    
 
 #Terminate MM session
 session.logout()
