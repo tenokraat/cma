@@ -4,7 +4,7 @@ import json,requests,re,csv,os
 import ipaddress
 from aruba_api_caller import *
 
-#Disable system-level proxy definition for requests.
+#Disable system-level proxy definition for requests
 os.environ['no_proxy'] = '*'
 
 #Login Credentials
@@ -48,16 +48,16 @@ def check_new_device():
         currHostname = each['name']
 
         if 'CTRL_' in currHostname:
-            hasDefault = True
+            isDefault = True
             print('New device detected: ' + currHostname) 
             mac_addr = each['mac']
             ctrl_list.append(mac_addr)
 
         else:
-            hasDefault = False
+            isDefault = False
             pass
 
-    if hasDefault == False:
+    if isDefault == False:
         print('No new devices found.')
         
     return ctrl_list
@@ -114,17 +114,22 @@ def set_hostname(new_hostname, mac_addr):
 
     print ('Controller successfully renamed to ' + curr_hostname)
 
-session = api_session(vmm_hostname, admin_user, admin_password, check_ssl=False)
 
-#cma test section
+
+session = api_session(vmm_hostname, admin_user, admin_password)
+
+#Login to MM
 session.login()
 
+#Fetch new controllers
 new_ctrl = check_new_device()
 
 print ('List of new controllers:')
 print (new_ctrl)
 print ('Fetching controller ruplink IP now.')
 
+
+#Fetch uplink IP from IPSEC SA information
 uplink_ip_list = list()
 
 for md in new_ctrl:
@@ -134,5 +139,5 @@ for md in new_ctrl:
 print ('List of uplink IPs:')
 print (uplink_ip_list)
 
-
+#Terminate MM session
 session.logout()
