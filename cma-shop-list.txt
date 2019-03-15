@@ -99,7 +99,7 @@ NA,3197,Thunstrasse 22,3110,Muensingen,BE
 10.110.231.144,3521,Rue des Alpes 80,1820,Montreux,VD
 10.110.231.160,3522,Robert-Walser-Platz 1,2502,Biel,BE
 10.110.231.176,3523,Relais de la côte aire jura,1183,Bursins,VD
-10.110.226.64,3524,Relais de la Côte (aire Lac),1183,Bursins,VD
+10.110.226.64,3524,Relais de la Côte aire Lac,1183,Bursins,VD
 10.110.231.192,3525,La Bichette,1267,Vich,VD
 10.110.231.208,3526,Place de la Gare 9,2800,Delemont,JU
 10.110.231.224,3527,Eymattstrasse 15,3027,Bern,BE
