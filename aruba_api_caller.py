@@ -2,6 +2,11 @@ import json,requests,time,sys
 import urllib3
 urllib3.disable_warnings()
 
+proxies = {
+  "http": None,
+  "https": None,
+}
+
 class api_session:
   def __init__(self, api_url, username, password, port=4343, SSL=True, check_ssl=True, verbose=False, retrys=3, retry_wait=0.5):
     if SSL:

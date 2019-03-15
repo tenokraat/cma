@@ -6,9 +6,9 @@ from aruba_api_caller import *
 
 #Login Credentials
 
-vmm_hostname = '192.168.230.23'
+vmm_hostname = '192.168.65.95'
 admin_user = 'admin'
-admin_password = 'Aruba1234'
+admin_password = 'Adminhpq-123'
 
 #vmm_hostname = input ('VMM Hostname or IP: ')
 #admin_user = input('Enter username: ')
@@ -73,9 +73,12 @@ def get_uplink_ip(mac_addr):
             print (re.sub("Destination network: ", "", line))
 
             uplink_ip = ipaddress._split_optional_netmask(sub_string)
-            print (uplink_ip[0])
+            
+            uplink_ip = uplink_ip[0]
 
             break
+    
+    return uplink_ip
 
 def check_shop_ip(uplink_ip):
     #variable definition
@@ -115,10 +118,14 @@ session = api_session(vmm_hostname, admin_user, admin_password, check_ssl=False)
 session.login()
 
 new_ctrl = check_new_device()
-print (new_ctrl)
 
-#for md in new_ctrl:
-#   get_uplink_ip(md)
+print ('List of new controllers:')
+print (new_ctrl)
+print ('Fetching controller ruplink IP now.')
+
+for md in new_ctrl:
+    uplink_ip = get_uplink_ip(md)
+    print (uplink_ip)
 
 
 session.logout()
