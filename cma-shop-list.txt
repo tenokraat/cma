@@ -60,8 +60,8 @@ NA,3197,Thunstrasse 22,3110,Muensingen,BE
 10.110.229.96,3480,Rue Cardinale Mermillod 11,1227,Carouge,GE
 10.110.229.112,3481,Route de St-Nicolas-de-Fluee 1,1700,Fribourg,FR
 10.110.229.128,3482,Rue de la Fiaz 38 - 40,2300,La Chaux de Fonds,NE
-10.110.229.144,3483,Route de Delémont 13,2830,Courrendlin,JU
-10.110.229.160,3484,Rue du Stand 56,2800,Delémont,JU
+10.110.229.144,3483,Route de Delemont 13,2830,Courrendlin,JU
+10.110.229.160,3484,Rue du Stand 56,2800,Delemont,JU
 10.110.229.176,3485,Rue de Soleure 60,2740,Moutier,BE
 10.110.229.192,3486,Route du Levant 96,1920,Martigny,VS
 10.110.229.208,3487,Route du Bois,1753,Matran,FR
@@ -69,13 +69,13 @@ NA,3197,Thunstrasse 22,3110,Muensingen,BE
 10.110.229.240,3489,Champs-Montants 8,2074,Marin,NE
 10.110.230.0,3490,Route de Sion 115,3960,Sierre,VS
 10.110.225.32,3491,Solothurnstrasse 132,2504,Biel,BE
-10.110.225.96,3492,Pra Riond 1,1635,La Tour deTrême FR,FR
+10.110.225.96,3492,Pra Riond 1,1635,La Tour deTreme FR,FR
 10.110.230.16,3493,Rue de la Gare 37,1964,Conthey,VS
 10.110.230.32,3494,Chemain de Saugy 1,1023,Crissier,VD
 10.110.230.48,3495,Centre Commercial, Littoral C.,1165,Allaman,VD
 10.110.230.64,3496,Rue de Lyon 100,1203,Genève,GE
 10.110.230.80,3497,Route de Reculan 1,1024,Ecublens,VD
-10.110.230.96,3498,Z.A. Pré Jacquet 1,1868,Collombey,VS
+10.110.230.96,3498,Z.A. Pre Jacquet 1,1868,Collombey,VS
 10.110.230.112,3499,Centre Commercial Riviera,1847,Rennaz,VD
 10.110.241.128,3500,Route de St.-Croix,1400,Yverdon-les-Bains,VD
 10.110.230.128,3501,Via Cantonale 17,6916,Grancia,TI
@@ -101,7 +101,7 @@ NA,3197,Thunstrasse 22,3110,Muensingen,BE
 10.110.231.176,3523,Relais de la côte aire jura,1183,Bursins,VD
 10.110.226.64,3524,Relais de la Côte (aire Lac),1183,Bursins,VD
 10.110.231.192,3525,La Bichette,1267,Vich,VD
-10.110.231.208,3526,Place de la Gare 9,2800,Delémont,JU
+10.110.231.208,3526,Place de la Gare 9,2800,Delemont,JU
 10.110.231.224,3527,Eymattstrasse 15,3027,Bern,BE
 10.110.231.240,3528,Grabenstrasse 6,8184,Bachenbuelach,ZH
 10.110.232.0,3531,St. Gallerstrasse 238,9200,Gossau,SG
@@ -259,7 +259,7 @@ NA,3602,Route du Moulin 2,1580,Avenches,VD
 10.110.239.16,4863,Via Sonvico 5,6952,Canobbio-TI,TI
 10.110.239.32,4864,Egnacherstrasse 1,9320,Arbon,TG
 10.110.239.48,4869,Worbstrasse 229,3073,Guemligen BE,BE
-10.110.239.64,4874,Allée du Port,2013,Colombier NE,NE
+10.110.239.64,4874,Allee du Port,2013,Colombier NE,NE
 10.110.239.80,4877,Frauenfelderstrasse 93,9548,Matzingen TG,TG
 10.110.239.96,4892,Landquartstrasse 84,9320,Arbon,TG
 10.110.242.160,4894,Badenerstrasse 44,8004,Zuerich,ZH
@@ -285,7 +285,7 @@ NA,3602,Route du Moulin 2,1580,Avenches,VD
 10.110.225.176,5177,Via Monte Ceneri 20,6512,Giubiasco,TI
 10.110.240.64,5179,Via Rinaldo Simen 58,6648,Minusio,TI
 10.110.240.80,5232,Bahnhofstrasse 29,8200,Schaffhausen,SH
-10.110.240.96,5241,Rue de la Cité 3,1204,Genève,GE
+10.110.240.96,5241,Rue de la Cite 3,1204,Genève,GE
 10.110.240.112,5242,Place Cornavin 14,1201,Genève,GE
 10.110.240.128,5245,Hohlstrasse 461,8048,Zuerich,ZH
 10.110.242.176,5246,Tessinerplatz 3,8002,Zuerich,ZH
