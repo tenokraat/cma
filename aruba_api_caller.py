@@ -3,7 +3,7 @@ import urllib3
 urllib3.disable_warnings()
 
 class api_session:
-  def __init__(self, api_url, username, password, port=4343, SSL=True, check_ssl=False, verbose=False, retrys=3, retry_wait=0.5):
+  def __init__(self, api_url, username, password, port=4343, SSL=True, check_ssl=True, verbose=False, retrys=3, retry_wait=0.5):
     if SSL:
       protocol = "https"
     else:
@@ -24,6 +24,7 @@ class api_session:
     for i in range(1,self.retrys+1):
       if self.verbose:
         print("Verbose: login, try {}".format(str(i)))
+      
       response = self.session.get("{}api/login?username={}&password={}".format(self.api_url,self.username,self.password), verify=self.check_ssl)
       login_data = json.loads(response.text)
       if self.verbose:
