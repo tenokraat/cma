@@ -43,17 +43,17 @@ def check_new_device():
     ctrl_json = node_hierarchy['childnodes'][1]['childnodes'][0]['childnodes'][0]['devices']
 
     ctrl_list = list() #create list to append multiple new controllers
+
+    isDefault = False
     
-    for each in ctrl_json:
-        currHostname = each['name']
-        isDefault = False
+    for md in ctrl_json:
+        currHostname = md['name']
 
         if 'CTRL_' in currHostname:
             isDefault = True
-
-        if isDefault == True:
             print('New device detected: ' + currHostname) 
-            mac_addr = each['mac']
+            
+            mac_addr = md['mac']
             ctrl_list.append(mac_addr)
 
         else:
