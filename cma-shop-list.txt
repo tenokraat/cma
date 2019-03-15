@@ -89,7 +89,7 @@ NA,3197,Thunstrasse 22,3110,Muensingen,BE
 10.110.231.0,3511,Autobahnrasstaette A1 Gunzgen Sued,4616,Kappel,SO
 10.110.231.16,3512,Promenade 63,7270,Davos Platz,GR
 10.110.231.32,3513,Gueterstrasse 257,4053,Basel,BS
-10.110.231.48,3514,Rorschacherstrasse 216/218,9000,St.Gallen,SG
+10.110.231.48,3514,Rorschacherstrasse 216-218,9000,St.Gallen,SG
 10.110.231.64,3515,Äussere Baselstrasse 263,4125,Riehen,BS
 10.110.231.80,3516,Promenade 143,7260,Davos Dorf,GR
 10.110.241.144,3517,Birmensdorferstrasse 55,8004,Zuerich,ZH
@@ -157,11 +157,11 @@ NA,3602,Route du Moulin 2,1580,Avenches,VD
 10.110.234.64,3734,Mellingerstrasse 160,5400,Baden,AG
 10.110.234.80,3735,Rue de Lausanne 43,1110,Morges,VD
 10.110.234.96,3736,Bernstrasse 196,3627,Heimberg,BE
-10.110.234.112,3737,Via Uletsch 2,7031,Laax/GR,GR
+10.110.234.112,3737,Via Uletsch 2,7031,Laax-GR,GR
 10.110.234.128,3738,Route de Bussy 22,1530,Payerne,VD
 10.110.234.144,3739,Rue de Battentin 1,1630,Bulle,FR
 10.110.225.224,3740,Auer Strasse 30,9435,Heerbrugg,SG
-10.110.234.160,3748,Luzernerstrasse 54,4665,Oftringen / AG,AG
+10.110.234.160,3748,Luzernerstrasse 54,4665,Oftringen - AG,AG
 10.110.234.176,3750,Route de Tavel 8,1700,Fribourg,FR
 10.110.234.192,3757,Rueti 1,9469,Haag,SG
 10.110.234.208,3758,Alte Landstrasse 49,4657,Dulliken,SO
@@ -184,7 +184,7 @@ NA,3602,Route du Moulin 2,1580,Avenches,VD
 10.110.225.0,3802,Fuerstenlandstrasse 17,9000,St. Gallen,SG
 10.110.235.160,3810,Hauptstrasse 36,4415,Lausen,BL
 10.110.235.176,3817,Bernstrasse 30,3175,Flamatt,FR
-10.110.235.192,3841,Chemin de Champ-Budin 1A,1258,Perly/GE,GE
+10.110.235.192,3841,Chemin de Champ-Budin 1A,1258,Perly-GE,GE
 10.110.235.208,3843,Rue de Girardet 45,2400,Le Locle,NE
 10.110.242.16,3849,Schaffhauserstrasse 499,8052,Zuerich,ZH
 10.110.225.192,3850,Wuelflingenstrasse 390,8408,Winterthur ZH,ZH
@@ -211,7 +211,7 @@ NA,3602,Route du Moulin 2,1580,Avenches,VD
 10.110.225.80,4052,Route de Morges 20,1162,Saint-Prex,VD
 10.110.236.208,4062,Route du Grand St Bernard 1,1933,Sembrancher,VS
 10.110.224.240,4097,Talstrasse 28E,7270,Davos Platz,GR
-10.110.236.224,4100,Bahnhofplatz 2,6460,Altdorf / UR,UR
+10.110.236.224,4100,Bahnhofplatz 2,6460,Altdorf - UR,UR
 10.110.236.240,4104,Ringstrasse 15,6010,Kriens,LU
 10.110.237.0,4107,Bahnhofplatz 4,2500,Biel,BE
 10.110.237.16,4108,Route de la Gruyère 15,1723,Marly,FR
@@ -221,7 +221,7 @@ NA,3602,Route du Moulin 2,1580,Avenches,VD
 10.110.237.64,4186,Im Bolacker 8 in Obergerlafingen,4563,Gerlafingen,SO
 10.110.237.80,4187,Im Bahnhof 1,8590,Romanshorn,TG
 10.110.242.80,4190,Bahnhofplatz 1,5610,Wohlen,AG
-10.110.237.96,4226,Zuercherstrasse 110/112,8903,Birmensdorf,ZH
+10.110.237.96,4226,Zuercherstrasse 110-112,8903,Birmensdorf,ZH
 10.110.237.112,4238,Route de la Gemmi 20,3960,Sierre,VS
 10.110.237.128,4241,Gueterstrasse 10,4133,Pratteln,BL
 10.110.224.80,4269,Witikonerstrasse 15,8032,Zuerich,ZH
@@ -229,9 +229,9 @@ NA,3602,Route du Moulin 2,1580,Avenches,VD
 10.110.242.96,4292,Airport Center,8060,Zuerich-Flughafen,ZH
 10.110.237.160,4298,Wilerstrasse 202,9500,Wil SG,SG
 10.110.237.176,4519,Simmentalstrasse 50,3700,Spiez,BE
-10.110.237.192,4520,"""Novartis Campus""  Fabrikstrasse 10",4002,Basel,BS
+10.110.237.192,4520,Novartis Campus  Fabrikstrasse 10,4002,Basel,BS
 10.110.237.208,4522,Langenthalstrasse 90,4912,Aarwangen,BE
-10.110.237.224,4529,Bahnhofstrasse 6/8,8810,Horgen,ZH
+10.110.237.224,4529,Bahnhofstrasse 6-8,8810,Horgen,ZH
 10.110.237.240,4530,Landstrasse 19,9490,Vaduz,FL
 10.110.224.224,4554,Hindervormueli 15,6170,Schuepfheim,LU
 10.110.238.0,4556,Fabrikstrasse 3,4552,Derendingen,SO
@@ -239,7 +239,7 @@ NA,3602,Route du Moulin 2,1580,Avenches,VD
 10.110.225.240,4562,Kornhausstrasse 18,9000,St. Gallen,SG
 10.110.238.32,4577,Hardstrasse 221,8005,Zuerich,ZH
 10.110.238.48,4578,Gruenaustrasse 1,9300,Wittenbach,SG
-10.110.238.64,4600,Kasernenstrasse 25,7000,Chur/GR,GR
+10.110.238.64,4600,Kasernenstrasse 25,7000,Chur-GR,GR
 10.110.238.80,4633,Wilerstrasse 228,9230,Flawil,SG
 10.110.238.96,4635,Autobahnraststaette Glarnerland A3,8867,Niederurnen,GL
 10.110.238.112,4636,Bielstrasse 21,3053,Muenchenbuchsee,BE
@@ -251,12 +251,12 @@ NA,3602,Route du Moulin 2,1580,Avenches,VD
 10.110.238.192,4821,Schaffhauserstrasse 240,8222,Beringen,SH
 10.110.242.112,4823,Bernstrasse 201,3052,Zollikofen,BE
 10.110.238.208,4824,Place de la Gare 4,1260,Nyon,VD
-10.110.242.128,4844,Thurgauerstrasse 36/38,8050,Zuerich,ZH
-10.110.238.224,4849,Dorfstrasse 2,7220,Schiers/GR,GR
+10.110.242.128,4844,Thurgauerstrasse 36-38,8050,Zuerich,ZH
+10.110.238.224,4849,Dorfstrasse 2,7220,Schiers-GR,GR
 10.110.242.144,4854,Badenerstrasse 575a,8048,Zuerich,ZH
 10.110.238.240,4857,Via Locarno 104,6616,Losone IT,TI
 10.110.239.0,4859,Neue Aarburgerstrasse 2,4852,Rothrist,AG
-10.110.239.16,4863,Via Sonvico 5,6952,Canobbio/TI,TI
+10.110.239.16,4863,Via Sonvico 5,6952,Canobbio-TI,TI
 10.110.239.32,4864,Egnacherstrasse 1,9320,Arbon,TG
 10.110.239.48,4869,Worbstrasse 229,3073,Guemligen BE,BE
 10.110.239.64,4874,Allée du Port,2013,Colombier NE,NE
@@ -278,7 +278,7 @@ NA,3602,Route du Moulin 2,1580,Avenches,VD
 10.110.243.0,5160,Rugenparkstrasse 19,3800,Interlaken,BE
 10.110.239.240,5161,Schaffhausertrasse 29,8152,Opfikon-Glattbrugg,ZH
 10.110.240.0,5162,Limmattalstrasse 25,8954,Geroldswil,ZH
-10.110.240.16,5163,Spundisstrasse 11,7000,Chur / GR,GR
+10.110.240.16,5163,Spundisstrasse 11,7000,Chur - GR,GR
 10.110.240.32,5164,Zuercherstrasse 74,8852,Altendorf,SZ
 10.110.240.48,5167,Hofwiesenstrasse 369,8050,Zuerich Oerlikon,ZH
 10.110.225.16,5176,Chemin de la Maraîche 35,1926,Fully,VS
