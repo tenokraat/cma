@@ -4,12 +4,13 @@ import json,requests,re,csv,os
 import ipaddress
 from aruba_api_caller import *
 
+#Disable system-level proxy definition for requests.
 os.environ['no_proxy'] = '*'
 
 #Login Credentials
 
 vmm_hostname = '192.168.230.23'
-admin_user = 'admin'
+admin_user = 'python'
 admin_password = 'Aruba1234'
 
 #vmm_hostname = input ('VMM Hostname or IP: ')
@@ -38,8 +39,8 @@ def check_new_device():
     #Check node hierarchy for devices that have not been renamed, yet.
     node_hierarchy = session.get('configuration/object/node_hierarchy')
 
-    #Define nested JSON data 
-    ctrl_json = node_hierarchy['childnodes'][1]['childnodes'][1]['childnodes'][2]['devices']
+    #Define data from nested JSON that is retrieved (needs modification depending on hierarchy structure)
+    ctrl_json = node_hierarchy['childnodes'][1]['childnodes'][0]['childnodes'][0]['devices']
 
     ctrl_list = list() #create list to append multiple new controllers
     
@@ -63,8 +64,7 @@ def check_new_device():
 
 def get_uplink_ip(mac_addr):
 
-    #cli_json = session.cli_command(f'show crypto-local ipsec-map tag default-local-master-ipsecmap-{mac_addr}-link1')
-    cli_json = session.cli_command('show crypto-local ipsec-map tag default-psk-redundant-master-ipsecmap')
+    cli_json = session.cli_command(f'show crypto-local ipsec-map tag default-local-master-ipsecmap-{mac_addr}-link1')
 
     for line in cli_json['_data']:
 
