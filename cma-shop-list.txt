@@ -1,5 +1,5 @@
 network-address,sap-id,street,zip,place,state
-#N/A,3197,Thunstrasse 22,3110,Muensingen,BE
+NA,3197,Thunstrasse 22,3110,Muensingen,BE
 10.110.226.112,3410,Hauptstrasse 19,6015,Reussbuehl,LU
 10.110.226.128,3411,Zugerstrasse 64,6340,Baar,ZG
 10.110.226.144,3412,Klarastrasse 12,9320,Arbon,TG
@@ -122,7 +122,7 @@ network-address,sap-id,street,zip,place,state
 10.110.232.208,3582,Morgentalstrasse 22,8355,Aadorf,TG
 10.110.232.224,3587,Bahnhofstrasse 80,5507,Mellingen,AG
 0,3596,Zuercherstrasse 142,4052,Basel,BS
-#N/A,3602,Route du Moulin 2,1580,Avenches,VD
+NA,3602,Route du Moulin 2,1580,Avenches,VD
 0,3604,Baslerstrasse 128,5200,Umiken-Brugg,AG
 0,3608,Ruedenweg 5,3067,Boll,BE
 0,3611,Hardstrasse 49,4133,Pratteln,BL
@@ -306,13 +306,13 @@ network-address,sap-id,street,zip,place,state
 10.110.240.224,5461,Bahnhof,7320,Sargans,SG
 10.110.240.240,5462,Place de la Gare 10,3960,Sierre,VS
 10.110.241.0,5463,Place de la Gare,1950,Sion,VS
-#N/A,5478,Silbernstrasse 8a,8953,Dietikon,ZH
+NA,5478,Silbernstrasse 8a,8953,Dietikon,ZH
 10.110.243.64,5505,Ringstrasse 31,7000,Chur,GR
 10.110.226.0,5538,Kantonsstrasse 99,3952,Susten,VS
 10.110.241.16,5559,Seetalstrasse 44,6020,Emmenbruecke,LU
 10.110.241.32,5561,Grenzstrasse 1B,6214,Schenkon,LU
 10.110.242.224,5566,Rappagugg 2,7205,Zizers,GR
-#N/A,5601,Place de la Gare 3,1020,Renens,VD
+NA,5601,Place de la Gare 3,1020,Renens,VD
 10.110.243.80,5615,En Rambuz 21,1037,Etagnières,VD
 10.110.241.64,5620,Badenerstrasse 812,8048,Zuerich-Altstetten,ZH
 10.110.243.96,5656,Avenue de Fully 53,1920,Martigny,VS
