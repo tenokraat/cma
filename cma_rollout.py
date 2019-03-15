@@ -165,12 +165,9 @@ for md in new_ctrl:
 print ('List of uplink IPs:')
 print (uplink_ip_list)
 
-
 #Iterate through IP list and define new hostname
 for md in uplink_ip_list:
-    get_uplink_nwaddr(md)
-    print('The new controller name is: ' + shop_dict[nwwddr]['sap-id']+'-'+shop_dict[nwaddr]['place']+'-' + shop_dict[nwaddr]['state'])
-    
+    get_uplink_nwaddr(md)    
 
 #Terminate MM session
 session.logout()
