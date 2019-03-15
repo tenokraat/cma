@@ -6,15 +6,13 @@ from aruba_api_caller import *
 
 #Login Credentials
 
-vmm_hostname = '192.168.65.95'
+vmm_hostname = '192.168.230.23'
 admin_user = 'admin'
-admin_password = 'Adminhpq-123'
+admin_password = 'Aruba1234'
 
 #vmm_hostname = input ('VMM Hostname or IP: ')
 #admin_user = input('Enter username: ')
 #admin_password = input(f'Enter {admin_user} password: ')
-
-#Get a list of keys from dictionary which has value that matches with any value in given list of values
 
 def firmware_upgrade(mac_addr, aos_version):
 
@@ -47,19 +45,18 @@ def check_new_device():
         currHostname = each['name']
 
         if 'CTRL_' in currHostname:
-            isDefault = True
-            print('New device detected.')
-
-        else:
-            isDefault = False 
-
-        if isDefault == True:
+            hasDefault = True
+            print('New device detected: ' + currHostname) 
             mac_addr = each['mac']
-            #print ('Hostname: '+ each['name']+' MAC: '+ each['mac'] + '\n')
             ctrl_list.append(mac_addr)
+
         else:
+            hasDefault = False
             pass
 
+    if hasDefault == False:
+        print('No new devices found.')
+        
     return ctrl_list
 
 def get_uplink_ip(mac_addr):
