@@ -133,9 +133,11 @@ def set_hostname(new_hostname, mac_addr):
     time.sleep(3)
 
     session.post('configuration/object/hostname', new_hostname, f'/md/cma/shops/{mac_addr}')
-
+    print('New hostname configured, saving configuration...')
+    
     session.write_memory(f'/md/cma/shops/{mac_addr}') 
 
+    time.sleep(5)
     hostname_json = session.get('configuration/object/hostname', f'/md/cma/shops/{mac_addr}')
     curr_hostname = hostname_json['_data']['hostname']['hostname']
 
