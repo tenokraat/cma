@@ -103,7 +103,7 @@ def get_uplink_nwaddr(uplink_ip):
 def get_shop_details():
 
     #variable definition
-    csv_filename = 'cma-shop-list.txt'
+    csv_filename = 'cma-shop-list-unix.txt'
     cwd = os.getcwd()
     
     #Display current working directory
