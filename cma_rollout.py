@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-import json,requests,re,csv,os
+import json,requests,re,csv,os,sys
 import ipaddress
 from aruba_api_caller import *
 
@@ -118,8 +118,13 @@ def get_shop_details():
 
     #Headers in CSV: network-address,sap-id,street,zip,place,state
     #Read all lines in CSV and put them in the dictionary
-    for row in reader:
-        shop_details[row[0]] = {'sap-id':row[1], 'street':row[2], 'zip':row[3], 'place':row[4], 'state':row[5]}
+    try:
+
+        for row in reader:
+            shop_details[row[0]] = {'sap-id':row[1], 'street':row[2], 'zip':row[3], 'place':row[4], 'state':row[5]}
+
+    except:
+        print (sys.exc_info())
 
     return shop_details
 
