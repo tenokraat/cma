@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-import json,requests,re,csv,os,sys
+import json,requests,re,csv,os,sys,time
 import ipaddress
 from aruba_api_caller import *
 
