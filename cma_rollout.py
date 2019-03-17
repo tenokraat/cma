@@ -130,6 +130,7 @@ def set_hostname(new_hostname, mac_addr):
     curr_hostname = hostname_json['_data']['hostname']['hostname']
 
     print('Controller' + curr_hostname + ' will now be renamed to ' + new_hostname)
+    time.sleep(3)
 
     session.post('configuration/object/hostname', new_hostname, f'/md/cma/shops/{mac_addr}')
 
