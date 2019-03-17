@@ -173,8 +173,8 @@ try:
         print (nwaddr)    
         print('The new controller name is: ' + shop_dict[nwaddr]['sap-id'] +'-'+ shop_dict[nwaddr]['place'] + '-' + shop_dict[nwaddr]['state'])
 
-except:
-        print ('IP address information not found in shop list. Please configure controller manually.')
+#except:
+#        print ('IP address information not found in shop list. Please configure controller manually.')
 
 #Terminate MM session
 session.logout()
