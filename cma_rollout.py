@@ -169,7 +169,7 @@ print (uplink_ip_list)
 #Iterate through IP list and define new hostname
 try:
     for md in uplink_ip_list:
-        nwaddr = get_uplink_nwaddr(md)
+        nwaddr = str(get_uplink_nwaddr(md))
         print (nwaddr)    
         print('The new controller name is: ' + shop_dict[nwaddr]['sap-id'] +'-'+ shop_dict[nwaddr]['place'] + '-' + shop_dict[nwaddr]['state'])
 
