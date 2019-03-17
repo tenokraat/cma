@@ -166,30 +166,40 @@ if isDefault is False:
 else:
     pass
 
-#Fetch uplink IP from IPSEC SA information
-print ('Fetching controller uplink IP now...')
-uplink_ip_list = list()
 
-for md in new_ctrl:
-    uplink_ip = get_uplink_ip(md)
-    uplink_ip_list.append(uplink_ip)
-
-print ('List of uplink IPs:')
-print (uplink_ip_list)
-
-#Iterate through IP list and define new hostname
 try:
-    for md in uplink_ip_list:
-        nwaddr = str(get_uplink_nwaddr(md))   
+    for md in new_ctrl:
+        ctrl_mac = md
+        uplink_ip_list = list()
+
+        #Fetch uplink IP from IPSEC SA information
+        print ('Fetching controller uplink IP now...')
+            
+        uplink_ip = get_uplink_ip(md)
+        uplink_ip_list.append(uplink_ip)
+
+        #Get uplink IP network address 
+        nwaddr = str(get_uplink_nwaddr(uplink_ip))   
+
+        #Configure new hostname
         new_hostname = shop_dict[nwaddr]['sap-id'] +'-'+ shop_dict[nwaddr]['place'] + '-' + shop_dict[nwaddr]['state']
         print('The new controller name is: ' + new_hostname)
-
-        #set_hostname(new_hostname, md)
-
+        print('The controller MAC address is: ' + ctrl_mac)
 
 except:
     print(sys.exc_info())
     print ('IP address information not found in shop list. Please configure controller manually.')
+
+#print ('List of uplink IPs:')
+#print (uplink_ip_list)
+
+#Iterate through IP list and define new hostname
+
+#    for md in uplink_ip_list:
+        
+
+        #set_hostname(new_hostname, md)
+
 
 #Terminate MM session
 session.logout()
