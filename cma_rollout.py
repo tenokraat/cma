@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-#-*- coding: utf-8 -*-
 
 import json,requests,re,csv,os
 import ipaddress
