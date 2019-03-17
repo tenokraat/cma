@@ -40,6 +40,7 @@ NA,3197,Thunstrasse 22,3110,Muensingen,BE
 10.110.241.96,3458,Wattstrasse 3,9240,Uzwil,SG
 10.110.228.112,3459,Favrestrasse 6,9016,St. Gallen,SG
 10.110.228.128,3460,Oltnerstrasse 127,4663,Aarburg,AG
+10.110.224.16,TEST-Rhein,Hegenheimermattweg 65,Allschwil,BL
 10.110.224.32,3461,Birseckstrasse 95,4144,Arlesheim,BL
 10.110.228.144,3462,Adlikerstrasse 285,8105,Regensdorf,ZH
 10.110.228.160,3465,Lindenstrasse 1,8604,Volketswil,ZH
