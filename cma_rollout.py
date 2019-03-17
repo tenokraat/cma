@@ -111,7 +111,7 @@ def get_shop_details():
     print ('Current Working Directory is: ' + cwd)
 
     #Open CSV in read-only mode
-    csv_file = open(csv_filename, 'r')
+    csv_file = open(csv_filename, 'r', encoding='ascii')
     reader = csv.reader(csv_file)
 
     #Create empty dictionary
