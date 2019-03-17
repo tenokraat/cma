@@ -64,7 +64,7 @@ def check_new_device():
         print('No new devices found.')
 
     #Return list of new controllers    
-    return ctrl_list,isDefault
+    return ctrl_list, isDefault
 
 def get_uplink_ip(mac_addr):
 
@@ -159,7 +159,7 @@ new_ctrl, isDefault = check_new_device()
 
 if isDefault is None:
     print ('Closing application.')
-    quit()
+    #quit()
 else:
     pass
 
