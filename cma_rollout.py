@@ -173,7 +173,7 @@ try:
         uplink_ip_list = list()
 
         #Fetch uplink IP from IPSEC SA information
-        print ('Fetching controller uplink IP now...')
+        print (f'Fetching controller uplink IP for {ctrl_mac} now...')
             
         uplink_ip = get_uplink_ip(md)
         uplink_ip_list.append(uplink_ip)
@@ -185,6 +185,10 @@ try:
         new_hostname = shop_dict[nwaddr]['sap-id'] +'-'+ shop_dict[nwaddr]['place'] + '-' + shop_dict[nwaddr]['state']
         print('The new controller name is: ' + new_hostname)
         print('The controller MAC address is: ' + ctrl_mac)
+        print('Now configuring new hostname, please wait...')
+        time.sleep(3)
+
+        set_hostname(new_hostname, ctrl_mac)
 
 except:
     print(sys.exc_info())
@@ -192,14 +196,6 @@ except:
 
 #print ('List of uplink IPs:')
 #print (uplink_ip_list)
-
-#Iterate through IP list and define new hostname
-
-#    for md in uplink_ip_list:
-        
-
-        #set_hostname(new_hostname, md)
-
 
 #Terminate MM session
 session.logout()
