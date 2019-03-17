@@ -157,9 +157,9 @@ print ('Check for new controllers...')
 time.sleep(2)
 new_ctrl, isDefault = check_new_device()
 
-if isDefault is None:
+if isDefault is False:
     print ('Closing application.')
-    #quit()
+    quit()
 else:
     pass
 
