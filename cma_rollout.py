@@ -117,14 +117,10 @@ def get_shop_details():
     shop_details = {}
 
     #Headers in CSV: network-address,sap-id,street,zip,place,state
-    #Read all lines in CSV and put them in the dictionary
-    try:
-
-        for row in reader:
-            shop_details[row[0]] = {'sap-id':row[1], 'street':row[2], 'zip':row[3], 'place':row[4], 'state':row[5]}
-
-    except:
-        print (sys.exc_info())
+    #Read all lines in CSV and put them in the dictionary. Return dictionary
+   
+    for row in reader:
+        shop_details[row[0]] = {'sap-id':row[1], 'street':row[2], 'zip':row[3], 'place':row[4], 'state':row[5]}
 
     return shop_details
 
@@ -171,9 +167,13 @@ print ('List of uplink IPs:')
 print (uplink_ip_list)
 
 #Iterate through IP list and define new hostname
-for md in uplink_ip_list:
-    nwaddr = get_uplink_nwaddr(md)    
-    print('The new controller name is: ' + shop_dict[nwaddr]['sap-id'] +'-'+ shop_dict[nwaddr]['place'] + '-' + shop_dict[nwaddr]['state'])
+try:
+    for md in uplink_ip_list:
+        nwaddr = get_uplink_nwaddr(md)    
+        print('The new controller name is: ' + shop_dict[nwaddr]['sap-id'] +'-'+ shop_dict[nwaddr]['place'] + '-' + shop_dict[nwaddr]['state'])
+
+except:
+        print ('IP address information not found in shop list.')
 
 #Terminate MM session
 session.logout()
