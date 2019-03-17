@@ -170,7 +170,7 @@ print (uplink_ip_list)
 try:
     for md in uplink_ip_list:
         nwaddr = get_uplink_nwaddr(md)    
-        print('The new controller name is: ' + shop_dict[nwaddr]['sap-id'])# +'-'+ shop_dict[nwaddr]['place'] + '-' + shop_dict[nwaddr]['state'])
+        print('The new controller name is: ' + shop_dict[nwaddr]['sap-id'] +'-'+ shop_dict[nwaddr]['place'] + '-' + shop_dict[nwaddr]['state'])
 
 except:
         print ('IP address information not found in shop list. Please configure controller manually.')
