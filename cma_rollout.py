@@ -34,7 +34,7 @@ def firmware_upgrade(mac_addr, aos_version):
 
     session.post('configuration/object/upgrade_lcs_copy_scp_reboot', json_obj, f'/md/cma/shops/{mac_addr}')
 
-def check_new_device():
+def get_new_device():
 
     #Check MM node hierarchy for devices that have not been renamed, yet.
     node_hierarchy = session.get('configuration/object/node_hierarchy')
@@ -158,7 +158,7 @@ session.login()
 #Fetch new controllers
 print ('Check for new controllers...')
 time.sleep(2)
-new_ctrl, isDefault = check_new_device()
+new_ctrl, isDefault = get_new_device()
 
 if isDefault is False:
     print ('Closing application.')
@@ -183,6 +183,8 @@ try:
         nwaddr = str(get_uplink_nwaddr(md))   
         new_hostname = shop_dict[nwaddr]['sap-id'] +'-'+ shop_dict[nwaddr]['place'] + '-' + shop_dict[nwaddr]['state']
         print('The new controller name is: ' + new_hostname)
+
+        #set_hostname(new_hostname, md)
 
 
 except:
