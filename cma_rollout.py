@@ -64,7 +64,7 @@ def check_new_device():
         print('No new devices found.')
 
     #Return list of new controllers    
-    return ctrl_list
+    return ctrl_list,isDefault
 
 def get_uplink_ip(mac_addr):
 
@@ -140,23 +140,31 @@ def set_hostname(new_hostname, mac_addr):
 
     print ('Controller successfully renamed to ' + curr_hostname)
 
-#Instantiate session variable
+#Instantiate API session variable
 session = api_session(vmm_hostname, admin_user, admin_password, check_ssl=False)
 
 #Import Shop CSV into dictionary
+print ('Reading shop list...')
+time.sleep(2)
 shop_dict = get_shop_details()
 
 #Login to MM
+print('Login to Mobility Master...')
 session.login()
 
 #Fetch new controllers
-new_ctrl = check_new_device()
+print ('Check for new controllers...')
+time.sleep(2)
+new_ctrl, isDefault = check_new_device()
 
-print ('List of new controllers:')
-print (new_ctrl)
-print ('Fetching controller ruplink IP now.')
+if isDefault is None:
+    print ('Closing application.')
+    quit()
+else:
+    pass
 
 #Fetch uplink IP from IPSEC SA information
+print ('Fetching controller uplink IP now...')
 uplink_ip_list = list()
 
 for md in new_ctrl:
@@ -169,14 +177,12 @@ print (uplink_ip_list)
 #Iterate through IP list and define new hostname
 try:
     for md in uplink_ip_list:
-        nwaddr = str(get_uplink_nwaddr(md))
-        print (nwaddr)    
+        nwaddr = str(get_uplink_nwaddr(md))   
         print('The new controller name is: ' + shop_dict[nwaddr]['sap-id'] +'-'+ shop_dict[nwaddr]['place'] + '-' + shop_dict[nwaddr]['state'])
 
 except:
     print(sys.exc_info())
-
-#   print ('IP address information not found in shop list. Please configure controller manually.')
+    print ('IP address information not found in shop list. Please configure controller manually.')
 
 #Terminate MM session
 session.logout()
