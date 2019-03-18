@@ -210,7 +210,7 @@ try:
 
         #Get uplink IP network address 
         nwaddr = str(get_uplink_nwaddr(uplink_ip))   
-
+'''
         ## Configure new hostname ##
         new_hostname = shop_dict[nwaddr]['sap-id'] +'-'+ shop_dict[nwaddr]['place'] + '-' + shop_dict[nwaddr]['state']
         print('The new controller name is: ' + new_hostname)
@@ -227,7 +227,7 @@ try:
         md_firmware_details = upgrade_status['upgrade managed-node status summary'][0]
         md_firmware_version = md_firmware_details['Current Ver']
 
-        print(md_firmware_version)
+        print('Current firmware version: " + md_firmware_version)
 
         #If controller is on any other release than the compliance version, perform upgrade.
         if md_firmware_version != aos_compliance_version:
@@ -245,7 +245,7 @@ try:
         else:
             print('Controller ' + ctrl_mac + ' is already on compliance version ' + aos_compliance_version)
             print('Skpping firmware upgrade.')
-
+'''
         ## Configure geolocation ##
 
         #Retrieve shop address from shop list
