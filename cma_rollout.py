@@ -252,7 +252,7 @@ try:
         shop_address = shop_dict[nwaddr]['street'] +' '+ shop_dict[nwaddr]['zip'] + ' ' + shop_dict[nwaddr]['place']
         print('Fetching location for address: '+ shop_address)
 
-        geolocation_data = get_geolocation(shop_address)
+        geolocation_data = tomtom_geolocation.get_geolocation(shop_address)
         print (geolocation_data)
         #print ('Retrieved the following geodata information, Longitude:' + geolocation_data['lon'] + ', Latitude: ' + geolocation_data['lat'])
        
