@@ -67,10 +67,10 @@ class geolocation:
 
         geodata = dict()
         
-        geodata['lat'] = result['position']['lat']
-        geodata['lon'] = result['position']['lon']
-        geodata['address'] = result['address']['freeformAddress']
+        lat = result['position']['lat']
+        lon = result['position']['lon']
+        address = result['address']['freeformAddress']
 
         logging.debug('{address}. (lat, lng) = ({lat}, {lon})'.format(**geodata))
 
-        return geodata
+        return lat, lon, address
