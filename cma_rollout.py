@@ -126,13 +126,16 @@ def get_shop_details():
 
 def set_hostname(new_hostname, mac_addr):
 
-    hostname_json = session.get('configuration/object/hostname', f'/md/cma/shops/{mac_addr}')
-    curr_hostname = hostname_json['_data']['hostname']['hostname']
+    new_hostname_json = { "hostname": f"{new_hostname}" }
+    print (new_hostname_json)
+
+    curr_hostname_json = session.get('configuration/object/hostname', f'/md/cma/shops/{mac_addr}')
+    curr_hostname = curr_hostname_json['_data']['hostname']['hostname']
 
     print('Controller' + curr_hostname + ' will now be renamed to ' + new_hostname)
     time.sleep(3)
 
-    session.post('configuration/object/hostname', new_hostname, f'/md/cma/shops/{mac_addr}')
+    session.post('configuration/object/hostname', new_hostname_json, f'/md/cma/shops/{mac_addr}')
     print('New hostname configured, saving configuration...')
     
     '''session.write_memory(f'/md/cma/shops/{mac_addr}') 
