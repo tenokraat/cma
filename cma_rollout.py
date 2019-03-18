@@ -136,15 +136,15 @@ def set_hostname(new_hostname, mac_addr):
     time.sleep(3)
 
     session.post('configuration/object/hostname', new_hostname_json, f'/md/cma/shops/{mac_addr}')
-    print('New hostname configured, saving configuration...')
+    print('New hostname configured, saving configuration and wait for sync...')
     
-    '''session.write_memory(f'/md/cma/shops/{mac_addr}') 
+    session.write_memory(f'/md/cma/shops/{mac_addr}') 
 
-    time.sleep(5)
+    time.sleep(10)
     hostname_json = session.get('configuration/object/hostname', f'/md/cma/shops/{mac_addr}')
     curr_hostname = hostname_json['_data']['hostname']['hostname']
 
-    print ('Controller successfully renamed to ' + curr_hostname)'''
+    print ('Controller successfully renamed to ' + curr_hostname)
 
 #Instantiate API session variable
 session = api_session(vmm_hostname, admin_user, admin_password, check_ssl=False)
