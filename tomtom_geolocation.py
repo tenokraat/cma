@@ -73,8 +73,8 @@ class geolocation:
 
         #logging.debug('{address}. (lat, lng) = ({lat}, {lon})'.format(**geodata))
 
-        lat = geodata['lat']
-        lon = geodata['lon']
-        address = geodata['address']
+        lat = str(geodata['lat'])
+        lon = str(geodata['lon'])
+        address = str(geodata['address'])
 
         return lat, lon, address

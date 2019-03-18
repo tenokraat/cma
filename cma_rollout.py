@@ -253,10 +253,6 @@ try:
         logging.debug('Fetching location for address: '+ shop_address)
 
         geoloc = geolocation()
-        lat = str()
-        lon = str()
-        address = str()
-
         lat, lon, address = geoloc.get_geolocation(shop_address)
         
         logging.debug (lat + lon + address)
