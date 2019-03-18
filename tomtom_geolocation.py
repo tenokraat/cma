@@ -10,17 +10,16 @@ class tomtom_geolocation:
         os.environ['http_proxy'] = cma_proxy 
         os.environ['https_proxy'] = cma_proxy
 
-        #Using Python requests and TomTom Search/Geocode API to retrieve geo location.
-
-        #API Key oliver.wehrli@gmail.com
-
-        self.api_key = 'KR3oOGSM59aMJBOSKAxTlxoJvYBjrENU'
-
-    def get_geolocation(self, shop_address, api_key):
+    def get_geolocation(self, shop_address):
 
         #TomTom API query syntax /search/{versionNumber}/geocode/{query}.{ext}
         #https://developer.tomtom.com/content/search-api-explorer
 
+        #Using Python requests and TomTom Search/Geocode API to retrieve geo location.
+
+        #API Key oliver.wehrli@gmail.com
+
+        api_key = 'KR3oOGSM59aMJBOSKAxTlxoJvYBjrENU'
 
         #Restrict TomTom search to Switzerland
         tomtom_search_params = {
