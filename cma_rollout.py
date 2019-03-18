@@ -249,7 +249,7 @@ try:
         ## Configure geolocation ##
 
         #Retrieve shop address from shop list
-        shop_address = shop_dictshop_dict[nwaddr]['street'] +' '+ shop_dict[nwaddr]['zip'] + ' ' + shop_dict[nwaddr]['place']
+        shop_address = shop_dict[nwaddr]['street'] +' '+ shop_dict[nwaddr]['zip'] + ' ' + shop_dict[nwaddr]['place']
         print('Fetching location for address: '+ shop_address)
 
         geodata = get_geolocation(shop_address)
