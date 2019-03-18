@@ -175,7 +175,7 @@ if isDefault is False:
 else:
     pass
 
-#If there are new controllers detected proceed with initial configuration.
+#If there are new controllers detected proceed with initial configuration. Exceptions lead to termination of this section.
 try:
     #Iterate through list of new controllers.
     for md in new_ctrl:
@@ -226,7 +226,7 @@ try:
        
 except:
     print(sys.exc_info())
-    print ('IP address information not found in shop list. Please configure controller manually.')
+    print ('IP address information not found in shop list or unknown exception raised. Please configure controller manually.')
 
 #print ('List of uplink IPs:')
 #print (uplink_ip_list)
