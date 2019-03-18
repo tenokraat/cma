@@ -22,12 +22,12 @@ def firmware_upgrade(mac_addr, aos_compliance_version, scp_server, scp_user, scp
 
     #Create dictionary with all firmware parameters passed to function
     firmware_params = {
-            'img-version': f'{aos_compliance_version}',
-            'mac-addr': f'{mac_addr}',
-            'imagehost': f'{scp_server}',
-            'username': f'{scp_user}',
+            'img-version': aos_compliance_version,
+            'mac-addr': mac_addr,
+            'imagehost': scp_server,
+            'username': scp_user,
             'image-path': '.',
-            'passwd': f'{scp_password}'
+            'passwd': scp_password
         }
     
     firmware_json = json.dumps(firmware_params)
@@ -157,7 +157,7 @@ def set_geolocation(mac_addr, lon, lat):
 
     logging.debug(geolocation_json)
 
-    logging.debug(session.post('configuration/object/geolocation', geolocation_json, f'/md/cma/shops/{mac_addr}'))
+    logging.debug(session.post('configuration/object/geolocation', json.loads(geolocation_json), f'/md/cma/shops/{mac_addr}'))
 
     print ('Geolocation has been set to Longitude: ' + lon + ', Latitude: ' + lat )
     print ('Saving configuration and waiting for sync...')
