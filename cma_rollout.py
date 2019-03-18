@@ -256,7 +256,7 @@ try:
         geolocation_data = geoloc.get_geolocation(shop_address)
 
         logging.debug (geolocation_data)
-        #print ('Retrieved the following geodata information, Longitude:' + geolocation_data['lon'] + ', Latitude: ' + geolocation_data['lat'])
+        print ('Retrieved the following geodata information, Longitude:' + geolocation_data['lon'] + ', Latitude: ' + geolocation_data['lat'])
        
 except:
     print(sys.exc_info())
