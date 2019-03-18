@@ -213,8 +213,8 @@ try:
 
         #Get uplink IP network address 
         nwaddr = str(get_uplink_nwaddr(uplink_ip))   
-'''
-        ## Configure new hostname ##
+
+        '''## Configure new hostname ##
         new_hostname = shop_dict[nwaddr]['sap-id'] +'-'+ shop_dict[nwaddr]['place'] + '-' + shop_dict[nwaddr]['state']
         print('The new controller name is: ' + new_hostname)
         print('The controller MAC address is: ' + ctrl_mac)
@@ -247,8 +247,8 @@ try:
     
         else:
             print('Controller ' + ctrl_mac + ' is already on compliance version ' + aos_compliance_version)
-            print('Skpping firmware upgrade.')
-'''
+            print('Skpping firmware upgrade.')'''
+
         ## Configure geolocation ##
 
         #Retrieve shop address from shop list
