@@ -1,6 +1,9 @@
-import json,requests,time,sys
+import json,requests,time,sys, os
 import urllib3
 urllib3.disable_warnings()
+
+#Disable system-level proxy definition for requests
+os.environ['no_proxy'] = '*'
 
 class api_session:
   def __init__(self, api_url, username, password, port=4343, SSL=True, check_ssl=True, verbose=False, retrys=3, retry_wait=0.5):
