@@ -15,6 +15,7 @@ os.environ['HTTPS_PROXY'] = cma_proxy'''
 
 api_key = 'KR3oOGSM59aMJBOSKAxTlxoJvYBjrENU'
 
+shop_address = 'dietlikonstrasse 35 8600 duebendorf'
 
         
 #TomTom API query syntax /search/{versionNumber}/geocode/{query}.{ext}
@@ -25,7 +26,7 @@ tomtom_search_params = {
         'countrySet': 'CH',
         'lat': '46.204391',
         'lon': '6.143158',
-        'key': self.api_key
+        'key': api_key
     }
 
 geocode_api_url = f'https://api.tomtom.com/search/2/geocode/{shop_address}.json'
