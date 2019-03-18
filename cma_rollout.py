@@ -30,7 +30,7 @@ def firmware_upgrade(mac_addr, aos_compliance_version, scp_server, scp_user, scp
             'passwd': f'{scp_password}'
         }
     
-    firmware_json = json.loads(firmware_params)
+    firmware_json = json.dumps(firmware_params)
 
     session.post('configuration/object/upgrade_lcs_copy_scp_reboot', firmware_json, f'/md/cma/shops/{mac_addr}')
 
@@ -153,7 +153,7 @@ def set_geolocation(mac_addr, lon, lat):
             'longitude': f'{lon}'
         }
 
-    geolocation_json = json.loads(geolocation_params)
+    geolocation_json = json.dumps(geolocation_params)
 
     session.post('configuration/object/geolocation', geolocation_json, f'/md/cma/shops/{mac_addr}')
 
