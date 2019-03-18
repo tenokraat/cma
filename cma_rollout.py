@@ -2,7 +2,7 @@
 
 import json,requests,re,csv,os,sys,time
 import ipaddress
-import tomtom_geolocation
+from tomtom_geolocation import *
 from aruba_api_caller import *
 
 #Disable system-level proxy definition for requests
@@ -252,7 +252,9 @@ try:
         shop_address = shop_dict[nwaddr]['street'] +' '+ shop_dict[nwaddr]['zip'] + ' ' + shop_dict[nwaddr]['place']
         print('Fetching location for address: '+ shop_address)
 
-        geolocation_data = tomtom_geolocation.get_geolocation(shop_address)
+        geoloc = geolocation()
+        geolocation_data = geoloc.get_geolocation(shop_address)
+
         print (geolocation_data)
         #print ('Retrieved the following geodata information, Longitude:' + geolocation_data['lon'] + ', Latitude: ' + geolocation_data['lat'])
        
