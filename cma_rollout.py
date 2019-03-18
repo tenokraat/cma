@@ -243,7 +243,7 @@ try:
             print(md_upgrade_status)
     
         else:
-            print('Controller ' + new_hostname + ' is already on compliance version ' + aos_compliance_version)
+            print('Controller ' + ctrl_mac + ' is already on compliance version ' + aos_compliance_version)
             print('Skpping firmware upgrade.')
 
         ## Configure geolocation ##
