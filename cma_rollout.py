@@ -2,8 +2,11 @@
 
 import json,requests,re,csv,os,sys,time
 import ipaddress
+import logging
 from tomtom_geolocation import *
 from aruba_api_caller import *
+
+logging.basicConfig(level=logging.DEBUG)
 
 #Disable system-level proxy definition for requests
 os.environ['no_proxy'] = '*'
@@ -251,12 +254,12 @@ try:
         #Retrieve shop address from shop list
         shop_address = 'Dietlikonstrasse 35 8600 duebendorf'
         #shop_address = shop_dict[nwaddr]['street'] +' '+ shop_dict[nwaddr]['zip'] + ' ' + shop_dict[nwaddr]['place']
-        print('Fetching location for address: '+ shop_address)
+        logging.debug('Fetching location for address: '+ shop_address)
 
         geoloc = geolocation()
         geolocation_data = geoloc.get_geolocation(shop_address)
 
-        print (geolocation_data)
+        logging.debug (geolocation_data)
         #print ('Retrieved the following geodata information, Longitude:' + geolocation_data['lon'] + ', Latitude: ' + geolocation_data['lat'])
        
 except:

@@ -1,8 +1,11 @@
 import json,requests,os
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
 
 class geolocation:
     def __init__ (self):
-    
+ 
         #This Script needs to connect to the internet, hence requires proxy.
 
         self.cma_proxy = 'http://192.168.205.163:8080/'
@@ -35,7 +38,7 @@ class geolocation:
         return utf8_string.decode()
 
     def get_geolocation(self, shop_address):
-
+        
         #TomTom API query syntax /search/{versionNumber}/geocode/{query}.{ext}
         #https://developer.tomtom.com/content/search-api-explorer
 
@@ -52,16 +55,16 @@ class geolocation:
 
         # Do the request to TomTom URL, pass search parameters and retrieve the response data
         req = requests.get(geocode_api_url, params=tomtom_search_params)
-        print (req.url)
+        logging.debug (req.url)
 
         res = req.json()
         
         #summary = res['summary']
         #print(summary)
-        
+
         # Use the first result
         result = res['results'][0]
-        print (result)
+        logging.debug (result)
 
         geodata = dict()
         
@@ -69,6 +72,6 @@ class geolocation:
         geodata['lon'] = result['position']['lon']
         geodata['address'] = result['address']['freeformAddress']
 
-        print('{address}. (lat, lng) = ({lat}, {lon})'.format(**geodata))
+        logging.debug('{address}. (lat, lng) = ({lat}, {lon})'.format(**geodata))
 
         return geodata
