@@ -3,15 +3,6 @@ import logging
 
 logging.basicConfig(level=logging.DEBUG)
 
-'''#This Script needs to connect to the internet, hence requires proxy.
-
-cma_proxy = 'http://192.168.205.163:8080/'
-os.environ['http_proxy'] = cma_proxy 
-os.environ['HTTP_PROXY'] = cma_proxy
-os.environ['https_proxy'] = cma_proxy
-os.environ['HTTPS_PROXY'] = cma_proxy'''
-
-
 class geolocation:
     def __init__ (self):
  

@@ -249,8 +249,7 @@ try:
         ## Configure geolocation ##
 
         #Retrieve shop address from shop list
-        shop_address = 'Dietlikonstrasse 35 8600 duebendorf'
-        #shop_address = shop_dict[nwaddr]['street'] +' '+ shop_dict[nwaddr]['zip'] + ' ' + shop_dict[nwaddr]['place']
+        shop_address = shop_dict[nwaddr]['street'] +' '+ shop_dict[nwaddr]['zip'] + ' ' + shop_dict[nwaddr]['place']
         logging.debug('Fetching location for address: '+ shop_address)
 
         geoloc = geolocation.geolocation()
