@@ -252,8 +252,8 @@ try:
         shop_address = shop_dict[nwaddr]['street'] +' '+ shop_dict[nwaddr]['zip'] + ' ' + shop_dict[nwaddr]['place']
         logging.debug('Fetching location for address: '+ shop_address)
 
-        geoloc = geolocation.get_geolocation()
-        geolocation_data = geoloc(shop_address)
+        geoloc = geolocation()
+        geolocation_data = geoloc.get_geolocation(shop_address)
 
         logging.debug (geolocation_data)
         #print ('Retrieved the following geodata information, Longitude:' + geolocation_data['lon'] + ', Latitude: ' + geolocation_data['lat'])
