@@ -32,7 +32,7 @@ def firmware_upgrade(mac_addr, aos_compliance_version, scp_server, scp_user, scp
     
     firmware_json = json.dumps(firmware_params)
 
-    session.post('configuration/object/upgrade_lcs_copy_scp_reboot', firmware_json, f'/md/cma/shops/{mac_addr}')
+    session.post('configuration/object/upgrade_lcs_copy_scp_reboot', json.loads(firmware_json), f'/md/cma/shops/{mac_addr}')
 
 def get_new_device():
 
@@ -162,7 +162,7 @@ def set_geolocation(mac_addr, lon, lat):
     print ('Geolocation has been set to Longitude: ' + lon + ', Latitude: ' + lat )
     print ('Saving configuration and waiting for sync...')
 
-    #session.write_memory(f'/md/cma/shops/{mac_addr}')
+    session.write_memory(f'/md/cma/shops/{mac_addr}')
 
     time.sleep(5)
 
@@ -213,7 +213,7 @@ try:
         #Get uplink IP network address 
         nwaddr = str(get_uplink_nwaddr(uplink_ip))   
 
-        '''## Configure new hostname ##
+        ## Configure new hostname ##
         new_hostname = shop_dict[nwaddr]['sap-id'] +'-'+ shop_dict[nwaddr]['place'] + '-' + shop_dict[nwaddr]['state']
         print('The new controller name is: ' + new_hostname)
         print('The controller MAC address is: ' + ctrl_mac)
@@ -246,7 +246,7 @@ try:
     
         else:
             print('Controller ' + ctrl_mac + ' is already on compliance version ' + aos_compliance_version)
-            print('Skpping firmware upgrade.')'''
+            print('Skpping firmware upgrade.')
 
         ## Configure geolocation ##
 
