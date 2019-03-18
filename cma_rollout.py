@@ -2,7 +2,7 @@
 
 import json,requests,re,csv,os,sys,time
 import ipaddress
-from tomtom_geolocation import *
+import tomtom_geolocation
 from aruba_api_caller import *
 
 #Disable system-level proxy definition for requests
