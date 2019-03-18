@@ -19,6 +19,7 @@ class geolocation:
         #API Key oliver.wehrli@gmail.com
 
         self.api_key = 'KR3oOGSM59aMJBOSKAxTlxoJvYBjrENU'
+        self.shop_address = 'dietlikonstrassee 35 8600 duebendorf'
 
         self.vowel_dict = {
                 '\xc3\xa4': 'ae',  # U+00E4	   \xc3\xa4
@@ -29,6 +30,9 @@ class geolocation:
                 '\xc3\x9c': 'Ue',  # U+00DC	   \xc3\x9c
                 '\xc3\x9f': 'ss',  # U+00DF	   \xc3\x9f
             }
+
+        geo = self.get_geolocation(self.shop_address)
+        print (geo)
 
     def replace_de_vowel_mutation(self, unicode_string):
         
@@ -76,4 +80,6 @@ class geolocation:
 
         logging.debug('{address}. (lat, lng) = ({lat}, {lon})'.format(**geodata))
 
-        return geodata
+        return geodata  
+
+   
