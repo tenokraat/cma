@@ -259,7 +259,7 @@ try:
         print ('Retrieved the following geodata information, Longitude: ' + lat + ', Latitude: ' + lon)
 
         #Configure controller geolocation
-        set_geolocation(mac_addr, lon, lat)
+        set_geolocation(ctrl_mac, lon, lat)
 
        
 except:
