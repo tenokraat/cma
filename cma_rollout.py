@@ -211,7 +211,7 @@ try:
         #Get uplink IP network address 
         nwaddr = str(get_uplink_nwaddr(uplink_ip))   
 
-        #Configure new hostname
+        ## Configure new hostname ##
         new_hostname = shop_dict[nwaddr]['sap-id'] +'-'+ shop_dict[nwaddr]['place'] + '-' + shop_dict[nwaddr]['state']
         print('The new controller name is: ' + new_hostname)
         print('The controller MAC address is: ' + ctrl_mac)
@@ -220,6 +220,8 @@ try:
 
         set_hostname(new_hostname, ctrl_mac)
 
+        ## Firmware compliance ##
+
         #Fetch upgrade status and MD firmware details
         upgrade_status = session.cli_command(f'show upgrade managed-devices status summary single {ctrl_mac}')
         md_firmware_details = upgrade_status['upgrade managed-node status summary'][0]
@@ -227,7 +229,7 @@ try:
 
         print(md_firmware_version)
 
-
+        #If controller is on any other release than the compliance version, perform upgrade.
         if md_firmware_version != aos_compliance_version:
 
             print('Attemptting firmware upgrade to ' + aos_compliance_version)
@@ -244,7 +246,7 @@ try:
             print('Controller ' + new_hostname + ' is already on compliance version ' + aos_compliance_version)
             print('Skpping firmware upgrade.')
 
-        #Configure geolocation
+        ## Configure geolocation ##
 
         #Retrieve shop address from shop list
         shop_address = shop_dictshop_dict[nwaddr]['street'] +' '+ shop_dict[nwaddr]['zip'] + ' ' + shop_dict[nwaddr]['place']
@@ -252,7 +254,6 @@ try:
 
         geodata = get_geolocation(shop_address)
         print ('Retrieved the following geodata information, Longitude:' + geodata['lon'] + ', Latitude: ' + geodata['lat'])
-
        
 except:
     print(sys.exc_info())
