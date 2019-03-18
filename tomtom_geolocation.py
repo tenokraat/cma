@@ -1,10 +1,16 @@
 #!/usr/bin/python3
 
-import json,requests
+import json,requests, os
 
- #Using Python requests and TomTom Search/Geocode API to retrieve geo location.
+#This Script needs to connect to the internet, hence requires proxy.
 
- #API Key oliver.wehrli@gmail.com
+cma_proxy = 'http://192.168.205.163:8080/'
+os.environ['http_proxy'] = cma_proxy 
+os.environ['https_proxy'] = cma_proxy
+
+#Using Python requests and TomTom Search/Geocode API to retrieve geo location.
+
+#API Key oliver.wehrli@gmail.com
 
 api_key = 'KR3oOGSM59aMJBOSKAxTlxoJvYBjrENU'
 
@@ -49,4 +55,4 @@ def get_geolocation(address):
 
     return geodata
 
-#get_geolocation('dietlikonstrasse 35')
+get_geolocation('Hegenheimermattweg 65 4123 Allschwil')
