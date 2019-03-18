@@ -1,4 +1,4 @@
-import json,requests,os
+import json,requests,os, urllib3
 import logging
 
 logging.basicConfig(level=logging.DEBUG)
