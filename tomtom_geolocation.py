@@ -10,6 +10,11 @@ class geolocation:
 
         #API Key oliver.wehrli@gmail.com
 
+        self.proxies = {
+            'http': 'http://192.168.205.163:8080/',
+            'https': 'http://192.168.205.163:8080/',
+            }
+
         self.api_key = 'KR3oOGSM59aMJBOSKAxTlxoJvYBjrENU'
         
         self.vowel_dict = {
@@ -48,7 +53,7 @@ class geolocation:
         geocode_api_url = f'https://api.tomtom.com/search/2/geocode/{shop_address}.json'
 
         # Do the request to TomTom URL, pass search parameters and retrieve the response data
-        req = requests.get(geocode_api_url, params=tomtom_search_params)
+        req = requests.get(geocode_api_url, params=tomtom_search_params, proxies=self.proxies)
         logging.debug (req.url)
 
         res = req.json()
