@@ -148,16 +148,16 @@ def set_hostname(new_hostname, mac_addr):
 
 def set_geolocation(mac_addr, lon, lat):
 
-    geolocation_params = {
-        "latitude": f"{lat}",
-        "longitude": f"{lon}"    
-        }
+    geolocation_params = """{
+        "latitude": "{lat}",
+        "longitude": "{lon}"    
+        }"""
 
     geolocation_json = json.dumps(geolocation_params)
 
     logging.debug(geolocation_json)
 
-    logging.debug(session.post('configuration/object/geolocation', geolocation_json, f'/md/cma/shops/{mac_addr}'))
+    logging.debug(session.post('configuration/object/geolocation', geolocation_params, f'/md/cma/shops/{mac_addr}'))
 
     print ('Geolocation has been set to Longitude: ' + lon + ', Latitude: ' + lat )
     print ('Saving configuration and waiting for sync...')
