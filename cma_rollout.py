@@ -252,7 +252,7 @@ try:
         shop_address = shop_dict[nwaddr]['street'] +' '+ shop_dict[nwaddr]['zip'] + ' ' + shop_dict[nwaddr]['place']
         logging.debug('Fetching location for address: '+ shop_address)
 
-        lat, lon, address = geolocation.get_geolocation(shop_address)
+        lat, lon, address = get_geolocation(shop_address)
         
 
         logging.debug (geolocation_data)
