@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 import json,requests,os
 
 #This Script needs to connect to the internet, hence requires proxy.
