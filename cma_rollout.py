@@ -17,22 +17,20 @@ admin_password = 'Aruba1234'
 #admin_user = input('Enter username: ')
 #admin_password = input(f'Enter {admin_user} password: ')
 
-def firmware_upgrade(mac_addr, aos_version):
+def firmware_upgrade(mac_addr, aos_compliance_version, scp_server, scp_user, scp_password):
 
-    json_data = """ 
-    {
-        "img-version": "{aos_version}",
-        "mac-addr": "{mac_addr}",
-        "imagehost": "192.168.230.23",
-        "username": "admin ",
-        "image-path": ".",
-        "passwd": "Aruba1234"
-    }
-    """
+    firmware_dict = {
+            'img-version': f'{aos_compliance_version}',
+            'mac-addr': f'{mac_addr}',
+            'imagehost': f'{scp_server}',
+            'username': f'{scp_user}',
+            'image-path': '.',
+            'passwd': f'{scp_password}'
+        }
+    
+    firmware_json = json.loads(firmware_dict)
 
-    json_obj = json.loads(json_data)
-
-    session.post('configuration/object/upgrade_lcs_copy_scp_reboot', json_obj, f'/md/cma/shops/{mac_addr}')
+    session.post('configuration/object/upgrade_lcs_copy_scp_reboot', firmware_json, f'/md/cma/shops/{mac_addr}')
 
 def get_new_device():
 
@@ -78,7 +76,8 @@ def get_uplink_ip(mac_addr):
 
         if  m is not None:
 
-            #Remove text from string, except IP/Netmask combination, eg. 10.110.224.23/255.255.255.255
+            #Remove text from string, except IP/Netmask combination, eg. 10.110.224.23/255.255.255.255. 
+            # Variable is NOT modified!
             sub_string = re.sub("Destination network: ", "", line)
             print (re.sub("Destination network: ", "", line))
 
@@ -127,16 +126,15 @@ def get_shop_details():
 def set_hostname(new_hostname, mac_addr):
 
     new_hostname_json = { "hostname": f"{new_hostname}" }
-    print (new_hostname_json)
-
+    
     curr_hostname_json = session.get('configuration/object/hostname', f'/md/cma/shops/{mac_addr}')
     curr_hostname = curr_hostname_json['_data']['hostname']['hostname']
 
-    print('Controller' + curr_hostname + ' will now be renamed to ' + new_hostname)
+    print('Controller ' + curr_hostname + ' will now be renamed to ' + new_hostname)
     time.sleep(3)
 
     session.post('configuration/object/hostname', new_hostname_json, f'/md/cma/shops/{mac_addr}')
-    print('New hostname configured, saving configuration and wait for sync...')
+    print('New hostname configured, saving configuration and waiting for sync...')
     
     session.write_memory(f'/md/cma/shops/{mac_addr}') 
 
@@ -149,7 +147,14 @@ def set_hostname(new_hostname, mac_addr):
 #Instantiate API session variable
 session = api_session(vmm_hostname, admin_user, admin_password, check_ssl=False)
 
-#Import Shop CSV into dictionary
+#Set AOS firmware upgrade variables
+
+aos_compliance_version = '8.4.0.0_68230'
+scp_server = '192.168.230.23'
+scp_user = 'admin'
+scp_password = 'Aruba1234'
+
+#Import Shop CSV into dictionary for further processing
 print ('Reading shop list...')
 time.sleep(2)
 shop_dict = get_shop_details()
@@ -163,14 +168,16 @@ print ('Check for new controllers...')
 time.sleep(2)
 new_ctrl, isDefault = get_new_device()
 
+#If there are no controllers matching 'CTRL_' in the hostname, exit the application.
 if isDefault is False:
     print ('Closing application.')
     quit()
 else:
     pass
 
-
+#If there are new controllers detected proceed with initial configuration.
 try:
+    #Iterate through list of new controllers.
     for md in new_ctrl:
         ctrl_mac = md
         uplink_ip_list = list()
@@ -193,6 +200,30 @@ try:
 
         set_hostname(new_hostname, ctrl_mac)
 
+        #Fetch upgrade status and MD firmware details
+        upgrade_status = session.cli_command(f'show upgrade managed-devices status summary single {ctrl_mac}')
+        md_firmware_details = upgrade_status['upgrade managed-node status summary'][0]
+        md_firmware_version = md_firmware_details['Current Ver']
+
+        print(md_firmware_version)
+
+
+        if md_firmware_version != aos_compliance_version:
+
+            print('Attemptting firmware upgrade to ' + aos_compliance_version)
+            time.sleep(3)
+
+            firmware_upgrade(ctrl_mac, aos_compliance_version, scp_server, scp_user, scp_password) 
+
+            print('Upgrade initiated waiting 20s for upgrade to be initiated...')
+            time.sleep(20)
+            md_upgrade_status = session.cli_command(f'show upgrade managed-devices status summary single {ctrl_mac}')
+            print(md_upgrade_status)
+    
+        else:
+            print('Controller ' + new_hostname + 'is already on compliance version ' + aos_compliance_version)
+            print('Skpping firmware upgrade.')
+       
 except:
     print(sys.exc_info())
     print ('IP address information not found in shop list. Please configure controller manually.')
