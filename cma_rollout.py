@@ -10,7 +10,7 @@ os.environ['no_proxy'] = '*'
 
 #MM Login Credentials
 
-vmm_hostname = '192.168.65.95'
+vmm_hostname = '192.168.230.23'
 admin_user = 'python'
 admin_password = 'Aruba1234'
 
