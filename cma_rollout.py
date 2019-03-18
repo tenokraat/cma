@@ -253,10 +253,14 @@ try:
         logging.debug('Fetching location for address: '+ shop_address)
 
         geoloc = geolocation()
+        lat = str()
+        lon = str()
+        address = str()
+
         lat, lon, address = geoloc.get_geolocation(shop_address)
         
         logging.debug (lat + lon + address)
-        print ('Retrieved the following geodata information, Longitude: ' + str(lat) + ', Latitude: ' + str(lon))
+        print ('Retrieved the following geodata information, Longitude: ' + lat + ', Latitude: ' + lon)
 
         #Configure controller geolocation
         set_geolocation(mac_addr, lon, lat)
