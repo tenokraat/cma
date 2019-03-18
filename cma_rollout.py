@@ -155,6 +155,8 @@ def set_geolocation(mac_addr, lon, lat):
 
     geolocation_json = json.dumps(geolocation_params)
 
+    logging.debug(geolocation_json)
+
     session.post('configuration/object/geolocation', geolocation_json, f'/md/cma/shops/{mac_addr}')
 
     print ('Geolocation has been set to Longitude: ' + lon + ', Latitude: ' + lat )
