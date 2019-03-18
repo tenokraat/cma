@@ -255,7 +255,7 @@ try:
         lat, lon, address = get_geolocation(shop_address)
         
 
-        logging.debug (geolocation_data)
+        #logging.debug (geolocation_data)
         print ('Retrieved the following geodata information, Longitude:' +lat + ', Latitude: ' + lon)
        
 except:
