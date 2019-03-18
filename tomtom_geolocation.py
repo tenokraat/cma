@@ -71,6 +71,10 @@ class geolocation:
         geodata['lon'] = result['position']['lon']
         geodata['address'] = result['address']['freeformAddress']
 
-        logging.debug('{address}. (lat, lng) = ({lat}, {lon})'.format(**geodata))
+        #logging.debug('{address}. (lat, lng) = ({lat}, {lon})'.format(**geodata))
 
-        return geodata
+        lat = geodata['lat']
+        lon = geodata['lon']
+        address = geodata['address']
+
+        return lat, lon, address
