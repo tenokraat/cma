@@ -255,7 +255,7 @@ try:
         geoloc = geolocation()
         lat, lon, address = geoloc.get_geolocation(shop_address)
         
-        logging.debug (geolocation_data)
+        logging.debug (lat + lon + address)
         print ('Retrieved the following geodata information, Longitude: ' + str(lat) + ', Latitude: ' + str(lon))
 
         #Configure controller geolocation

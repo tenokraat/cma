@@ -54,7 +54,7 @@ class geolocation:
 
         # Do the request to TomTom URL, pass search parameters and retrieve the response data
         req = requests.get(geocode_api_url, params=tomtom_search_params, proxies=self.proxies)
-        logging.debug (req.url)
+        #logging.debug (req.url)
 
         res = req.json()
         
