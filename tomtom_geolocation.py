@@ -15,7 +15,7 @@ os.environ['https_proxy'] = cma_proxy
 api_key = 'KR3oOGSM59aMJBOSKAxTlxoJvYBjrENU'
 
 
-def get_geolocation(address):
+def get_geolocation(shop_address):
 
     #TomTom API query syntax /search/{versionNumber}/geocode/{query}.{ext}
     #https://developer.tomtom.com/content/search-api-explorer

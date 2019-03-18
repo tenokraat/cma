@@ -212,13 +212,13 @@ try:
         nwaddr = str(get_uplink_nwaddr(uplink_ip))   
 
         ## Configure new hostname ##
-        new_hostname = shop_dict[nwaddr]['sap-id'] +'-'+ shop_dict[nwaddr]['place'] + '-' + shop_dict[nwaddr]['state']
+        '''new_hostname = shop_dict[nwaddr]['sap-id'] +'-'+ shop_dict[nwaddr]['place'] + '-' + shop_dict[nwaddr]['state']
         print('The new controller name is: ' + new_hostname)
         print('The controller MAC address is: ' + ctrl_mac)
         print('Now configuring new hostname, please wait...')
         time.sleep(3)
 
-        set_hostname(new_hostname, ctrl_mac)
+        set_hostname(new_hostname, ctrl_mac)'''
 
         ## Firmware compliance ##
 
