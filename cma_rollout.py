@@ -229,9 +229,9 @@ try:
         md_firmware_details = upgrade_status['upgrade managed-node status summary'][0]
         md_firmware_version = md_firmware_details['Current Ver']
 
-        print('Current firmware version: " + md_firmware_version)
+        print('Current firmware version: ' + md_firmware_version)
 
-        #If controller is on any other release than the compliance version, perform upgrade.
+        #If controller is on any other release than configured compliance version, perform upgrade.
         if md_firmware_version != aos_compliance_version:
 
             print('Attemptting firmware upgrade to ' + aos_compliance_version)
