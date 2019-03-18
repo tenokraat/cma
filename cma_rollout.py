@@ -162,7 +162,7 @@ def set_geolocation(mac_addr, lon, lat):
     print ('Geolocation has been set to Longitude: ' + lon + ', Latitude: ' + lat )
     print ('Saving configuration and waiting for sync...')
 
-    session.write_memory(f'/md/cma/shops/{mac_addr}')
+    #session.write_memory(f'/md/cma/shops/{mac_addr}')
 
     time.sleep(5)
 
