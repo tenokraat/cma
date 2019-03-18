@@ -2,12 +2,13 @@
 
 import json,requests,re,csv,os,sys,time
 import ipaddress
+from tomtom_geolocation import *
 from aruba_api_caller import *
 
 #Disable system-level proxy definition for requests
 os.environ['no_proxy'] = '*'
 
-#Login Credentials
+#MM Login Credentials
 
 vmm_hostname = '192.168.230.23'
 admin_user = 'python'
@@ -19,7 +20,8 @@ admin_password = 'Aruba1234'
 
 def firmware_upgrade(mac_addr, aos_compliance_version, scp_server, scp_user, scp_password):
 
-    firmware_dict = {
+    #Create dictionary with all firmware parameters passed to function
+    firmware_params = {
             'img-version': f'{aos_compliance_version}',
             'mac-addr': f'{mac_addr}',
             'imagehost': f'{scp_server}',
@@ -28,7 +30,7 @@ def firmware_upgrade(mac_addr, aos_compliance_version, scp_server, scp_user, scp
             'passwd': f'{scp_password}'
         }
     
-    firmware_json = json.loads(firmware_dict)
+    firmware_json = json.loads(firmware_params)
 
     session.post('configuration/object/upgrade_lcs_copy_scp_reboot', firmware_json, f'/md/cma/shops/{mac_addr}')
 
@@ -144,6 +146,24 @@ def set_hostname(new_hostname, mac_addr):
 
     print ('Controller successfully renamed to ' + curr_hostname)
 
+def set_geolocation(mac_addr, lon, lat):
+
+    geolocation_params = {
+            'latitude': f'{lat}',
+            'longitude': f'{lon}'
+        }
+
+    geolocation_json = json.loads(geolocation_params)
+
+    session.post('configuration/object/geolocation', geolocation_json, f'/md/cma/shops/{mac_addr}')
+
+    print ('Geolocation has been set to Longitude: ' + lon + ', Latitude: ' + lat )
+    print ('Saving configuration and waiting for sync...')
+
+    session.write_memory(f'/md/cma/shops/{mac_addr}')
+
+    time.sleep(5)
+
 #Instantiate API session variable
 session = api_session(vmm_hostname, admin_user, admin_password, check_ssl=False)
 
@@ -221,8 +241,18 @@ try:
             print(md_upgrade_status)
     
         else:
-            print('Controller ' + new_hostname + 'is already on compliance version ' + aos_compliance_version)
+            print('Controller ' + new_hostname + ' is already on compliance version ' + aos_compliance_version)
             print('Skpping firmware upgrade.')
+
+        #Configure geolocation
+
+        #Retrieve shop address from shop list
+        shop_address = shop_dictshop_dict[nwaddr]['street'] +' '+ shop_dict[nwaddr]['zip'] + ' ' + shop_dict[nwaddr]['place']
+        print('Fetching location for address: '+ shop_address)
+
+        geodata = get_geolocation(shop_address)
+        print ('Retrieved the following geodata information, Longitude:' + geodata['lon'] + ', Latitude: ' + geodata['lat'])
+
        
 except:
     print(sys.exc_info())
