@@ -149,8 +149,10 @@ def set_hostname(new_hostname, mac_addr):
 def set_geolocation(mac_addr, lon, lat):
 
     geolocation_params = {
+        "_data":{
             'latitude': f"{lat}",
             'longitude': f"{lon}"
+            }    
         }
 
     geolocation_json = json.dumps(geolocation_params)
