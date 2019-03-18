@@ -55,4 +55,4 @@ def get_geolocation(address):
 
     return geodata
 
-get_geolocation('Hegenheimermattweg 65 4123 Allschwil')
+#get_geolocation('Hegenheimermattweg 65 4123 Allschwil')
