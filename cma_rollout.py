@@ -10,7 +10,7 @@ os.environ['no_proxy'] = '*'
 
 #MM Login Credentials
 
-vmm_hostname = '192.168.230.23'
+vmm_hostname = '192.168.65.95'
 admin_user = 'python'
 admin_password = 'Aruba1234'
 
@@ -67,7 +67,7 @@ def get_new_device():
     return ctrl_list, isDefault
 
 def get_uplink_ip(mac_addr):
-
+    
     #Fetch IPSEC map of specified controller through 'show command' API
     cli_json = session.cli_command(f'show crypto-local ipsec-map tag default-local-master-ipsecmap-{mac_addr}-link1')
 
@@ -201,7 +201,7 @@ try:
     for md in new_ctrl:
         ctrl_mac = md
         uplink_ip_list = list()
-
+        
         #Fetch uplink IP from IPSEC SA information
         print (f'Fetching controller uplink IP for {ctrl_mac} now...')
             
@@ -212,13 +212,13 @@ try:
         nwaddr = str(get_uplink_nwaddr(uplink_ip))   
 
         ## Configure new hostname ##
-        '''new_hostname = shop_dict[nwaddr]['sap-id'] +'-'+ shop_dict[nwaddr]['place'] + '-' + shop_dict[nwaddr]['state']
+        new_hostname = shop_dict[nwaddr]['sap-id'] +'-'+ shop_dict[nwaddr]['place'] + '-' + shop_dict[nwaddr]['state']
         print('The new controller name is: ' + new_hostname)
         print('The controller MAC address is: ' + ctrl_mac)
         print('Now configuring new hostname, please wait...')
         time.sleep(3)
 
-        set_hostname(new_hostname, ctrl_mac)'''
+        set_hostname(new_hostname, ctrl_mac)
 
         ## Firmware compliance ##
 
@@ -249,7 +249,8 @@ try:
         ## Configure geolocation ##
 
         #Retrieve shop address from shop list
-        shop_address = shop_dict[nwaddr]['street'] +' '+ shop_dict[nwaddr]['zip'] + ' ' + shop_dict[nwaddr]['place']
+        shop_address = 'Dietlikonstrasse 35 8600 duebendorf'
+        #shop_address = shop_dict[nwaddr]['street'] +' '+ shop_dict[nwaddr]['zip'] + ' ' + shop_dict[nwaddr]['place']
         print('Fetching location for address: '+ shop_address)
 
         geoloc = geolocation()

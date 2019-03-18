@@ -15,6 +15,25 @@ class geolocation:
 
         self.api_key = 'KR3oOGSM59aMJBOSKAxTlxoJvYBjrENU'
 
+        self.vowel_dict = {
+                '\xc3\xa4': 'ae',  # U+00E4	   \xc3\xa4
+                '\xc3\xb6': 'oe',  # U+00F6	   \xc3\xb6
+                '\xc3\xbc': 'ue',  # U+00FC	   \xc3\xbc
+                '\xc3\x84': 'Ae',  # U+00C4	   \xc3\x84
+                '\xc3\x96': 'Oe',  # U+00D6	   \xc3\x96
+                '\xc3\x9c': 'Ue',  # U+00DC	   \xc3\x9c
+                '\xc3\x9f': 'ss',  # U+00DF	   \xc3\x9f
+            }
+
+    def replace_de_vowel_mutation(self, unicode_string):
+        
+        utf8_string = unicode_string.encode('utf-8')
+
+        for k in self.vowel_dict.keys():
+            utf8_string = utf8_string.replace(k, self.vowel_dict[k])
+
+        return utf8_string.decode()
+
     def get_geolocation(self, shop_address):
 
         #TomTom API query syntax /search/{versionNumber}/geocode/{query}.{ext}
@@ -36,11 +55,10 @@ class geolocation:
         print (req.url)
 
         res = req.json()
-        print (res)
-
-        summary = res['summary']
-        print (summary)
-
+        
+        #summary = res['summary']
+        #print(summary)
+        
         # Use the first result
         result = res['results'][0]
         print (result)
