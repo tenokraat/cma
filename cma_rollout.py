@@ -14,6 +14,13 @@ vmm_hostname = '192.168.230.23'
 admin_user = 'python'
 admin_password = 'Aruba1234'
 
+#Set AOS firmware upgrade variables
+
+aos_compliance_version = '8.4.0.0_68230'
+scp_server = '192.168.230.23'
+scp_user = 'admin'
+scp_password = 'Aruba1234'
+
 #vmm_hostname = input ('VMM Hostname or IP: ')
 #admin_user = input('Enter username: ')
 #admin_password = input(f'Enter {admin_user} password: ')
@@ -155,9 +162,9 @@ def set_geolocation(mac_addr, lon, lat):
 
     geolocation_json = json.dumps(geolocation_params)
 
-    logging.debug(geolocation_json)
+    print(geolocation_json)
 
-    logging.debug(session.post('configuration/object/geolocation', json.loads(geolocation_json), f'/md/cma/shops/{mac_addr}'))
+    session.post('configuration/object/geolocation', json.loads(geolocation_json), f'/md/cma/shops/{mac_addr}')
 
     print ('Geolocation has been set to Longitude: ' + lon + ', Latitude: ' + lat )
     print ('Saving configuration and waiting for sync...')
@@ -168,13 +175,6 @@ def set_geolocation(mac_addr, lon, lat):
 
 #Instantiate API session variable
 session = api_session(vmm_hostname, admin_user, admin_password, check_ssl=False, verbose=True)
-
-#Set AOS firmware upgrade variables
-
-aos_compliance_version = '8.4.0.0_68230'
-scp_server = '192.168.230.23'
-scp_user = 'admin'
-scp_password = 'Aruba1234'
 
 #Import Shop CSV into dictionary for further processing
 print ('Reading shop list...')
@@ -257,19 +257,14 @@ try:
         geoloc = geolocation()
         lat, lon, address = geoloc.get_geolocation(shop_address)
         
-        logging.debug (lat + lon + address)
         print ('Retrieved the following geodata information, Longitude: ' + lat + ', Latitude: ' + lon)
 
         #Configure controller geolocation
         set_geolocation(ctrl_mac, lon, lat)
-
        
 except:
     print(sys.exc_info())
     print ('IP address information not found in shop list or unknown exception raised. Please configure controller manually.')
-
-#print ('List of uplink IPs:')
-#print (uplink_ip_list)
 
 #Terminate MM session
 session.logout()
