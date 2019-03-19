@@ -34,7 +34,7 @@ def firmware_upgrade(mac_addr, aos_compliance_version, scp_server, scp_user, scp
             'imagehost': scp_server,
             'username': scp_user,
             'image-path': '.',
-            'partition': false,
+            'partition': 'false',
             'passwd': scp_password
         }
     
