@@ -203,26 +203,6 @@ try:
     #Iterate through list of new controllers.
     for md in new_ctrl:
         ctrl_mac = md
-        uplink_ip_list = list()
-        
-        #Fetch uplink IP from IPSEC SA information
-        print (f'Fetching controller uplink IP for {ctrl_mac} now...')
-            
-        uplink_ip = get_uplink_ip(md)
-        uplink_ip_list.append(uplink_ip)
-
-        #Get uplink IP network address 
-        nwaddr = str(get_uplink_nwaddr(uplink_ip))   
-
-        ## Configure new hostname ##
-        new_hostname = shop_dict[nwaddr]['sap-id'] +'-'+ shop_dict[nwaddr]['place'] + '-' + shop_dict[nwaddr]['state']
-        print('The new controller name is: ' + new_hostname)
-        print('The controller MAC address is: ' + ctrl_mac)
-        print('Now configuring new hostname, please wait...')
-        time.sleep(3)
-
-        set_hostname(new_hostname, ctrl_mac)
-
         ## Firmware compliance ##
 
         #Fetch upgrade status and MD firmware details
@@ -248,6 +228,28 @@ try:
         else:
             print('Controller ' + ctrl_mac + ' is already on compliance version ' + aos_compliance_version)
             print('Skpping firmware upgrade.')
+
+        ## Configure new hostname ##
+        uplink_ip_list = list()
+        
+        #Fetch uplink IP from IPSEC SA information
+        print (f'Fetching controller uplink IP for {ctrl_mac} now...')
+            
+        uplink_ip = get_uplink_ip(md)
+        uplink_ip_list.append(uplink_ip)
+
+        #Get uplink IP network address 
+        nwaddr = str(get_uplink_nwaddr(uplink_ip))   
+        
+        new_hostname = shop_dict[nwaddr]['sap-id'] +'-'+ shop_dict[nwaddr]['place'] + '-' + shop_dict[nwaddr]['state']
+        print('The new controller name is: ' + new_hostname)
+        print('The controller MAC address is: ' + ctrl_mac)
+        print('Now configuring new hostname, please wait...')
+        time.sleep(3)
+
+        set_hostname(new_hostname, ctrl_mac)
+
+        
 
         ## Configure geolocation ##
 
