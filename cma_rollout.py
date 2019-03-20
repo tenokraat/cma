@@ -77,15 +77,15 @@ def get_new_device():
 def get_md_status():
     #Check state of MDs
         all_switches = session.cli_command('show switches all')
-        switchinfo = all_switches['All Switches'][0]
-        print (switchinfo['Status'])
+        switchinfo = all_switches['All Switches']
+        print (switchinfo)
 
-        '''position = 0
+        position = 0
 
         for each in switchinfo:
 
-            if each['Name'] == new_ctrl:
-                md_status = each['Status']
+            if each[position]['Name'] == new_ctrl:
+                md_status = each[position]['Status']
                 print(md_status)
     
                 break
