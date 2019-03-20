@@ -220,7 +220,7 @@ try:
         
         upgrade_status_copy = session.cli_command(f'show upgrade managed-devices status copy single {ctrl_mac}')
         print (upgrade_status_copy)
-        upgrade_status_copy_status = upgrade_status_copy['_data']['Copy Status']
+        upgrade_status_copy_status = upgrade_status_copy['upgrade managed-node copy command status'][0]
         
         #print(f'Current firmware version of {ctrl_mac}: ' + md_firmware_version)
         #print('Copy Status: ' )
@@ -231,7 +231,7 @@ try:
 
             print(f'>>> Fetching current upgrade status for {ctrl_mac} <<>')
 
-            if upgrade_status_copy_status == 'Download in-progress':
+            if upgrade_status_copy_status['Copy Status'] == 'Download in-progress':
                 print(f'>>> Upgrade for {ctrl_mac} still in progress, skipping firmware upgrade. <<<')
             
             else:
