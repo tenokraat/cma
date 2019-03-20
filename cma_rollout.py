@@ -210,8 +210,7 @@ try:
 
         #Check state of MDs
         switchinfo = session.cli_command('show switches all')
-        switchinfo_dict = json.loads(switchinfo)
-
+        
         print(switchinfo)
 
         ## Firmware compliance ##
