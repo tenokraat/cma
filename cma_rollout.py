@@ -91,7 +91,7 @@ def get_md_status(ctrl_mac):
             key = key + 1
             print(key)
 
-return md_status
+    return md_status
 
 def get_uplink_ip(mac_addr):
     
