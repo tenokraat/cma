@@ -71,8 +71,9 @@ def get_new_device():
 
     if isDefault == False:
         print('No new devices found.')
+        time.sleep(2)
 
-    #Return list of new controllers    
+    #Return list of new controllers   
     return ctrl_list, isDefault
 
 def get_uplink_ip(mac_addr):
@@ -185,6 +186,7 @@ shop_dict = get_shop_details()
 
 #Login to MM
 print('Login to Mobility Master...')
+time.sleep(2)
 session.login()
 
 #Fetch new controllers
@@ -206,14 +208,21 @@ try:
         
         ctrl_mac = md
 
+        #Check state of MDs
+        switchinfo = session.cli_command('show switches all')
+        switchinfo_dict = json.loads(switchinfo)
+
+        print(switchinfo_dict)
+
         ## Firmware compliance ##
 
         #Fetch upgrade status and MD firmware details
         upgrade_status_summary = session.cli_command(f'show upgrade managed-devices status summary single {ctrl_mac}')
-        upgrade_status_copy = session.cli_command(f'show upgrade managed-devices status copy single {ctrl_mac}')
         md_firmware_details = upgrade_status_summary['upgrade managed-node status summary'][0]
         md_firmware_version = md_firmware_details['Current Ver']
-
+        
+        upgrade_status_copy = session.cli_command(f'show upgrade managed-devices status copy single {ctrl_mac}')
+        
         print(f'Current firmware version of {ctrl_mac}: ' + md_firmware_version)
         print('Copy Status: ' )
         print (upgrade_status_copy)
