@@ -80,9 +80,7 @@ def get_md_status():
     all_switches = session.cli_command('show switches all')
     switchinfo = all_switches['All Switches']
 
-    pprint.PrettyPrinter(switchinfo)
-
-    print(switchinfo['Name'])
+    print(switchinfo[0])
 
 
 def get_uplink_ip(mac_addr):
