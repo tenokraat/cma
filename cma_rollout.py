@@ -26,6 +26,8 @@ scp_password = 'Aruba1234'
 
 def firmware_upgrade(ctrl_mac):
 
+    fw_success = False
+
     #Create dictionary with all firmware parameters
     firmware_params = {
             'img-version': aos_compliance_version,
@@ -52,23 +54,26 @@ def firmware_upgrade(ctrl_mac):
         print(f'>>> Waiting for response from {ctrl_mac}, skipping additional firmware tasks.')
         
     else:
-        pass
-    
-    time.sleep(2)
+           
+        time.sleep(2)
 
-    print(f'>>> No existing update in progress, attemptting firmware upgrade to  {aos_compliance_version}')
-    time.sleep(2)
+        print(f'>>> No existing update in progress, attemptting firmware upgrade to  {aos_compliance_version}')
+        time.sleep(2)
 
-    #Execute firmware update
-    firmware_json = json.dumps(firmware_params)
+        #Execute firmware update
+        firmware_json = json.dumps(firmware_params)
 
-    session.post('configuration/object/upgrade_lcs_copy_scp_reboot', json.loads(firmware_json), '/md')
+        session.post('configuration/object/upgrade_lcs_copy_scp_reboot', json.loads(firmware_json), '/md')
 
-    print('>>> Upgrade initiated waiting 10s for upgrade to be begin...')
-    time.sleep(10)
-    print(upgrade_status_copy)
-        
-    print(f'>>> Skipping controller {ctrl_mac} renaming until next run and firmware upgrade is completed.')
+        print('>>> Upgrade initiated waiting for upgrade to be begin...')
+        time.sleep(20)
+        print(upgrade_status_copy)
+
+        print(f'>>> Skipping controller {ctrl_mac} renaming until next run and firmware upgrade is completed.')
+
+        success = True
+
+        return fw_success
     
 def get_new_device():
 
@@ -115,7 +120,6 @@ def get_md_status(ctrl_mac):
     for each in switchinfo:
         if switchinfo[key]['MAC'] == ctrl_mac:
             md_status = switchinfo[key]['Status']
-            print (md_status)
             break
         else:
             key = key + 1
@@ -273,7 +277,10 @@ try:
             
             #If controller is on any other release than the configured compliance version, perform upgrade.
             if md_firmware_version != aos_compliance_version:
-                firmware_upgrade(ctrl_mac)
+                fw_success = firmware_upgrade(ctrl_mac)
+
+            elif fw_success == True:
+                continue
             else:
                 print(f'>>> Controller {ctrl_mac} is already on compliance version {aos_compliance_version}')
                 print('>>> Skpping firmware upgrade.')

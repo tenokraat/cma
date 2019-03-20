@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import json,requests,time,sys,os
 import urllib3
 urllib3.disable_warnings()
