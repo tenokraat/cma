@@ -43,6 +43,7 @@ def firmware_upgrade(ctrl_mac):
 
     if upgrade_status_copy_status['Copy Status'] == 'Download in-progress':
         print(f'>>> Download for {ctrl_mac} still in progress, skipping additional firmware tasks.')
+
         
     elif upgrade_status_copy_status['Copy Status'] == 'Update in-progress':
         print(f'>>> Update for {ctrl_mac} still in progress, skipping additional firmware tasks.')
@@ -71,7 +72,7 @@ def firmware_upgrade(ctrl_mac):
 
         print(f'>>> Skipping controller {ctrl_mac} renaming until next run and firmware upgrade is completed.')
 
-        success = True
+        fw_success = True
 
         return fw_success
     
@@ -281,6 +282,7 @@ try:
 
             elif fw_success == True:
                 continue
+
             else:
                 print(f'>>> Controller {ctrl_mac} is already on compliance version {aos_compliance_version}')
                 print('>>> Skpping firmware upgrade.')
