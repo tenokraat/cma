@@ -208,22 +208,22 @@ try:
         ctrl_mac = md
 
         #Check state of MDs
-        switchinfo = session.cli_command('show switches all')
-        start = 0
+        all_switches = session.cli_command('show switches all')
+        switchinfo = all_switches['All Switches']
+        print (switchinfo)
 
-        for switch in switchinfo['All Switches']:
+        position = 0
+
+        for each in switchinfo:
             
-            position = switch[start]
 
-            if position['Name'] == new_ctrl:
-                md_status = position['Status']
+            if each[position]['Name'] == new_ctrl:
+                md_status = switch['Status']
                 print(md_status)
                 break
             
-            start = start + 1
+            position = position + 1
             print ('Next Position: ' + start)
-        
-        print(switchinfo)
 
         break
 
