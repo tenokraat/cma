@@ -75,15 +75,14 @@ def get_new_device():
     return ctrl_list, isDefault
 
 def get_md_status():
+
     #Check state of MDs
-        all_switches = session.cli_command('show switches all')
-        switchinfo = all_switches['All Switches']
+    all_switches = session.cli_command('show switches all')
+    switchinfo = all_switches['All Switches']
 
-        pprint.PrettyPrinter(switchinfo)
+    pprint.PrettyPrinter(switchinfo)
 
-         key= 0
-
-        dict['Name']
+    print(switchinfo['Name'])
 
 
 def get_uplink_ip(mac_addr):
