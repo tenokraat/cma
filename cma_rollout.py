@@ -203,28 +203,39 @@ else:
 try:
     #Iterate through list of new controllers.
     for md in new_ctrl:
+        
         ctrl_mac = md
+
         ## Firmware compliance ##
 
         #Fetch upgrade status and MD firmware details
-        upgrade_status = session.cli_command(f'show upgrade managed-devices status summary single {ctrl_mac}')
-        md_firmware_details = upgrade_status['upgrade managed-node status summary'][0]
+        upgrade_status_summary = session.cli_command(f'show upgrade managed-devices status summary single {ctrl_mac}')
+        upgrade_status_copy = session.cli_command(f'show upgrade managed-devices status copy single {ctrl_mac}')
+        md_firmware_details = upgrade_status_summary['upgrade managed-node status summary'][0]
         md_firmware_version = md_firmware_details['Current Ver']
 
-        print('Current firmware version: ' + md_firmware_version)
+        print(f'Current firmware version of {ctrl_mac}: ' + md_firmware_version)
+        print('Copy Status: ' + upgrade_status_copy)
 
         #If controller is on any other release than configured compliance version, perform upgrade.
         if md_firmware_version != aos_compliance_version:
 
+            print(f'Fetching current upgrade status for {ctrl_mac}')
+            md_upgrade_status = session.cli_command(f'show upgrade managed-devices status summary single {ctrl_mac}')
+            print(md_upgrade_status)
+
             print('Attemptting firmware upgrade to ' + aos_compliance_version)
             time.sleep(3)
 
-            firmware_upgrade(ctrl_mac, aos_compliance_version, scp_server, scp_user, scp_password) 
+            #firmware_upgrade(ctrl_mac, aos_compliance_version, scp_server, scp_user, scp_password) 
 
             print('Upgrade initiated waiting 20s for upgrade to be initiated...')
             time.sleep(20)
-            md_upgrade_status = session.cli_command(f'show upgrade managed-devices status summary single {ctrl_mac}')
             print(md_upgrade_status)
+
+            print(f'Skipping controller {ctrl_mac} renaming until next run and firmware upgrade is completed.')
+            
+            continue
     
         else:
             print('Controller ' + ctrl_mac + ' is already on compliance version ' + aos_compliance_version)
@@ -249,8 +260,6 @@ try:
         time.sleep(3)
 
         set_hostname(new_hostname, ctrl_mac)
-
-        
 
         ## Configure geolocation ##
 
