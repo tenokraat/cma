@@ -215,7 +215,8 @@ try:
         md_firmware_version = md_firmware_details['Current Ver']
 
         print(f'Current firmware version of {ctrl_mac}: ' + md_firmware_version)
-        print('Copy Status: ' + upgrade_status_copy)
+        print('Copy Status: ' )
+        print (upgrade_status_copy)
 
         #If controller is on any other release than configured compliance version, perform upgrade.
         if md_firmware_version != aos_compliance_version:
