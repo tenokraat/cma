@@ -232,10 +232,12 @@ try:
             print(f'>>> Fetching current upgrade status for {ctrl_mac} <<>')
 
             if upgrade_status_copy_status['Copy Status'] == 'Download in-progress':
-                print(f'>>> Upgrade for {ctrl_mac} still in progress, skipping firmware upgrade. <<<')
-            
+                print(f'>>> Download for {ctrl_mac} still in progress, skipping firmware upgrade. <<<')
+            elif upgrade_status_copy_status['Copy Status'] == 'Update in-progress':
+                print(f'>>> Update for {ctrl_mac} still in progress, skipping firmware upgrade. <<<')
             else:
                 pass
+            
             time.sleep(2)
 
             print('>>> Attemptting firmware upgrade to ' + aos_compliance_version + ' <<<')
