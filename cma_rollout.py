@@ -30,20 +30,22 @@ def firmware_upgrade(mac_addr, aos_compliance_version, scp_server, scp_user, scp
     #Create dictionary with all firmware parameters passed to function
     firmware_params = {
             'img-version': aos_compliance_version,
-            #'img-version-forced': aos_compliance_version,
+            'img-version-forced': aos_compliance_version,
             'my-version': true,
             'force-my-version': true,
+            'all': true,
             'mac-addr': mac_addr,
-            'node-path': '/md/cma/shops',
+            #'node-path': '/md/cma/shops',
             'imagehost': scp_server,
             'username': scp_user,
             'image-path': '.',
-            #'partition': 'true',
+            #'partition': false,
             #'partition': 'partition0',
             'passwd': scp_password
         }
     
     firmware_json = json.dumps(firmware_params)
+    print(firmware_json)
 
     session.post('configuration/object/upgrade_lcs_copy_scp_reboot', json.loads(firmware_json), '/md')
 
@@ -226,9 +228,9 @@ try:
         
         upgrade_status_copy = session.cli_command(f'show upgrade managed-devices status copy single {ctrl_mac}')
         
-        print(f'Current firmware version of {ctrl_mac}: ' + md_firmware_version)
-        print('Copy Status: ' )
-        print (upgrade_status_copy)
+        #print(f'Current firmware version of {ctrl_mac}: ' + md_firmware_version)
+        #print('Copy Status: ' )
+        #print (upgrade_status_copy)
 
         #If controller is on any other release than configured compliance version, perform upgrade.
         if md_firmware_version != aos_compliance_version:
