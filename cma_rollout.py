@@ -7,7 +7,7 @@ from aruba_api_caller import *
 
 #logging.basicConfig(level=logging.DEBUG)
 
-#MM Login Credentials
+#MM Login Credentials ##
 
 vmm_hostname = '192.168.230.23'
 admin_user = 'python'
@@ -249,7 +249,7 @@ if isDefault is False:
 else:
     pass
 
-#If there are new controllers detected proceed with initial configuration. Exceptions lead to termination of this section.
+#If there are new controllers detected proceed with their configuration. Any pyhton exception leads to termination of this section.
 try:
     #Iterate through list of new controllers.
     for md in new_ctrl:
@@ -257,7 +257,7 @@ try:
         ctrl_mac = md
         md_status = get_md_status(ctrl_mac)
         
-        print(f'>>> Node {ctrl_mac} is {md_status}, proceeding...')
+        print(f'>>> Checking device state, node {ctrl_mac} is {md_status}')
 
         if md_status == 'up':
 
@@ -271,7 +271,7 @@ try:
             upgrade_status_copy = session.cli_command(f'show upgrade managed-devices status copy single {ctrl_mac}')
             upgrade_status_copy_status = upgrade_status_copy['upgrade managed-node copy command status'][0]
             
-            #If controller is on any other release than configured compliance version, perform upgrade.
+            #If controller is on any other release than the configured compliance version, perform upgrade.
             if md_firmware_version != aos_compliance_version:
                 firmware_upgrade(ctrl_mac)
             else:
@@ -279,12 +279,11 @@ try:
                 print('>>> Skpping firmware upgrade.')
 
             ## Configure new hostname ##
-
-            uplink_ip_list = list()
-            
+           
             #Fetch uplink IP from IPSEC SA information
             print (f'>>> Fetching controller uplink IP for {ctrl_mac} now... <<<')
-                
+
+            uplink_ip_list = list()    
             uplink_ip = get_uplink_ip(md)
             uplink_ip_list.append(uplink_ip)
 
@@ -302,9 +301,11 @@ try:
             ## Configure geolocation ##
 
             #Retrieve shop address from shop list
-            shop_address = shop_dict[nwaddr]['street'] +' '+ shop_dict[nwaddr]['zip'] + ' ' + shop_dict[nwaddr]['place']
             print('>>> Fetching location for address: '+ shop_address)
 
+            shop_address = shop_dict[nwaddr]['street'] +' '+ shop_dict[nwaddr]['zip'] + ' ' + shop_dict[nwaddr]['place']
+
+            #Retrieve geolocation data of shop adress
             geoloc = geolocation()
             lat, lon, address = geoloc.get_geolocation(shop_address)
             
