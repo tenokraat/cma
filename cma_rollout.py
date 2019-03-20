@@ -212,7 +212,7 @@ try:
         switchinfo = session.cli_command('show switches all')
         switchinfo_dict = json.loads(switchinfo)
 
-        print(switchinfo_dict)
+        print(switchinfo)
 
         ## Firmware compliance ##
 
