@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-import json,requests,re,csv,os,sys,time
+import json,requests,re,csv,os,sys,time,pprint
 import ipaddress
 import logging
 from tomtom_geolocation import *
@@ -78,20 +78,13 @@ def get_md_status():
     #Check state of MDs
         all_switches = session.cli_command('show switches all')
         switchinfo = all_switches['All Switches']
-        print (switchinfo)
 
-        position = 0
+        pprint.PrettyPrinter(switchinfo)
 
-        for each in switchinfo:
+         key= 0
 
-            if each[position]['Name'] == new_ctrl:
-                md_status = each[position]['Status']
-                print(md_status)
-    
-                break
-            
-            position = position + 1
-            print(position)
+        dict['Name']
+
 
 def get_uplink_ip(mac_addr):
     
