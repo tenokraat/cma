@@ -89,7 +89,6 @@ def get_md_status(ctrl_mac):
             break
         else:
             key = key + 1
-            print(key)
 
     return md_status
 
