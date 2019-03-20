@@ -42,7 +42,7 @@ def firmware_upgrade(mac_addr, aos_compliance_version, scp_server, scp_user, scp
     
     firmware_json = json.dumps(firmware_params)
 
-    session.post('configuration/object/upgrade_lcs_copy_scp_reboot', json.loads(firmware_json), '/md/cma/shops')
+    session.post('configuration/object/upgrade_lcs_copy_scp_reboot', json.loads(firmware_json), f'/md/cma/shops/{mac_addr}')
 
 def get_new_device():
 
