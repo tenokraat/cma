@@ -326,6 +326,7 @@ try:
             set_geolocation(ctrl_mac, lon, lat)
 
             print(f'>>> Node {ctrl_mac} configuration fully completed.')
+            print('----------------------------------------------------------')
             time.sleep(5)
         
         elif md_status == 'down':

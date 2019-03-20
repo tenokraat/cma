@@ -6,15 +6,16 @@ import json,requests,os
 
 class geolocation:
     def __init__ (self):
- 
+        
         #Using Python requests and TomTom Search/Geocode API to retrieve geo location.
-
-        #API Key oliver.wehrli@gmail.com
+        #Requires access through CMA proxy, setting globally for this class
 
         self.proxies = {
             'http': 'http://192.168.205.163:8080/',
             'https': 'http://192.168.205.163:8080/',
             }
+
+        #API Key oliver.wehrli@gmail.com
 
         self.api_key = 'KR3oOGSM59aMJBOSKAxTlxoJvYBjrENU'
         
