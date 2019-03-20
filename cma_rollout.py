@@ -83,8 +83,8 @@ def get_md_status(ctrl_mac):
     key = 0
 
     for each in switchinfo:
-        if switchinfo[key]['MAC'] == ctrl_mac:
-            md_status = switchinfo[key]['Status']
+        if each[key]['MAC'] == ctrl_mac:
+            md_status = each[key]['Status']
             print (md_status)
             break
         else:
