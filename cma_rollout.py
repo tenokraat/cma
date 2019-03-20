@@ -49,7 +49,7 @@ def get_new_device():
     #Define data from nested JSON that is retrieved (needs modification depending on hierarchy structure)
     ctrl_json = node_hierarchy['childnodes'][1]['childnodes'][0]['childnodes'][0]['devices']
 
-    ctrl_list = list() #create list to append multiple new controllers
+    ctrl_list = list() #create list to append  new controller mac addresses
 
     isDefault = False
     
@@ -74,14 +74,24 @@ def get_new_device():
     #Return list of new controllers   
     return ctrl_list, isDefault
 
-def get_md_status():
+def get_md_status(ctrl_mac):
 
     #Check state of MDs
-    all_switches = session.cli_command('show switches all')
+    all_switches = session.cli_command('show switches debug')
     switchinfo = all_switches['All Switches']
 
-    print(switchinfo[0])
+    key = 0
 
+    for each in switchinfo:
+        if switchinfo[key]['MAC'] == ctrl_mac:
+            md_status = switchinfo[key]['Status']
+            print (md_status)
+            break
+        else:
+            key = key + 1
+            print(key)
+
+return md_status
 
 def get_uplink_ip(mac_addr):
     
