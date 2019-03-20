@@ -219,7 +219,7 @@ try:
         md_firmware_version = md_firmware_details['Current Ver']
         
         upgrade_status_copy = session.cli_command(f'show upgrade managed-devices status copy single {ctrl_mac}')
-        upgrade_status_copy_status = upgrade_status_copy[0]['Copy Status']
+        upgrade_status_copy_status = upgrade_status_copy['_data']['Copy Status']
         
         #print(f'Current firmware version of {ctrl_mac}: ' + md_firmware_version)
         #print('Copy Status: ' )
