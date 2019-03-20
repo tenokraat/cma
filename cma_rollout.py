@@ -209,7 +209,7 @@ try:
 
         #Check state of MDs
         all_switches = session.cli_command('show switches all')
-        switchinfo = json.dumps(all_switches['All Switches'])
+        switchinfo = all_switches['All Switches']
         print (switchinfo)
 
         position = 0
@@ -222,7 +222,6 @@ try:
                 break
             
             position = position + 1
-            print ('Next Position: ' + str(start))
 
         break
 
