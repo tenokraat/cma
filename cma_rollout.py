@@ -282,6 +282,9 @@ try:
             if md_firmware_version != aos_compliance_version:
                 fw_success = firmware_upgrade(ctrl_mac)
 
+                if fw_success == True:
+                    continue
+
             elif fw_success == True:
                     continue
 
