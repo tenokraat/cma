@@ -248,22 +248,22 @@ try:
             
             time.sleep(2)
 
-            print('>>> Attemptting firmware upgrade to ' + aos_compliance_version + ' <<<')
+            print('>>> Attemptting firmware upgrade to ' + aos_compliance_version)
             time.sleep(2)
 
             firmware_upgrade(ctrl_mac, aos_compliance_version, scp_server, scp_user, scp_password) 
 
-            print('>>> Upgrade initiated waiting 10s for upgrade to be begin... <<<')
+            print('>>> Upgrade initiated waiting 10s for upgrade to be begin...')
             time.sleep(10)
             print(upgrade_status_copy)
 
-            print(f'>>> Skipping controller {ctrl_mac} renaming until next run and firmware upgrade is completed. <<<')
+            print(f'>>> Skipping controller {ctrl_mac} renaming until next run and firmware upgrade is completed.')
             
             continue
     
         else:
-            print('>>> Controller ' + ctrl_mac + ' is already on compliance version ' + aos_compliance_version + ' <<<')
-            print('>>> Skpping firmware upgrade. <<<')
+            print('>>> Controller ' + ctrl_mac + ' is already on compliance version ' + aos_compliance_version)
+            print('>>> Skpping firmware upgrade.')
 
         ## Configure new hostname ##
         uplink_ip_list = list()
