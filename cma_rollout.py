@@ -89,7 +89,7 @@ def get_uplink_ip(mac_addr):
             #Remove text from string, except IP/Netmask combination, eg. 10.110.224.23/255.255.255.255. 
             # Variable is NOT modified!
             sub_string = re.sub("Destination network: ", "", line)
-            print ('>>> ' + re.sub("Destination network: ", "", line) + ' <<<')
+            print ('>>> ' + re.sub("Destination network: ", "", line))
 
             uplink_ip = ipaddress._split_optional_netmask(sub_string)
             
@@ -116,7 +116,7 @@ def get_shop_details():
     cwd = os.getcwd()
     
     #Display current working directory
-    print ('Current Working Directory is: ' + cwd)
+    print ('>>> Current Working Directory is: ' + cwd)
 
     #Open CSV in read-only mode
     csv_file = open(csv_filename, 'r', encoding='utf8')
@@ -140,11 +140,11 @@ def set_hostname(new_hostname, mac_addr):
     curr_hostname_json = session.get('configuration/object/hostname', f'/md/cma/shops/{mac_addr}')
     curr_hostname = curr_hostname_json['_data']['hostname']['hostname']
 
-    print('Controller ' + curr_hostname + ' will now be renamed to ' + new_hostname)
+    print('>>> Controller ' + curr_hostname + ' will now be renamed to ' + new_hostname)
     time.sleep(3)
 
     session.post('configuration/object/hostname', new_hostname_json, f'/md/cma/shops/{mac_addr}')
-    print('New hostname configured, saving configuration and waiting for sync...')
+    print('>>> New hostname configured, saving configuration and waiting for sync...')
     
     session.write_memory(f'/md/cma/shops/{mac_addr}') 
 
@@ -152,7 +152,7 @@ def set_hostname(new_hostname, mac_addr):
     hostname_json = session.get('configuration/object/hostname', f'/md/cma/shops/{mac_addr}')
     curr_hostname = hostname_json['_data']['hostname']['hostname']
 
-    print ('Controller successfully renamed to ' + curr_hostname)
+    print ('>>> Controller successfully renamed to ' + curr_hostname)
 
 def set_geolocation(mac_addr, lon, lat):
 
@@ -178,23 +178,24 @@ def set_geolocation(mac_addr, lon, lat):
 session = api_session(vmm_hostname, admin_user, admin_password, check_ssl=False)
 
 #Import Shop CSV into dictionary for further processing
-print ('Reading shop list...')
+print ('>>> Reading shop list...')
 time.sleep(2)
 shop_dict = get_shop_details()
 
 #Login to MM
-print('Login to Mobility Master...')
+print('>>> Connecting to Mobility Master...')
 time.sleep(2)
 session.login()
 
 #Fetch new controllers
-print ('Check for new controllers...')
+print ('>>> Checking for new controllers...')
 time.sleep(2)
 new_ctrl, isDefault = get_new_device()
 
 #If there are no controllers matching 'CTRL_' in the hostname, exit the application.
 if isDefault is False:
-    print ('Closing application.')
+    print ('>>> Closing application. <<<')
+    time.sleep(2)
     quit()
 else:
     pass
@@ -208,8 +209,23 @@ try:
 
         #Check state of MDs
         switchinfo = session.cli_command('show switches all')
+        start = 0
+
+        for switch in switchinfo['All Switches']:
+            
+            position = switch[start]
+
+            if position['Name'] == new_ctrl:
+                md_status = position['Status']
+                print(md_status)
+                break
+            
+            start = start + 1
+            print ('Next Position: ' + start)
         
-        #print(switchinfo)
+        print(switchinfo)
+
+        break
 
         ## Firmware compliance ##
 
@@ -219,17 +235,12 @@ try:
         md_firmware_version = md_firmware_details['Current Ver']
         
         upgrade_status_copy = session.cli_command(f'show upgrade managed-devices status copy single {ctrl_mac}')
-        print (upgrade_status_copy)
         upgrade_status_copy_status = upgrade_status_copy['upgrade managed-node copy command status'][0]
         
-        #print(f'Current firmware version of {ctrl_mac}: ' + md_firmware_version)
-        #print('Copy Status: ' )
-        #print (upgrade_status_copy)
-
         #If controller is on any other release than configured compliance version, perform upgrade.
         if md_firmware_version != aos_compliance_version:
 
-            print(f'>>> Fetching current upgrade status for {ctrl_mac} <<>')
+            print(f'>>> Fetching current upgrade status for {ctrl_mac}')
 
             if upgrade_status_copy_status['Copy Status'] == 'Download in-progress':
                 print(f'>>> Download for {ctrl_mac} still in progress, skipping additional firmware tasks.')
