@@ -40,13 +40,13 @@ def firmware_upgrade(ctrl_mac):
     print(f'>>> Fetching current upgrade status for {ctrl_mac}')
 
     if upgrade_status_copy_status['Copy Status'] == 'Download in-progress':
-        print(f'>>> Download for {ctrl_mac} still in progress, skipping additional firmware tasks.')
+        print(f'>>> Download for {ctrl_mac} still in progress, skipping additional tasks.')
         fw_success = True
 
         return fw_success 
         
     elif upgrade_status_copy_status['Copy Status'] == 'Update in-progress':
-        print(f'>>> Update for {ctrl_mac} still in progress, skipping additional firmware tasks.')
+        print(f'>>> Update for {ctrl_mac} still in progress, skipping additional tasks.')
         fw_success = True
 
         return fw_success 
@@ -56,7 +56,7 @@ def firmware_upgrade(ctrl_mac):
     #    fw_success = False
         
     elif upgrade_status_copy_status['Copy Status'] == 'waiting':
-        print(f'>>> Waiting for response from {ctrl_mac}, skipping additional firmware tasks.')
+        print(f'>>> Waiting for response from {ctrl_mac}, skipping additional tasks.')
         fw_success = True
 
         return fw_success 
