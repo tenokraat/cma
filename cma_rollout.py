@@ -59,7 +59,7 @@ def get_new_device():
 
         if 'CTRL_' in currHostname:
             isDefault = True
-            print('>>> New device detected: ' + currHostname + '<<<') 
+            print('>>> New device detected: ' + currHostname) 
 
             mac_addr = md['mac']
             ctrl_list.append(mac_addr)
@@ -209,7 +209,7 @@ try:
         #Check state of MDs
         switchinfo = session.cli_command('show switches all')
         
-        print(switchinfo)
+        #print(switchinfo)
 
         ## Firmware compliance ##
 
@@ -219,6 +219,7 @@ try:
         md_firmware_version = md_firmware_details['Current Ver']
         
         upgrade_status_copy = session.cli_command(f'show upgrade managed-devices status copy single {ctrl_mac}')
+        print (upgrade_status_copy)
         upgrade_status_copy_status = upgrade_status_copy['_data']['Copy Status']
         
         #print(f'Current firmware version of {ctrl_mac}: ' + md_firmware_version)
