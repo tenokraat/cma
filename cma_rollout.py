@@ -71,7 +71,6 @@ def firmware_upgrade(ctrl_mac):
         
     print(f'>>> Skipping controller {ctrl_mac} renaming until next run and firmware upgrade is completed.')
     
-
 def get_new_device():
 
     #Check MM node hierarchy for devices that have not been renamed, yet.
@@ -258,6 +257,8 @@ try:
         
         ctrl_mac = md
         md_status = get_md_status(ctrl_mac)
+        
+        print(f'>>> Node {ctrl_mac} is {md_status}, proceeding...')
 
         if md_status == 'up':
 
