@@ -25,21 +25,52 @@ scp_server = '192.168.230.23'
 scp_user = 'admin'
 scp_password = 'Aruba1234'
 
-def firmware_upgrade(mac_addr, aos_compliance_version, scp_server, scp_user, scp_password):
+def firmware_upgrade(ctrl_mac):
 
-    #Create dictionary with all firmware parameters passed to function
+    #Create dictionary with all firmware parameters
     firmware_params = {
             'img-version': aos_compliance_version,
-            'mac-addr': mac_addr,
+            'mac-addr': ctrl_mac,
             'imagehost': scp_server,
             'username': scp_user,
             'image-path': '.',
             'passwd': scp_password
         }
     
+    #Fetch current upgrade status
+    print(f'>>> Fetching current upgrade status for {ctrl_mac}')
+
+    if upgrade_status_copy_status['Copy Status'] == 'Download in-progress':
+        print(f'>>> Download for {ctrl_mac} still in progress, skipping additional firmware tasks.')
+        
+    elif upgrade_status_copy_status['Copy Status'] == 'Update in-progress':
+        print(f'>>> Update for {ctrl_mac} still in progress, skipping additional firmware tasks.')
+        
+    elif upgrade_status_copy_status['Copy Status'] == 'Node Rebooted':
+        print(f'>>> Node {ctrl_mac} is currently rebooting, skipping additional firmware tasks.')
+        
+    elif upgrade_status_copy_status['Copy Status'] == 'waiting':
+        print(f'>>> Waiting for response from {ctrl_mac}, skipping additional firmware tasks.')
+        
+    else:
+        pass
+    
+    time.sleep(2)
+
+    print(f'>>> No existing update in progress, attemptting firmware upgrade to  {aos_compliance_version}')
+    time.sleep(2)
+
+    #Execute firmware update
     firmware_json = json.dumps(firmware_params)
 
     session.post('configuration/object/upgrade_lcs_copy_scp_reboot', json.loads(firmware_json), '/md')
+
+    print('>>> Upgrade initiated waiting 10s for upgrade to be begin...')
+    time.sleep(10)
+    print(upgrade_status_copy)
+        
+    print(f'>>> Skipping controller {ctrl_mac} renaming until next run and firmware upgrade is completed.')
+    
 
 def get_new_device():
 
@@ -242,45 +273,13 @@ try:
             
             #If controller is on any other release than configured compliance version, perform upgrade.
             if md_firmware_version != aos_compliance_version:
-
-                print(f'>>> Fetching current upgrade status for {ctrl_mac}')
-
-                if upgrade_status_copy_status['Copy Status'] == 'Download in-progress':
-                    print(f'>>> Download for {ctrl_mac} still in progress, skipping additional firmware tasks.')
-                    continue
-                elif upgrade_status_copy_status['Copy Status'] == 'Update in-progress':
-                    print(f'>>> Update for {ctrl_mac} still in progress, skipping additional firmware tasks.')
-                    continue
-                elif upgrade_status_copy_status['Copy Status'] == 'Node Rebooted':
-                    print(f'>>> Node {ctrl_mac} is currently rebooting, skipping additional firmware tasks.')
-                    continue
-                elif upgrade_status_copy_status['Copy Status'] == 'waiting':
-                    print(f'>>> Waiting for response from {ctrl_mac}, skipping additional firmware tasks.')
-                    continue
-                else:
-                    pass
-                
-                time.sleep(2)
-
-                print('>>> Attemptting firmware upgrade to ' + aos_compliance_version)
-                time.sleep(2)
-
-                
-                firmware_upgrade(ctrl_mac, aos_compliance_version, scp_server, scp_user, scp_password) 
-
-                print('>>> Upgrade initiated waiting 10s for upgrade to be begin...')
-                time.sleep(10)
-                print(upgrade_status_copy)
-                    
-                print(f'>>> Skipping controller {ctrl_mac} renaming until next run and firmware upgrade is completed.')
-                
-                continue
-        
+                firmware_upgrade(ctrl_mac)
             else:
-                print('>>> Controller ' + ctrl_mac + ' is already on compliance version ' + aos_compliance_version)
+                print(f'>>> Controller {ctrl_mac} is already on compliance version {aos_compliance_version}')
                 print('>>> Skpping firmware upgrade.')
 
             ## Configure new hostname ##
+
             uplink_ip_list = list()
             
             #Fetch uplink IP from IPSEC SA information
@@ -293,8 +292,8 @@ try:
             nwaddr = str(get_uplink_nwaddr(uplink_ip))   
             
             new_hostname = shop_dict[nwaddr]['sap-id'] +'-'+ shop_dict[nwaddr]['place'] + '-' + shop_dict[nwaddr]['state']
-            print('>>> The new controller name is: ' + new_hostname)
-            print('>>> The controller MAC address is: ' + ctrl_mac)
+            print(f'>>> The new controller name is: {new_hostname}')
+            print(f'>>> The controller MAC address is: {ctrl_mac}')
             print('>>> Now configuring new hostname, please wait...')
             time.sleep(3)
 
@@ -309,7 +308,7 @@ try:
             geoloc = geolocation()
             lat, lon, address = geoloc.get_geolocation(shop_address)
             
-            print ('>>> Retrieved the following geodata information, Longitude: ' + lat + ', Latitude: ' + lon)
+            print (f'>>> Retrieved the following geodata information, Longitude:  {lat}, Latitude: {lon}')
 
             #Configure controller geolocation
             set_geolocation(ctrl_mac, lon, lat)
@@ -318,7 +317,7 @@ try:
         
         elif md_status == 'down':
             print(f'>>> Node {ctrl_mac} is currently down. Skipping device configuration.')
-            
+
             continue
                 
         else:
