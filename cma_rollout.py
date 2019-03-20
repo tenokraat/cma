@@ -35,7 +35,7 @@ def firmware_upgrade(mac_addr, aos_compliance_version, scp_server, scp_user, scp
             #'force-my-version': true,
             #'all': true,
             'mac-addr': mac_addr,
-            'node-path': '/md/cma/shops',
+            #'node-path': '/md/cma/shops',
             'imagehost': scp_server,
             'username': scp_user,
             'image-path': '.',
