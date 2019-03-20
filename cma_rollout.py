@@ -222,7 +222,7 @@ try:
                 break
             
             position = position + 1
-            print ('Next Position: ' + start)
+            print ('Next Position: ' + str(start))
 
         break
 
