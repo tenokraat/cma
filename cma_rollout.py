@@ -51,10 +51,6 @@ def firmware_upgrade(ctrl_mac):
 
         return fw_success 
         
-    #elif re.match(f'^Successfully updated flash with ArubaOS_70xx_{aos_compliance_version}$', upgrade_status_copy_status['Status Description']) is not None:
-    #    print(f'>>> Node {ctrl_mac} has been already successfully updated to {aos_compliance_version}, skipping additional firmware tasks.')
-    #    fw_success = False
-        
     elif upgrade_status_copy_status['Copy Status'] == 'waiting':
         print(f'>>> Waiting for response from {ctrl_mac}, skipping additional tasks.')
         fw_success = True
