@@ -23,7 +23,6 @@ aos_compliance_version = '8.4.0.0_68230'
 scp_server = '192.168.230.23'
 scp_user = 'admin'
 scp_password = 'Aruba1234'
-fw_success = False
 
 def firmware_upgrade(ctrl_mac):
 
@@ -42,13 +41,15 @@ def firmware_upgrade(ctrl_mac):
 
     if upgrade_status_copy_status['Copy Status'] == 'Download in-progress':
         print(f'>>> Download for {ctrl_mac} still in progress, skipping additional firmware tasks.')
-        fw_success = False
-        return fw_success
+        fw_success = True
+
+        return fw_success 
         
     elif upgrade_status_copy_status['Copy Status'] == 'Update in-progress':
         print(f'>>> Update for {ctrl_mac} still in progress, skipping additional firmware tasks.')
-        fw_success = False
-        return fw_success
+        fw_success = True
+
+        return fw_success 
         
     #elif re.match(f'^Successfully updated flash with ArubaOS_70xx_{aos_compliance_version}$', upgrade_status_copy_status['Status Description']) is not None:
     #    print(f'>>> Node {ctrl_mac} has been already successfully updated to {aos_compliance_version}, skipping additional firmware tasks.')
@@ -56,8 +57,9 @@ def firmware_upgrade(ctrl_mac):
         
     elif upgrade_status_copy_status['Copy Status'] == 'waiting':
         print(f'>>> Waiting for response from {ctrl_mac}, skipping additional firmware tasks.')
-        fw_success = False
-        return fw_success
+        fw_success = True
+
+        return fw_success 
         
     else:
            
@@ -286,9 +288,6 @@ try:
                 fw_success = firmware_upgrade(ctrl_mac)
 
                 if fw_success == True:
-                    continue
-
-            elif fw_success == True:
                     continue
 
             else:
