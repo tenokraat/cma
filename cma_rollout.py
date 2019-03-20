@@ -209,13 +209,12 @@ try:
 
         #Check state of MDs
         all_switches = session.cli_command('show switches all')
-        switchinfo = all_switches['All Switches']
+        switchinfo = json.loads(all_switches['All Switches'])
         print (switchinfo)
 
         position = 0
 
         for each in switchinfo:
-            
 
             if each[position]['Name'] == new_ctrl:
                 md_status = switch['Status']
