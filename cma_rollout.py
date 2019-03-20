@@ -60,6 +60,7 @@ def get_new_device():
         if 'CTRL_' in currHostname:
             isDefault = True
             print('>>> New device detected: ' + currHostname) 
+            time.sleep(2)
 
             mac_addr = md['mac']
             ctrl_list.append(mac_addr)
@@ -135,6 +136,7 @@ def get_shop_details():
     
     #Display current working directory
     print ('>>> Current Working Directory is: ' + cwd)
+    time.sleep(2)
 
     #Open CSV in read-only mode
     csv_file = open(csv_filename, 'r', encoding='utf8')
@@ -196,7 +198,7 @@ def set_geolocation(mac_addr, lon, lat):
 session = api_session(vmm_hostname, admin_user, admin_password, check_ssl=False)
 
 #Import Shop CSV into dictionary for further processing
-print ('>>> Reading shop list...')
+print ('>>> Loading shop list...')
 time.sleep(2)
 shop_dict = get_shop_details()
 
@@ -224,98 +226,103 @@ try:
     for md in new_ctrl:
         
         ctrl_mac = md
-
         md_status = get_md_status(ctrl_mac)
 
-        ## Firmware compliance ##
+        if md_status == 'up':
 
-        #Fetch upgrade status and MD firmware details
-        upgrade_status_summary = session.cli_command(f'show upgrade managed-devices status summary single {ctrl_mac}')
-        md_firmware_details = upgrade_status_summary['upgrade managed-node status summary'][0]
-        md_firmware_version = md_firmware_details['Current Ver']
-        
-        upgrade_status_copy = session.cli_command(f'show upgrade managed-devices status copy single {ctrl_mac}')
-        upgrade_status_copy_status = upgrade_status_copy['upgrade managed-node copy command status'][0]
-        
-        #If controller is on any other release than configured compliance version, perform upgrade.
-        if md_firmware_version != aos_compliance_version:
+            ## Firmware compliance ##
 
-            print(f'>>> Fetching current upgrade status for {ctrl_mac}')
-
-            if upgrade_status_copy_status['Copy Status'] == 'Download in-progress':
-                print(f'>>> Download for {ctrl_mac} still in progress, skipping additional firmware tasks.')
-                continue
-            elif upgrade_status_copy_status['Copy Status'] == 'Update in-progress':
-                print(f'>>> Update for {ctrl_mac} still in progress, skipping additional firmware tasks.')
-                continue
-            elif upgrade_status_copy_status['Copy Status'] == 'Node Rebooted':
-                print(f'>>> Node {ctrl_mac} is currently rebooting, skipping additional firmware tasks.')
-                continue
-            elif upgrade_status_copy_status['Copy Status'] == 'waiting':
-                print(f'>>> Waiting for response from {ctrl_mac}, skipping additional firmware tasks.')
-                continue
-            else:
-                pass
+            #Fetch upgrade status and MD firmware details
+            upgrade_status_summary = session.cli_command(f'show upgrade managed-devices status summary single {ctrl_mac}')
+            md_firmware_details = upgrade_status_summary['upgrade managed-node status summary'][0]
+            md_firmware_version = md_firmware_details['Current Ver']
             
-            time.sleep(2)
+            upgrade_status_copy = session.cli_command(f'show upgrade managed-devices status copy single {ctrl_mac}')
+            upgrade_status_copy_status = upgrade_status_copy['upgrade managed-node copy command status'][0]
+            
+            #If controller is on any other release than configured compliance version, perform upgrade.
+            if md_firmware_version != aos_compliance_version:
 
-            print('>>> Attemptting firmware upgrade to ' + aos_compliance_version)
-            time.sleep(2)
+                print(f'>>> Fetching current upgrade status for {ctrl_mac}')
 
-            if md_status == 'up':
+                if upgrade_status_copy_status['Copy Status'] == 'Download in-progress':
+                    print(f'>>> Download for {ctrl_mac} still in progress, skipping additional firmware tasks.')
+                    continue
+                elif upgrade_status_copy_status['Copy Status'] == 'Update in-progress':
+                    print(f'>>> Update for {ctrl_mac} still in progress, skipping additional firmware tasks.')
+                    continue
+                elif upgrade_status_copy_status['Copy Status'] == 'Node Rebooted':
+                    print(f'>>> Node {ctrl_mac} is currently rebooting, skipping additional firmware tasks.')
+                    continue
+                elif upgrade_status_copy_status['Copy Status'] == 'waiting':
+                    print(f'>>> Waiting for response from {ctrl_mac}, skipping additional firmware tasks.')
+                    continue
+                else:
+                    pass
+                
+                time.sleep(2)
+
+                print('>>> Attemptting firmware upgrade to ' + aos_compliance_version)
+                time.sleep(2)
+
+                
                 firmware_upgrade(ctrl_mac, aos_compliance_version, scp_server, scp_user, scp_password) 
 
                 print('>>> Upgrade initiated waiting 10s for upgrade to be begin...')
                 time.sleep(10)
                 print(upgrade_status_copy)
+                    
+                print(f'>>> Skipping controller {ctrl_mac} renaming until next run and firmware upgrade is completed.')
                 
-            elif md_status == 'down':
-                print(f'>>> Node {ctrl_mac} is currently down.')
-            
+                continue
+        
             else:
-                pass
+                print('>>> Controller ' + ctrl_mac + ' is already on compliance version ' + aos_compliance_version)
+                print('>>> Skpping firmware upgrade.')
 
-            print(f'>>> Skipping controller {ctrl_mac} renaming until next run and firmware upgrade is completed.')
+            ## Configure new hostname ##
+            uplink_ip_list = list()
+            
+            #Fetch uplink IP from IPSEC SA information
+            print (f'>>> Fetching controller uplink IP for {ctrl_mac} now... <<<')
+                
+            uplink_ip = get_uplink_ip(md)
+            uplink_ip_list.append(uplink_ip)
+
+            #Get uplink IP network address 
+            nwaddr = str(get_uplink_nwaddr(uplink_ip))   
+            
+            new_hostname = shop_dict[nwaddr]['sap-id'] +'-'+ shop_dict[nwaddr]['place'] + '-' + shop_dict[nwaddr]['state']
+            print('>>> The new controller name is: ' + new_hostname)
+            print('>>> The controller MAC address is: ' + ctrl_mac)
+            print('>>> Now configuring new hostname, please wait...')
+            time.sleep(3)
+
+            set_hostname(new_hostname, ctrl_mac)
+
+            ## Configure geolocation ##
+
+            #Retrieve shop address from shop list
+            shop_address = shop_dict[nwaddr]['street'] +' '+ shop_dict[nwaddr]['zip'] + ' ' + shop_dict[nwaddr]['place']
+            print('>>> Fetching location for address: '+ shop_address)
+
+            geoloc = geolocation()
+            lat, lon, address = geoloc.get_geolocation(shop_address)
+            
+            print ('>>> Retrieved the following geodata information, Longitude: ' + lat + ', Latitude: ' + lon)
+
+            #Configure controller geolocation
+            set_geolocation(ctrl_mac, lon, lat)
+
+            print(f'>>> Node {ctrl_mac} configuration fully completed.')
+        
+        elif md_status == 'down':
+            print(f'>>> Node {ctrl_mac} is currently down. Skipping device configuration.')
             
             continue
-    
+                
         else:
-            print('>>> Controller ' + ctrl_mac + ' is already on compliance version ' + aos_compliance_version)
-            print('>>> Skpping firmware upgrade.')
-
-        ## Configure new hostname ##
-        uplink_ip_list = list()
-        
-        #Fetch uplink IP from IPSEC SA information
-        print (f'>>> Fetching controller uplink IP for {ctrl_mac} now... <<<')
-            
-        uplink_ip = get_uplink_ip(md)
-        uplink_ip_list.append(uplink_ip)
-
-        #Get uplink IP network address 
-        nwaddr = str(get_uplink_nwaddr(uplink_ip))   
-        
-        new_hostname = shop_dict[nwaddr]['sap-id'] +'-'+ shop_dict[nwaddr]['place'] + '-' + shop_dict[nwaddr]['state']
-        print('>>> The new controller name is: ' + new_hostname)
-        print('>>> The controller MAC address is: ' + ctrl_mac)
-        print('>>> Now configuring new hostname, please wait...')
-        time.sleep(3)
-
-        set_hostname(new_hostname, ctrl_mac)
-
-        ## Configure geolocation ##
-
-        #Retrieve shop address from shop list
-        shop_address = shop_dict[nwaddr]['street'] +' '+ shop_dict[nwaddr]['zip'] + ' ' + shop_dict[nwaddr]['place']
-        logging.debug('>>> Fetching location for address: '+ shop_address)
-
-        geoloc = geolocation()
-        lat, lon, address = geoloc.get_geolocation(shop_address)
-        
-        print ('>>> Retrieved the following geodata information, Longitude: ' + lat + ', Latitude: ' + lon)
-
-        #Configure controller geolocation
-        set_geolocation(ctrl_mac, lon, lat)
+            pass
        
 except:
     print(sys.exc_info())
