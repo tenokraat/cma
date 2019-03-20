@@ -70,8 +70,8 @@ def firmware_upgrade(ctrl_mac):
         session.post('configuration/object/upgrade_lcs_copy_scp_reboot', json.loads(firmware_json), '/md')
 
         print('>>> Upgrade initiated waiting for upgrade to be begin...')
-        time.sleep(20)
-        print(upgrade_status_copy)
+        time.sleep(5)
+        #print(upgrade_status_copy)
 
         print(f'>>> Skipping controller {ctrl_mac} renaming until next run and firmware upgrade is completed.')
 
@@ -288,7 +288,7 @@ try:
 
             else:
                 print(f'>>> Controller {ctrl_mac} is already on compliance version {aos_compliance_version}')
-                print('>>> Skpping firmware upgrade.')
+                print('>>> Skipping firmware upgrade.')
 
             ## Configure new hostname ##
            
