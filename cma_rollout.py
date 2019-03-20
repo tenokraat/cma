@@ -309,9 +309,8 @@ try:
             ## Configure geolocation ##
 
             #Retrieve shop address from shop list
-            print('>>> Fetching location for address: '+ shop_address)
-
             shop_address = shop_dict[nwaddr]['street'] +' '+ shop_dict[nwaddr]['zip'] + ' ' + shop_dict[nwaddr]['place']
+            print('>>> Fetching location for address: '+ shop_address)
 
             #Retrieve geolocation data of shop adress
             geoloc = geolocation()
