@@ -89,7 +89,6 @@ def get_md_status(ctrl_mac):
             break
         else:
             key = key + 1
-            print(key)
 
     return md_status
 
@@ -226,9 +225,7 @@ try:
         
         ctrl_mac = md
 
-        get_md_status(ctrl_mac)
-
-        break
+        md_status = get_md_status(ctrl_mac)
 
         ## Firmware compliance ##
 
@@ -265,11 +262,18 @@ try:
             print('>>> Attemptting firmware upgrade to ' + aos_compliance_version)
             time.sleep(2)
 
-            firmware_upgrade(ctrl_mac, aos_compliance_version, scp_server, scp_user, scp_password) 
+            if md_status == 'up':
+                firmware_upgrade(ctrl_mac, aos_compliance_version, scp_server, scp_user, scp_password) 
 
-            print('>>> Upgrade initiated waiting 10s for upgrade to be begin...')
-            time.sleep(10)
-            print(upgrade_status_copy)
+                print('>>> Upgrade initiated waiting 10s for upgrade to be begin...')
+                time.sleep(10)
+                print(upgrade_status_copy)
+                
+            elif md_status == 'down':
+                print(f'>>> Node {ctrl_mac} is currently down.')
+            
+            else:
+                pass
 
             print(f'>>> Skipping controller {ctrl_mac} renaming until next run and firmware upgrade is completed.')
             
@@ -292,9 +296,9 @@ try:
         nwaddr = str(get_uplink_nwaddr(uplink_ip))   
         
         new_hostname = shop_dict[nwaddr]['sap-id'] +'-'+ shop_dict[nwaddr]['place'] + '-' + shop_dict[nwaddr]['state']
-        print('The new controller name is: ' + new_hostname)
-        print('The controller MAC address is: ' + ctrl_mac)
-        print('Now configuring new hostname, please wait...')
+        print('>>> The new controller name is: ' + new_hostname)
+        print('>>> The controller MAC address is: ' + ctrl_mac)
+        print('>>> Now configuring new hostname, please wait...')
         time.sleep(3)
 
         set_hostname(new_hostname, ctrl_mac)
@@ -303,19 +307,19 @@ try:
 
         #Retrieve shop address from shop list
         shop_address = shop_dict[nwaddr]['street'] +' '+ shop_dict[nwaddr]['zip'] + ' ' + shop_dict[nwaddr]['place']
-        logging.debug('Fetching location for address: '+ shop_address)
+        logging.debug('>>> Fetching location for address: '+ shop_address)
 
         geoloc = geolocation()
         lat, lon, address = geoloc.get_geolocation(shop_address)
         
-        print ('Retrieved the following geodata information, Longitude: ' + lat + ', Latitude: ' + lon)
+        print ('>>> Retrieved the following geodata information, Longitude: ' + lat + ', Latitude: ' + lon)
 
         #Configure controller geolocation
         set_geolocation(ctrl_mac, lon, lat)
        
 except:
     print(sys.exc_info())
-    print ('IP address information not found in shop list or unknown exception raised. Please configure controller manually.')
+    print ('>>> IP address information not found in shop list or unknown exception raised. Please configure controller manually.')
 
 #Terminate MM session
 session.logout()
