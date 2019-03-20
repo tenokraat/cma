@@ -30,10 +30,8 @@ def firmware_upgrade(mac_addr, aos_compliance_version, scp_server, scp_user, scp
     #Create dictionary with all firmware parameters passed to function
     firmware_params = {
             'img-version': aos_compliance_version,
+            'img-version-forced': aos_compliance_version,
             'mac-addr': mac_addr,
-            "img-version-forced": aos_compliance_version,
-            "my-version": 'true',
-            "force-my-version": 'true',
             'imagehost': scp_server,
             'username': scp_user,
             'image-path': '.',
@@ -232,7 +230,7 @@ try:
         if md_firmware_version != aos_compliance_version:
 
             print(f'Fetching current upgrade status for {ctrl_mac}')
-            md_upgrade_status = session.cli_command(f'show upgrade managed-devices status summary single {ctrl_mac}')
+            md_upgrade_status = session.cli_command(f'show upgrade managed-devices status copy single {ctrl_mac}')
             print(md_upgrade_status)
 
             print('Attemptting firmware upgrade to ' + aos_compliance_version)
