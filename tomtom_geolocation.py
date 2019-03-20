@@ -1,7 +1,6 @@
-import json,requests,os, urllib3
-import logging
+import json,requests,os
 
-logging.basicConfig(level=logging.DEBUG)
+#logging.basicConfig(level=logging.DEBUG)
 
 class geolocation:
     def __init__ (self):
@@ -54,7 +53,6 @@ class geolocation:
 
         # Do the request to TomTom URL, pass search parameters and retrieve the response data
         req = requests.get(geocode_api_url, params=tomtom_search_params, proxies=self.proxies)
-        #logging.debug (req.url)
 
         res = req.json()
         
@@ -63,15 +61,12 @@ class geolocation:
 
         # Use the first result
         result = res['results'][0]
-        logging.debug (result)
 
         geodata = dict()
         
         geodata['lat'] = result['position']['lat']
         geodata['lon'] = result['position']['lon']
         geodata['address'] = result['address']['freeformAddress']
-
-        #logging.debug('{address}. (lat, lng) = ({lat}, {lon})'.format(**geodata))
 
         lat = str(geodata['lat'])
         lon = str(geodata['lon'])

@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 
-import json,requests,re,csv,os,sys,time,pprint
+import json,requests,re,csv,os,sys,time
 import ipaddress
-import logging
 from tomtom_geolocation import *
 from aruba_api_caller import *
 
