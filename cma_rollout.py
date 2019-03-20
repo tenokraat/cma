@@ -74,7 +74,7 @@ def firmware_upgrade(ctrl_mac):
 
         fw_success = True
 
-        return fw_success
+    return fw_success
     
 def get_new_device():
 
