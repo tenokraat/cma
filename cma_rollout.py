@@ -14,6 +14,10 @@ vmm_hostname = '192.168.230.23'
 admin_user = 'python'
 admin_password = 'Aruba1234'
 
+#vmm_hostname = input ('VMM Hostname or IP: ')
+#admin_user = input('Enter username: ')
+#admin_password = input(f'Enter {admin_user} password: ')
+
 #Set AOS firmware upgrade variables
 
 aos_compliance_version = '8.4.0.0_68230'
@@ -21,31 +25,19 @@ scp_server = '192.168.230.23'
 scp_user = 'admin'
 scp_password = 'Aruba1234'
 
-#vmm_hostname = input ('VMM Hostname or IP: ')
-#admin_user = input('Enter username: ')
-#admin_password = input(f'Enter {admin_user} password: ')
-
 def firmware_upgrade(mac_addr, aos_compliance_version, scp_server, scp_user, scp_password):
 
     #Create dictionary with all firmware parameters passed to function
     firmware_params = {
             'img-version': aos_compliance_version,
-            #'img-version-forced': aos_compliance_version,
-            #'my-version': true,
-            #'force-my-version': true,
-            #'all': true,
             'mac-addr': mac_addr,
-            #'node-path': '/md/cma/shops',
             'imagehost': scp_server,
             'username': scp_user,
             'image-path': '.',
-            #'partition': false,
-            #'partition': 'partition0',
             'passwd': scp_password
         }
     
     firmware_json = json.dumps(firmware_params)
-    print(firmware_json)
 
     session.post('configuration/object/upgrade_lcs_copy_scp_reboot', json.loads(firmware_json), '/md')
 
@@ -67,7 +59,7 @@ def get_new_device():
 
         if 'CTRL_' in currHostname:
             isDefault = True
-            print('New device detected: ' + currHostname) 
+            print('>>> New device detected: ' + currHostname + '<<<') 
 
             mac_addr = md['mac']
             ctrl_list.append(mac_addr)
@@ -76,7 +68,7 @@ def get_new_device():
             pass
 
     if isDefault == False:
-        print('No new devices found.')
+        print('>>> No new devices found. <<<')
         time.sleep(2)
 
     #Return list of new controllers   
@@ -97,7 +89,7 @@ def get_uplink_ip(mac_addr):
             #Remove text from string, except IP/Netmask combination, eg. 10.110.224.23/255.255.255.255. 
             # Variable is NOT modified!
             sub_string = re.sub("Destination network: ", "", line)
-            print (re.sub("Destination network: ", "", line))
+            print ('>>> ' + re.sub("Destination network: ", "", line) + ' <<<')
 
             uplink_ip = ipaddress._split_optional_netmask(sub_string)
             
@@ -227,6 +219,7 @@ try:
         md_firmware_version = md_firmware_details['Current Ver']
         
         upgrade_status_copy = session.cli_command(f'show upgrade managed-devices status copy single {ctrl_mac}')
+        upgrade_status_copy_status = upgrade_status_copy[0]['Copy Status']
         
         #print(f'Current firmware version of {ctrl_mac}: ' + md_firmware_version)
         #print('Copy Status: ' )
@@ -235,32 +228,37 @@ try:
         #If controller is on any other release than configured compliance version, perform upgrade.
         if md_firmware_version != aos_compliance_version:
 
-            print(f'Fetching current upgrade status for {ctrl_mac}')
-            md_upgrade_status = session.cli_command(f'show upgrade managed-devices status copy single {ctrl_mac}')
-            #print(md_upgrade_status)
+            print(f'>>> Fetching current upgrade status for {ctrl_mac} <<>')
 
-            print('Attemptting firmware upgrade to ' + aos_compliance_version)
-            time.sleep(3)
+            if upgrade_status_copy_status == 'Download in-progress':
+                print(f'>>> Upgrade for {ctrl_mac} still in progress, skipping firmware upgrade. <<<')
+            
+            else:
+                pass
+            time.sleep(2)
+
+            print('>>> Attemptting firmware upgrade to ' + aos_compliance_version + ' <<<')
+            time.sleep(2)
 
             firmware_upgrade(ctrl_mac, aos_compliance_version, scp_server, scp_user, scp_password) 
 
-            print('Upgrade initiated waiting 20s for upgrade to be initiated...')
-            time.sleep(20)
-            #print(md_upgrade_status)
+            print('>>> Upgrade initiated waiting 10s for upgrade to be begin... <<<')
+            time.sleep(10)
+            print(upgrade_status_copy)
 
-            print(f'Skipping controller {ctrl_mac} renaming until next run and firmware upgrade is completed.')
+            print(f'>>> Skipping controller {ctrl_mac} renaming until next run and firmware upgrade is completed. <<<')
             
             continue
     
         else:
-            print('Controller ' + ctrl_mac + ' is already on compliance version ' + aos_compliance_version)
-            print('Skpping firmware upgrade.')
+            print('>>> Controller ' + ctrl_mac + ' is already on compliance version ' + aos_compliance_version + ' <<<')
+            print('>>> Skpping firmware upgrade. <<<')
 
         ## Configure new hostname ##
         uplink_ip_list = list()
         
         #Fetch uplink IP from IPSEC SA information
-        print (f'Fetching controller uplink IP for {ctrl_mac} now...')
+        print (f'>>> Fetching controller uplink IP for {ctrl_mac} now... <<<')
             
         uplink_ip = get_uplink_ip(md)
         uplink_ip_list.append(uplink_ip)
