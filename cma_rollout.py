@@ -6,7 +6,7 @@ import logging
 from tomtom_geolocation import *
 from aruba_api_caller import *
 
-logging.basicConfig(level=logging.DEBUG)
+#logging.basicConfig(level=logging.DEBUG)
 
 #MM Login Credentials
 
@@ -31,9 +31,9 @@ def firmware_upgrade(mac_addr, aos_compliance_version, scp_server, scp_user, scp
     firmware_params = {
             'img-version': aos_compliance_version,
             'img-version-forced': aos_compliance_version,
-            'my-version': true,
-            'force-my-version': true,
-            'all': true,
+            #'my-version': true,
+            #'force-my-version': true,
+            #'all': true,
             'mac-addr': mac_addr,
             #'node-path': '/md/cma/shops',
             'imagehost': scp_server,
@@ -237,16 +237,16 @@ try:
 
             print(f'Fetching current upgrade status for {ctrl_mac}')
             md_upgrade_status = session.cli_command(f'show upgrade managed-devices status copy single {ctrl_mac}')
-            print(md_upgrade_status)
+            #print(md_upgrade_status)
 
             print('Attemptting firmware upgrade to ' + aos_compliance_version)
             time.sleep(3)
 
-            #firmware_upgrade(ctrl_mac, aos_compliance_version, scp_server, scp_user, scp_password) 
+            firmware_upgrade(ctrl_mac, aos_compliance_version, scp_server, scp_user, scp_password) 
 
             print('Upgrade initiated waiting 20s for upgrade to be initiated...')
             time.sleep(20)
-            print(md_upgrade_status)
+            #print(md_upgrade_status)
 
             print(f'Skipping controller {ctrl_mac} renaming until next run and firmware upgrade is completed.')
             
