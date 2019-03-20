@@ -232,11 +232,13 @@ try:
             print(f'>>> Fetching current upgrade status for {ctrl_mac} <<>')
 
             if upgrade_status_copy_status['Copy Status'] == 'Download in-progress':
-                print(f'>>> Download for {ctrl_mac} still in progress, skipping firmware upgrade. <<<')
+                print(f'>>> Download for {ctrl_mac} still in progress, skipping additional firmware tasks.')
             elif upgrade_status_copy_status['Copy Status'] == 'Update in-progress':
-                print(f'>>> Update for {ctrl_mac} still in progress, skipping firmware upgrade. <<<')
+                print(f'>>> Update for {ctrl_mac} still in progress, skipping additional firmware tasks.')
             elif upgrade_status_copy_status['Copy Status'] == 'Node Rebooted':
-                print(f'>>> Node {ctrl_mac} is currently rebooting, skipping firmware upgrade. <<<')
+                print(f'>>> Node {ctrl_mac} is currently rebooting, skipping additional firmware tasks.')
+            elif upgrade_status_copy_status['Copy Status'] == 'waiting':
+                print(f'>>> Waiting for response from {ctrl_mac}, skipping additional firmware tasks.')
             else:
                 pass
             
