@@ -281,8 +281,11 @@ try:
             if md_firmware_version != aos_compliance_version:
                 fw_success = firmware_upgrade(ctrl_mac)
 
-            elif fw_success == True:
-                continue
+                if fw_success == True:
+                    continue
+
+                else:
+                    pass
 
             else:
                 print(f'>>> Controller {ctrl_mac} is already on compliance version {aos_compliance_version}')
