@@ -226,7 +226,7 @@ try:
         
         ctrl_mac = md
 
-        get_md_status()
+        get_md_status(ctrl_mac)
 
         break
 
