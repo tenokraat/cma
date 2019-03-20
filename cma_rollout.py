@@ -176,7 +176,7 @@ def set_geolocation(mac_addr, lon, lat):
     time.sleep(5)
 
 #Instantiate API session variable
-session = api_session(vmm_hostname, admin_user, admin_password, check_ssl=False, verbose=True)
+session = api_session(vmm_hostname, admin_user, admin_password, check_ssl=False)
 
 #Import Shop CSV into dictionary for further processing
 print ('Reading shop list...')
