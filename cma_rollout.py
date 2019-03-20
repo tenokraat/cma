@@ -216,9 +216,10 @@ try:
 
         for each in switchinfo:
 
-            if each[position]['Name'] == new_ctrl:
-                md_status = each[position]['Status']
+            if each['Name'] == new_ctrl:
+                md_status = each['Status']
                 print(md_status)
+    
                 break
             
             position = position + 1
