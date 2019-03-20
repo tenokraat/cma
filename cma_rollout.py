@@ -78,7 +78,7 @@ def get_md_status():
     #Check state of MDs
         all_switches = session.cli_command('show switches all')
         switchinfo = all_switches['All Switches'][0]
-        print (switchinfo)
+        print (switchinfo['Status'])
 
         '''position = 0
 
