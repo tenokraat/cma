@@ -74,6 +74,24 @@ def get_new_device():
     #Return list of new controllers   
     return ctrl_list, isDefault
 
+def get_md_status():
+    #Check state of MDs
+        all_switches = session.cli_command('show switches all')
+        switchinfo = all_switches['All Switches'][0]
+        print (switchinfo)
+
+        '''position = 0
+
+        for each in switchinfo:
+
+            if each['Name'] == new_ctrl:
+                md_status = each['Status']
+                print(md_status)
+    
+                break
+            
+            position = position + 1'''
+
 def get_uplink_ip(mac_addr):
     
     #Fetch IPSEC map of specified controller through 'show command' API
@@ -207,22 +225,7 @@ try:
         
         ctrl_mac = md
 
-        #Check state of MDs
-        all_switches = session.cli_command('show switches all')
-        switchinfo = json.loads(all_switches['All Switches'])
-        print (switchinfo)
-
-        position = 0
-
-        for each in switchinfo:
-
-            if each['Name'] == new_ctrl:
-                md_status = each['Status']
-                print(md_status)
-    
-                break
-            
-            position = position + 1
+        get_md_status()
 
         break
 
