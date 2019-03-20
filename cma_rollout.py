@@ -90,7 +90,8 @@ def get_md_status():
     
                 break
             
-            position = position + 1'''
+            position = position + 1
+            print(position)
 
 def get_uplink_ip(mac_addr):
     
