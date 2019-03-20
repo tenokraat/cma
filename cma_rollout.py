@@ -23,10 +23,9 @@ aos_compliance_version = '8.4.0.0_68230'
 scp_server = '192.168.230.23'
 scp_user = 'admin'
 scp_password = 'Aruba1234'
+fw_success = False
 
 def firmware_upgrade(ctrl_mac):
-
-    fw_success = False
 
     #Create dictionary with all firmware parameters
     firmware_params = {
