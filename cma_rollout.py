@@ -235,6 +235,8 @@ try:
                 print(f'>>> Download for {ctrl_mac} still in progress, skipping firmware upgrade. <<<')
             elif upgrade_status_copy_status['Copy Status'] == 'Update in-progress':
                 print(f'>>> Update for {ctrl_mac} still in progress, skipping firmware upgrade. <<<')
+            elif upgrade_status_copy_status['Copy Status'] == 'Node Rebooted':
+                print(f'>>> Node {ctrl_mac} is currently rebooting, skipping firmware upgrade. <<<')
             else:
                 pass
             
