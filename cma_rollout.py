@@ -31,6 +31,9 @@ def firmware_upgrade(mac_addr, aos_compliance_version, scp_server, scp_user, scp
     firmware_params = {
             'img-version': aos_compliance_version,
             'mac-addr': mac_addr,
+            "img-version-forced": aos_compliance_version,
+            "my-version": 'true',
+            "force-my-version": 'true',
             'imagehost': scp_server,
             'username': scp_user,
             'image-path': '.',
