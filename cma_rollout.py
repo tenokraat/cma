@@ -7,7 +7,7 @@ from aruba_api_caller import *
 
 #logging.basicConfig(level=logging.DEBUG)
 
-#MM Login Credentials ##
+## MM Login Credentials ##
 
 vmm_hostname = '192.168.230.23'
 admin_user = 'python'
@@ -17,7 +17,7 @@ admin_password = 'Aruba1234'
 #admin_user = input('Enter username: ')
 #admin_password = input(f'Enter {admin_user} password: ')
 
-#Set AOS firmware upgrade variables
+## AOS firmware upgrade variables ###
 
 aos_compliance_version = '8.4.0.0_68230'
 scp_server = '192.168.230.23'
