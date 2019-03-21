@@ -256,6 +256,9 @@ new_ctrl, isDefault = get_new_device()
 if isDefault is False:
     print ('>>> Closing application. <<<')
     time.sleep(2)
+    ts = time.gmtime()
+    print(time.strftime(">>> %Y-%m-%d %H:%M:%S", ts))
+    session.logout()
     quit()
 else:
     pass
