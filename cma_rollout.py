@@ -234,6 +234,9 @@ def set_geolocation(mac_addr, lon, lat):
 #Instantiate API session variable
 session = api_session(vmm_hostname, admin_user, admin_password, check_ssl=False)
 
+ts = time.gmtime()
+print(time.strftime(">>> %Y-%m-%d %H:%M:%S", ts))
+
 #Import Shop CSV into dictionary for further processing
 print ('>>> Loading shop list...')
 time.sleep(2)
@@ -340,6 +343,9 @@ try:
 except:
     print(sys.exc_info())
     print ('>>> IP address information not found in shop list or unknown exception raised. Please configure controller manually.')
+
+ts = time.gmtime()
+print(time.strftime(">>> %Y-%m-%d %H:%M:%S", ts))
 
 #Terminate MM session
 session.logout()
