@@ -35,7 +35,6 @@ def get_devices():
         if '-' in currHostname:
             isExisting = True
             print('>>> Existing device detected: ' + currHostname) 
-            time.sleep(2)
 
             mac_addr = md['mac']
             ctrl_list.append(mac_addr)
@@ -45,7 +44,6 @@ def get_devices():
         
         if isExisting == False:
             print('>>> No existing devices found. <<<')
-            time.sleep(2)
 
     #Return list of new controllers   
     return ctrl_list, isExisting
@@ -55,9 +53,11 @@ session = api_session(vmm_hostname, admin_user, admin_password, check_ssl=False)
 
 session.login()
 
-new_ctrl, isExisting = get_devices()
+ctrl_list, isExisting = get_devices()
 
-for md in new_ctrl:
+print(ctrl_list)
+
+for md in ctrl_list:
         
         ctrl_mac = md
         set_int_poe(ctrl_mac)
