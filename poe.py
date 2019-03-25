@@ -49,7 +49,7 @@ def get_devices():
     return ctrl_list, isExisting
 
 #Instantiate API session variable
-session = api_session(vmm_hostname, admin_user, admin_password, check_ssl=False)
+session = api_session(vmm_hostname, admin_user, admin_password, check_ssl=False, verbose=True)
 
 session.login()
 
