@@ -10,7 +10,7 @@ admin_user = 'python'
 admin_password = 'Aruba1234'
 
 def set_int_poe(mac_addr):
-    int_gig_no = 1
+    int_gig_no = 7
 
     int_poe_json = {"_data": { "int_gig": { f"{int_gig_no}": {"int_gig_poe": {"_flags": {"inherited": "true"}}}}}}
 
