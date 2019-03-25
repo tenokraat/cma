@@ -340,6 +340,10 @@ try:
             #Configure controller geolocation
             set_geolocation(ctrl_mac, lon, lat)
 
+            #Turn on PoE on Gi0/0/1
+            print('>>> Enabling PoE on interface Gi0/0/1')
+            set_int_poe(ctrl_mac)
+
             print(f'>>> Node {ctrl_mac} configuration fully completed.')
             print('----------------------------------------------------------')
             time.sleep(5)
