@@ -59,8 +59,8 @@ print(ctrl_list)
 
 for md in ctrl_list:
     
-    print(md)
     ctrl_mac = md
+    print(md)
     set_int_poe(ctrl_mac)
 
 session.logout()
