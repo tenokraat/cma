@@ -231,6 +231,15 @@ def set_geolocation(mac_addr, lon, lat):
 
     time.sleep(5)
 
+def set_int_poe(mac_addr):
+    int_gig_no = 1
+
+    int_poe_json = {"_data": { "int_gig": { f"{int_gig_no}": {"int_gig_poe": {"_flags": {"inherited": "true"}}}}}}
+
+    session.post('configuration/object/int_gig', int_poe_json, f'/md/cma/shops/{mac_addr}'
+
+    session.write_memory(f'/md/cma/shops/{mac_addr}') 
+
 #Instantiate API session variable
 session = api_session(vmm_hostname, admin_user, admin_password, check_ssl=False)
 
