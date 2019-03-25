@@ -58,8 +58,9 @@ ctrl_list, isExisting = get_devices()
 print(ctrl_list)
 
 for md in ctrl_list:
-        
-        ctrl_mac = md
-        set_int_poe(ctrl_mac)
+    
+    print(md)
+    ctrl_mac = md
+    set_int_poe(ctrl_mac)
 
 session.logout()
