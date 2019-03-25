@@ -21,4 +21,6 @@ def set_int_poe(mac_addr):
 #Instantiate API session variable
 session = api_session(vmm_hostname, admin_user, admin_password, check_ssl=False)
 
+session.login()
+
 set_int_poe('20:4c:03:21:af:5c')
