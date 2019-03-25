@@ -16,6 +16,8 @@ def set_int_poe(mac_addr):
 
     session.post('configuration/object/int_gig', int_poe_json, f'/md/cma/shops/{mac_addr}')
 
+    session.write_memory(f'/md/cma/shops/{mac_addr}')
+
 def get_devices():
 
     #Check MM node hierarchy for devices that have not been renamed, yet.
