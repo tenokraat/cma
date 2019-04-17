@@ -22,7 +22,7 @@ admin_password = 'Aruba1234'
 aos_compliance_version = '8.4.0.0_68230'
 scp_server = '192.168.230.23'
 scp_user = 'admin'
-scp_password = 'Aruba1234'
+scp_password = 'LQqP3f#a'
 
 def firmware_upgrade(ctrl_mac):
 
