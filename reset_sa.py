@@ -58,7 +58,7 @@ def execute_ssh_command(host, port, username, password, keyfilepath, keyfiletype
  
 host = '192.168.230.23'
 port = 22
-username = 'admin'
+username = 'python'
 password = 'Aruba1234'
 keyfile_path = 'private_key_file'
  
