@@ -10,7 +10,7 @@ f = open ('/home/aruba/environments/cma/reset-logs/srvma230-026-reset-log.txt', 
 
 ssh = paramiko.SSHClient()
 ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-ssh.connect('192.168.230.127', username='admin', password='Aruba1234')
+ssh.connect('192.168.230.127', username='python', password='Aruba1234')
 ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 chan = ssh.invoke_shell()
 
