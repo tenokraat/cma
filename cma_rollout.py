@@ -119,6 +119,8 @@ def get_md_status(ctrl_mac):
     all_switches = session.cli_command('show switches debug')
     switchinfo = all_switches['All Switches']
 
+    print (str(switchinfo))
+
     status_info = list()
 
     key = 0
