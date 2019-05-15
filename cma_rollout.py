@@ -123,12 +123,12 @@ def get_md_status(ctrl_mac):
 
     for each in switchinfo:
         if switchinfo[key]['MAC'] == ctrl_mac:
-            md_status = switchinfo[key]['Status']
+            status_info = switchinfo[key]['Status']
             break
         else:
             key = key + 1
 
-    return md_status
+    return status_info
 
 def get_uplink_ip(mac_addr):
     
