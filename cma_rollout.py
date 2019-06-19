@@ -19,7 +19,7 @@ admin_password = 'Aruba1234'
 
 ## AOS firmware upgrade variables ###
 
-aos_compliance_version = '8.4.0.2_70086'
+aos_compliance_version = '8.4.0.3_70897'
 scp_server = '192.168.230.23'
 scp_user = 'scp'
 scp_password = 'scp@aruba1234'
